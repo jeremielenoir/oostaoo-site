@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './components/Nav';
-import Home from './components/Header';
+import Header from './components/Header';
+import Introduction from './components/Introduction';
 
 import './App.scss';
 
@@ -9,6 +10,7 @@ function App() {
     <>
     <Nav/>
     <Header/>
+    <Introduction/>
 </>
   );
 }

@@ -10,6 +10,7 @@ function Header(){
         <>
 
 
+    <div className='container'>
         <div className='header'>
 
             <img src={background} alt="" className='background'/>
@@ -20,35 +21,8 @@ function Header(){
         </div>
 
   
-
-        <div className='introduction_main_container'> 
-
-            <article className='introduction_sub_container'>
-
-                <h1 className='number'>01</h1>
-                
-            </article>
-            <article className='introduction_sub_container'>
-
-                <h1 className='number'>02</h1>
-                
-            </article>
-            <article className='introduction_sub_container'>
-
-                <h1 className='number'>03</h1>
-                
-            </article>
-
-
-            
+    </div>
         
-        
-        
-        </div>
-
-       
-
-       
 
 
 
@@ -56,4 +30,4 @@ function Header(){
     );
 }
 
-export default Home;
+export default Header;
