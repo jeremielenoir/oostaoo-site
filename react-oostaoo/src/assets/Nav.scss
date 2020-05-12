@@ -28,15 +28,13 @@ $nav-color: white;
 
 .logo {
     width: 40%;
-    //border: solid 2px red;
   }
 
   .container_link_menu {
       width: 60%;
-      //border: solid 2px green;
   }
 
-  .link_menu{
+  .nav_link_list{
 
     @include flex(row, space-between);
     list-style: none;
@@ -46,16 +44,17 @@ $nav-color: white;
   
   }
 
-  .link{
+  .nav_link{
 
     display: inline;
 
   }
 
-  a{
+  .link{
     text-decoration: none;
     padding : 8px;
     color: $text_primary_color;
+    transition: all ease 0.3s;
     &:hover {
       color: $text_secondary_color;
     }

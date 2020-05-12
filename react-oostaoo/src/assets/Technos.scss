@@ -1,0 +1,27 @@
+.techno_container{
+
+    margin-top: 80px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    border: solid red 3px;
+    
+}
+
+.line_techno{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+
+}
+
+img{
+    filter : grayscale(1);
+    transition: all ease 0.5s ;
+    &:hover{
+        filter: none;
+        
+    }
+}

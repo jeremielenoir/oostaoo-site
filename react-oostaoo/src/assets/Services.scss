@@ -1,0 +1,49 @@
+$block_background_color : #f2f1ef;
+$text_main_color : #394449;
+$text_secondary_color : #3edac6 ;
+
+.service_container{
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.service_sub_container{
+    width: 21%;
+    background-color: $block_background_color;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service_name{
+
+    margin-top: 30px;
+    font-size: 1.25rem;
+    color : $text_main_color;
+    text-align: center;
+}
+
+.service_explication{
+
+    font-size: 1rem;
+    color : $text_main_color;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.more_button{
+    font-weight: bold;
+    font-size: 1.15rem;
+    color: $text_secondary_color;
+    cursor: default;
+    padding: 4px;
+    
+}

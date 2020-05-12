@@ -1,0 +1,36 @@
+$text_main_color : #394449;
+
+.main_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 135px;
+    
+}
+
+.section_container{
+   
+    width: 100%;
+    max-width: 1700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title_intro_container{
+    width: 50%;
+}
+
+.section_title, .section_intro{
+    color : $text_main_color;
+    text-align: center;
+}
+
+.section_title{
+    font-size: 3rem;
+}
+
+.section_intro{
+    font-size: 1.25rem;
+}
