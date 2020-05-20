@@ -1,21 +1,14 @@
 import React from 'react'; 
+import logoTechnosDb from './LogoTechnosDb';
 
 
-const BlocTehnos = (props) => {
+const BlocTechnos = (props) => {
 
     
-
     return <div className='line_techno'>
-            <img src={props.urlImg_1} alt=""/>
-            <img src={props.urlImg_2} alt=""/>
-            <img src={props.urlImg_3} alt=""/>
-            <img src={props.urlImg_4} alt=""/>
-            <img src={props.urlImg_5} alt=""/>
-            <img src={props.urlImg_6} alt=""/>
+            {logoTechnosDb.map(logo => <img className='techno_img' src={logo.link} alt={logo.name}/> )}
     </div>
-
-
 
 }
 
-export default BlocTehnos; 
+export default BlocTechnos; 
