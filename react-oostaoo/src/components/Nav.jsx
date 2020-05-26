@@ -4,6 +4,7 @@ import logo from '../assets/logo-oostaoo.png';
 import twitter from '../assets/img/twitter.png';
 import fb from '../assets/img/facebook.png';
 import linkedin from '../assets/img/linkedin.png';
+import { Link, animateScroll as scroll } from "react-scroll";
 
 function Nav(){
 return (
@@ -27,11 +28,67 @@ return (
     </div>
     <div className='container_link_menu'>
         <ul className="nav_link_list">
-            <li className='nav_link'><a href='#' className='link'>Accueil</a></li>
-            <li className='nav_link'><a href='#' className='link'>Nos services</a></li>
-            <li className='nav_link'><a href='#' className='link'>Nos références</a></li>
-            <li className='nav_link'><a href='#' className='link'>Nos offres d'emploi</a></li>
-            <li className='nav_link'><a href='#' className='link'>Contact</a></li>
+            <li className='nav_link link'>
+                <Link activeClass="active"
+                to="accueil"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
+                Accueil
+                </Link>
+            </li>
+            <li className='nav_link link'>
+            <Link activeClass="active"
+                to="services"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
+               Nos services
+               </Link>
+            </li>
+            <li className='nav_link link'>
+            <Link activeClass="active"
+                to="technos"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
+               Nos technos
+               </Link>
+            </li>
+            <li className='nav_link link'>
+            <Link activeClass="active"
+                to="references"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
+                Nos références
+                </Link>
+            </li>
+            <li className='nav_link'>
+            <Link activeClass="active"
+                to="job"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
+                Nos offres d'emploi
+                </Link>
+            </li>
+            <li className='nav_link link'>
+                <Link activeClass="active"
+                to="contact"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}>
+               Contact
+               </Link>
+
+            </li>
         </ul>
     </div>
 

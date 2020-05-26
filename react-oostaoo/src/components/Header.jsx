@@ -3,14 +3,14 @@ import '../assets/Header.scss';
 import background from '../assets/bg.jpg';
 
 
-function Header(){
+function Header({id}){
 
     return (
 
         <>
 
 
-    <div className='container'>
+    <div className='container' id={id}>
         <div className='header'>
 
             <img src={background} alt="" className='background'/>

@@ -5,7 +5,7 @@ import BlocService from './BlocService';
 import BlocSection from './BlocSection';
 
 
-function Services(){
+function Services({id}){
 
    
 
@@ -14,7 +14,7 @@ function Services(){
 
         <>
         <div className='main_container'>
-            <div className='section_container'>
+            <div className='section_container' id={id}>
 
                 <BlocSection section_title={'Nos Services'} section_intro={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi alias iste ducimus tenetur saepe reprehenderit quasi reiciendis ab architecto.'} />
 

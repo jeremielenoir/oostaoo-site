@@ -1,0 +1,18 @@
+.card_container{
+    width: 100%;
+    border: solid green 1px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+    
+}
+
+.card{
+    width: 77%;
+    border: solid blue 1px;
+}
+
+// .job_img{
+//     // width: 300px;
+// }

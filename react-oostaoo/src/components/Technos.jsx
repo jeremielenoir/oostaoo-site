@@ -5,14 +5,14 @@ import BlocSection from './BlocSection';
 import BlocTechnos from './BlocTechnos';
 
 
-function Technos() {
+function Technos({id}) {
 
    
 
     return (
 
         <div className='main_container'>
-            <div className='section_container'>
+            <div className='section_container' id={id}>
                 <BlocSection section_title={'Nos Technos'} section_intro={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi alias iste ducimus tenetur saepe reprehenderit quasi reiciendis ab architecto.'} />
                 <div className='techno_container'>
                 <BlocTechnos/>

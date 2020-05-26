@@ -7,7 +7,7 @@ import pictomail from '../assets/img/pictomail.png';
 import pictolieu from '../assets/img/pictolieu.png';
 import pictotel from '../assets/img/pictotel.png';
 
-function Contact(){
+function Contact({id}){
 
     return (
 
@@ -23,7 +23,7 @@ function Contact(){
             
                 </div>
 
-                <div className='main_contact_container'>
+                <div className='main_contact_container' id={id}>
                     <div className='contact_info_container'>
                         <div className='info_line'>
                             <div className="icon">

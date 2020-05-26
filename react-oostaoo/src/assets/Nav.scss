@@ -111,6 +111,7 @@ $nav-color: white;
     padding : 8px;
     color: $text_primary_color;
     transition: all ease 0.3s;
+    cursor: pointer;
     &:hover {
       color: $text_secondary_color;
     }
