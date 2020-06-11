@@ -39,3 +39,21 @@ $text_secondary_color : #3edac6 ;
 .explication{
     text-align: center;
 }
+
+@media(max-width: 414px){
+    .introduction_main_container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .introduction_sub_container{
+        margin-top: 30px;
+        width: 70%;
+    }
+
+    .column_name{
+        font-size: 2.5rem;
+        margin-top: 50px;
+    }
+}

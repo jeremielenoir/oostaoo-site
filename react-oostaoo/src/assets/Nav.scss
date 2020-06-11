@@ -117,4 +117,15 @@ $nav-color: white;
     }
   }
 
+  @media (max-width: 414px){
+
+    .container_link_menu{
+      display: none;
+    }
+
+    .logo{
+      width: 100%;
+    }
+  }
+
   

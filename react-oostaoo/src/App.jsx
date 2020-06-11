@@ -6,7 +6,7 @@ import Services from './components/Services';
 import Technos from './components/Technos';
 import References from './components/References';
 import Contact from './components/Contact';
-import Carousel from './components/Carousel';
+import CarouselNew from './components/CarouselNew';
 
 import './App.scss';
 
@@ -19,7 +19,7 @@ function App() {
     <Services id='services'/>
     <Technos id='technos'/>
     <References id='references'/>
-    <Carousel id='job'/>
+    <CarouselNew id='job'/>
     <Contact id='contact'/>
 </>
   );

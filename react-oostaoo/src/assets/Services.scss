@@ -47,3 +47,15 @@ $text_secondary_color : #3edac6 ;
     padding: 4px;
     
 }
+
+@media (max-width: 414px){
+
+    .service_container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service_sub_container{
+        width: 70%;
+    }
+}

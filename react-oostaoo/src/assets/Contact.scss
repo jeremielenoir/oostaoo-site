@@ -44,3 +44,23 @@
     margin-left: 20px;
     width: 200px;
 }
+
+
+@media (max-width: 414px){
+
+    .main_contact_container{
+        flex-direction: column-reverse;
+        
+    }
+
+    .contact_info_container{
+        width: 55%;
+        margin-top: 40px;
+        
+    }
+
+    .info_line{
+        flex-direction: column;
+    }
+
+}

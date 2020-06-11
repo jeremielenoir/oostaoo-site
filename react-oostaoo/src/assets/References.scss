@@ -4,7 +4,7 @@
     width: 90%;
     display: flex;
     flex-direction: column;
-    border: solid red 3px;
+    // border: solid red 3px;
     margin-bottom: 50px;
     
 }
@@ -16,17 +16,28 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 10px;
+    // border: solid blue 1px;
 
 }
 
 .ref_img{
    width: 16%;
+   height: auto;
    margin: 15px 50px 15px 50px;
-   border: solid green 3px;
+//    border: solid green 3px;
     
     transition: all ease 0.5s ;
     &:hover{
         filter: none;
         
+    }
+}
+
+
+@media (max-width: 414px){
+
+    .ref_img{
+        width: 38%;
+        margin: 15px 15px 15px 15px;
     }
 }

@@ -35,3 +35,15 @@ $text_main_color : #394449;
 .section_intro{
     font-size: 1.25rem;
 }
+
+
+@media (max-width: 414px){
+
+    .main_container{
+        margin-top : 75px;
+    }
+
+    .title_intro_container{
+        width: 70%;
+    }
+}

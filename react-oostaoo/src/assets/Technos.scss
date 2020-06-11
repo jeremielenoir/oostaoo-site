@@ -4,7 +4,7 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    border: solid red 3px;
+    
     
 }
 
@@ -15,17 +15,30 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 10px;
+    
 
 }
 
 .techno_img{
     width: 80px;
     margin: 15px 55px 15px 55px;
-   
     filter : grayscale(1);
     transition: all ease 0.5s ;
     &:hover{
         filter: none;
         
+    }
+}
+
+@media(max-width: 414px){
+
+    .line_techno{
+        justify-content: space-around;
+    }
+
+    .techno_img{
+        width: 50px;
+        margin: 15px 15px 15px 15px;
+        filter: none;
     }
 }

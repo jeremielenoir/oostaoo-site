@@ -6,7 +6,35 @@
     width: 90%;
     height: 430px;
     margin-top: 40px;
-    border: solid red 2px;
-   
+   margin-bottom: 40px;
+    border: solid red 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
 
+.arrow_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.arrow{
+    width: 50px;
+}
+
+.job_img{
+    width: 100%
+}
+
+
+
+@media (max-width: 414px){
+
+    .slider_container{
+       width: 85%;
+       margin-bottom: 40px;
+    }
+    
 }

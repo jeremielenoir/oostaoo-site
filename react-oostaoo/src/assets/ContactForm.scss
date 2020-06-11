@@ -48,3 +48,28 @@ textarea{
         background-color: #90D7BF;
     }
 }
+
+@media (max-width: 414px){
+
+    .form_container{
+        width: 90%;
+    }
+    .input_container{
+        flex-direction: column;
+    }
+
+    .input{
+    
+        width: 100%;
+        height: 40px;
+        margin-top: 10px;
+        
+        &:focus{
+            border: solid $input_focus_border_color 1px;
+        }
+    }
+
+    textarea{
+        width: 109%;
+    }
+}
