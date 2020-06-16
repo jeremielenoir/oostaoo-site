@@ -16,16 +16,15 @@ export default class CarouselNew extends Component {
         position : 0
     };
 }
-
-    
     changePositionNext = () => {
-        {this.state.position < this.state.jobs.length-3 ? (this.setState({position : this.state.position +3})) : (this.setState({position : 0})) }
+        {this.state.position < this.state.jobs.length-3 ? (this.setState({position : this.state.position +3})) 
+        : (this.setState({position : 0})) }
            
 }
-
     
     changePositionPrev = () => {
-        {this.state.position == 0 ? (this.setState({position : this.state.jobs.length-3})) : (this.setState({position :  this.state.position -3})) }
+        {this.state.position == 0 ? (this.setState({position : this.state.jobs.length-3})) 
+        : (this.setState({position :  this.state.position -3})) }
 }
     
     render(){
