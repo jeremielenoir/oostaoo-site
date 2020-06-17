@@ -1,10 +1,12 @@
-import React, {Component} from 'react'; 
+import React, {Component, useState, useEffect} from 'react'; 
 import JobCard from './JobCard';
 import JobDb from './JobDb';
 import BlocSection from './BlocSection';
+import axios from 'axios';
 import '../assets/Carousel.scss';
 import next from '../assets/img/next.png';
 import back from '../assets/img/back.png';
+
 
 
 export default class CarouselNew extends Component {
@@ -12,46 +14,69 @@ export default class CarouselNew extends Component {
     constructor(props) {
     super(props);
     this.state ={
-        jobs : JobDb,
+        jobs : [],
         position : 0
     };
 }
-    changePositionNext = () => {
+  
+   async componentDidMount() {
+
+        try{
+                const jobs = await axios.get("https://ojobo.deepupteam.com/wp-json/wp/v2/joboffer", {responseType : "json"})
+                console.log('response : ', jobs)
+                this.setState({jobs : jobs.data})
+    
+        }catch(e){
+            console.log(e)
+        }
+    
+  }
+
+
+   changePositionNext(){
         {this.state.position < this.state.jobs.length-3 ? (this.setState({position : this.state.position +3})) 
         : (this.setState({position : 0})) }
            
 }
     
-    changePositionPrev = () => {
+    changePositionPrev(){
         {this.state.position == 0 ? (this.setState({position : this.state.jobs.length-3})) 
         : (this.setState({position :  this.state.position -3})) }
 }
     
+
+
     render(){
-        
-        let selected = this.state.jobs.slice(this.state.position, this.state.position +3)
+        let selected = [];
+  
+       selected = this.state.jobs.length >0 ? this.state.jobs.slice(this.state.position, this.state.position +3) : []
 
         console.log('position : ', this.state.position);
+        console.log('selected : ', selected);
         
         return(
             <div className='main_container' id='job'>
                 <BlocSection section_title={"Nos offres d'emploi"} section_intro={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi alias iste ducimus tenetur saepe reprehenderit quasi reiciendis ab architecto.'} />
                 <div className='slider_container'>
-                    <div onClick={this.changePositionPrev} className="arrow_container"><img src={back} alt="" className="arrow"/></div>
+                    <div onClick={() => this.changePositionPrev()} className="arrow_container"><img src={back} alt="" className="arrow"/></div>
                     
-                    {this.state.position == this.state.jobs.length-2 || this.state.position == this.state.jobs.length-1 && this.state.jobs.length %3 != 0 ? (this.setState({position : this.state.jobs.length-3})) : null}
+                    {this.state.position === this.state.jobs.length-2 || this.state.position === this.state.jobs.length-1 && this.state.jobs.length %3 != 0 ? (this.setState({position : this.state.jobs.length-3})) : null}
 
-                    {this.state.position == -2 || this.state.position == -1 && this.state.jobs.length %3 != 0 ? (this.setState({position : 0})) : null}
+                    {this.state.position === -2 || this.state.position === -1 && this.state.jobs.length %3 != 0 ? (this.setState({position : 0})) : null}
                     
-                {selected.map((element) =>{
+                {selected.map(job =>{
+                    const title = job.title.rendered;
+                    const description = job.acf.job_description;
+                    const lien = job.acf.job_linkedin_url;
+                    console.log('title : ', title);
                     return(
-                           <JobCard link_img={element.link_img} titre={element.titre} description={element.description} />     
-                           )
+                           <JobCard key={title} title={title} description={description} lien={lien} />     
+                           );
                     })}
 
                    
 
-                    <div onClick={this.changePositionNext} className="arrow_container"><img src={next} alt="" className="arrow"/></div>
+                    <div onClick={() => this.changePositionNext()} className="arrow_container"><img src={next} alt="" className="arrow"/></div>
                     
                 </div>      
                 
