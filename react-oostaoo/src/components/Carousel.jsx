@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import next from '../assets/img/next.png';
 import back from '../assets/img/back.png';
+import axios from 'axios';
 
 
 function SampleNextArrow(props) {
@@ -34,18 +35,20 @@ function SampleNextArrow(props) {
 
 export default class Carousel extends Component {
 
-  state={
-    infoCard :[],
-  };
+ 
+  async componentDidMount() {
 
+    try{
+            const jobs = await axios.get("http://3.23.100.240/wp-json/wp/v2/joboffer/", {responseType : "json"})
+            console.log('response : ', jobs)
+            this.setState({jobs : jobs.data})
 
+    }catch(e){
+        console.log(e)
+    }
 
-componentDidMount(){
-
-  this.setState({
-    infoCard: JobDb
- });
 }
+
 
   render() {
     const settings = {
@@ -78,14 +81,22 @@ componentDidMount(){
       <div className='slider_container'>
         
         <Slider {...settings}>
-          <div>
+        <div  className="card_container">
 
-            {this.state.infoCard.map((element,index) => {
-              return(
-              <p>Hello</p>
-                // <JobCard key={index} link_img={element.link_img} titre={element.titre} description={element.description}/>
-              )
-            })}
+            {this.state.jobs.map(job => {
+
+const title = job.title.rendered;
+const description = job.acf.job_description;
+const lien = job.acf.job_linkedin_url;
+const max_length= 250;
+console.log('title : ', title);
+return(
+  <>
+    <JobCard key={title} title={title} description={description.substr(0,max_length)+' ...'} lien={lien} />     
+    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, alias, iusto adipisci libero earum magni distinctio deleniti velit recusandae, doloribus provident! Obcaecati eveniet eaque in quis itaque atque qui beatae.</div>
+    </>
+    );
+})}
             
           </div>
 

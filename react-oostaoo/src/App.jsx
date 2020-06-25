@@ -7,6 +7,7 @@ import Technos from './components/Technos';
 import References from './components/References';
 import Contact from './components/Contact';
 import CarouselNew from './components/CarouselNew';
+import Carousel from './components/Carousel';
 
 import './App.scss';
 

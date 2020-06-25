@@ -126,6 +126,26 @@ $nav-color: white;
     .logo{
       width: 100%;
     }
+
+    .top_nav{
+      display: none;
+    }
+
+    .nav{
+      top: 0;
+    }
   }
 
-  
+
+
+ 
+  @media (max-width: 1335px){
+
+    .link{
+      font-size: 0.9rem;
+    }
+
+
+
+
+  }
