@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react'; 
+import React, {Component} from 'react'; 
 import JobCard from './JobCard';
 import BlocSection from './BlocSection';
 import axios from 'axios';
@@ -15,7 +15,7 @@ export default class CarouselNew extends Component {
     this.state ={
         jobs : [],
         position : 0,
-        screenWidth: null
+        screenWidth: null,
     };
 }
   
@@ -27,7 +27,6 @@ export default class CarouselNew extends Component {
                 this.setState({jobs : jobs.data})
                 window.addEventListener("resize", this.resize.bind(this));
                 this.resize();
-                
     
         }catch(e){
             console.log(e)
@@ -53,9 +52,9 @@ export default class CarouselNew extends Component {
 }
     
     changePositionPrev(){
-        {this.state.position == 0 && this.state.screenWidth > 769 ? (this.setState({position : this.state.jobs.length-3}))
-        : this.state.position == 0 && this.state.screenWidth < 769 ? (this.setState({position : this.state.jobs.length-1}))
-        : this.state.position != 0 && this.state.screenWidth < 769 ? (this.setState({position : this.state.position -1}))
+        {this.state.position === 0 && this.state.screenWidth > 769 ? (this.setState({position : this.state.jobs.length-3}))
+        : this.state.position === 0 && this.state.screenWidth < 769 ? (this.setState({position : this.state.jobs.length-1}))
+        : this.state.position !== 0 && this.state.screenWidth < 769 ? (this.setState({position : this.state.position -1}))
         : (this.setState({position :  this.state.position -3})) }
     
 }
@@ -67,8 +66,8 @@ export default class CarouselNew extends Component {
         
        selected = this.state.jobs.length > 0 && this.state.screenWidth > 769 ? this.state.jobs.slice(this.state.position, this.state.position +3) : this.state.jobs.slice(this.state.position, this.state.position+1)
 
-        console.log('position : ', this.state.position);
-        console.log('selected : ', selected);
+        // console.log('position : ', this.state.position);
+        // console.log('selected : ', selected);
         
         
         return(
@@ -88,10 +87,12 @@ export default class CarouselNew extends Component {
                             const description = job.acf.job_description;
                             const lien = job.acf.job_linkedin_url;
                             const image = job.acf.job_image ;
-                            const max_length= 250;
-                            console.log('title : ', title);
+                            const max_char = 250;
+                            
+                            // console.log('title : ', title);
+                            // console.log('max char : ', max_char)
                             return(
-                                <JobCard key={title} title={title} description={description.substr(0,max_length)+' ...'} lien={lien} image={image}/>     
+                                <JobCard key={title} title={title} description={description.substr(0,max_char)+' ...'} lien={lien} image={image}/>     
                                 );
                             })}
 

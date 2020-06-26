@@ -41,7 +41,7 @@ $text_secondary_color : #3edac6 ;
 }
 
 
-@media(max-width: 769px){
+@media(max-width: 1105px){
    
     .column_name{
         font-size: 2rem;
@@ -54,7 +54,7 @@ $text_secondary_color : #3edac6 ;
 }
 
 
-@media(max-width: 414px){
+@media(max-width: 620px){
     .introduction_main_container{
         flex-direction: column;
         justify-content: center;
