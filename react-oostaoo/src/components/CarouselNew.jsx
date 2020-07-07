@@ -11,18 +11,18 @@ import back from '../assets/img/back.png';
 export default class CarouselNew extends Component {
 
     constructor(props) {
-    super(props);
-    this.state ={
-        jobs : [],
-        position : 0,
-        screenWidth: null,
-    };
-}
+        super(props);
+        this.state ={
+            jobs : [],
+            position : 0,
+            screenWidth: null,
+        };
+    }
   
    async componentDidMount() {
 
         try{
-                const jobs = await axios.get("https://ojobo.deepupteam.com/wp-json/wp/v2/joboffer", {responseType : "json"})
+                const jobs = await axios.get("/wp-json/wp/v2/joboffer", {responseType : "json"})
                 console.log('response : ', jobs)
                 this.setState({jobs : jobs.data})
                 window.addEventListener("resize", this.resize.bind(this));
