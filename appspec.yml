@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: ./build
+    destination: /home/bitnami/oostaoo
+#hooks:
+  #BeforeInstall:
+    #- location: scripts/install_node_modules.sh
+    #- location: scripts/build.sh
+    #  runas: root
+  #ApplicationStart:
+    #- location: scripts/launch_oostaoo.sh
+    #  timeout: 300
+    #  runas: root
