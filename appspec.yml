@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: ./build
-    destination: /home/bitnami/oostaoo
+    destination: /home/bitnami/oostaoo/public
 #hooks:
   #BeforeInstall:
     #- location: scripts/install_node_modules.sh
