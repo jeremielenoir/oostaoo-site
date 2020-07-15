@@ -1,6 +1,6 @@
 ## Oostaoo Site
 
-In the project directory, you can run:
+The Official Oostaoo Website
 
 ### `npm start`
 
