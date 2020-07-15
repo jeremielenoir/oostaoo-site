@@ -40,7 +40,21 @@ $text_secondary_color : #3edac6 ;
     text-align: center;
 }
 
-@media(max-width: 414px){
+
+@media(max-width: 1105px){
+   
+    .column_name{
+        font-size: 2rem;
+        margin-top: 70px;
+    }
+
+    .explication{
+        font-size: 0.9rem;
+    }
+}
+
+
+@media(max-width: 620px){
     .introduction_main_container{
         flex-direction: column;
         justify-content: center;

@@ -1,22 +1,25 @@
-import React, {Component} from "react";
+import React from "react";
 import '../assets/JobCard.scss';
 
 
 
-const JobCard = ({link_img, titre, description}) =>   
+export default({title, description,lien, image})=>{
+
+return(
         
             <div className='card_container'>
                 <div className='card'>
                     <div className='illustration'>
-                        <img className='job_img' src={link_img}/>
+                        <img className='job_img' src={image}/>
                     </div>
                     <div className='text_container'>
-                        <p className='job_title'> {titre} </p> 
+                        <p className='job_title'> {title} </p> 
                         <p className='job_description'> {description} </p> 
+                       
                     </div>
-                    <button>voir annonce</button>
+                    <a href={lien} target="_blank" className='job_button'>Voir l'annonce</a>
                 </div>
             </div>
      
+)}
 
-export default JobCard;

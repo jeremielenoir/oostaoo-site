@@ -12,8 +12,8 @@ return (
 <div className='top_nav'>
 
     <div className='top_nav_contact'>
-        <p className='contact_indicator'>Tel: XXXXXXXXXX</p>
-        <p className='contact_indicator'>Email: XXXXXX@XXXXXXX</p>
+        <p className='contact_indicator'>Tel: 01 42 63 77 27</p>
+        <p className='contact_indicator'>Email: contact@oostaoo.com</p>
     </div>
     <div className='top_nav_sns'>
         <a href=""><img className='sns' src={fb} alt=""/></a>

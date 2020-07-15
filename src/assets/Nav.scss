@@ -117,7 +117,41 @@ $nav-color: white;
     }
   }
 
-  @media (max-width: 414px){
+  @media (max-width: 1335px){
+
+    .link{
+      font-size: 0.9rem;
+    }
+
+  }
+
+  @media (max-width: 1229px){
+
+    .logo {
+      width: 25%;
+    }
+
+    .container_link_menu {
+      width: 75%;
+  
+  }
+
+  }
+
+  @media (max-width: 903px){
+
+    .container_link_menu{
+      display: none;
+    }
+
+    .logo{
+      width: 100%;
+     
+    }
+
+  }
+
+  @media (max-width: 620px){
 
     .container_link_menu{
       display: none;
@@ -126,6 +160,17 @@ $nav-color: white;
     .logo{
       width: 100%;
     }
+
+    .top_nav{
+      display: none;
+    }
+
+    .nav{
+      top: 0;
+    }
   }
 
+ 
+
+ 
   

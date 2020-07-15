@@ -30,7 +30,7 @@ function Contact({id}){
                                 <img src={pictomail} alt="" className='picto'/>
                             </div>
                             <div className='info_text'>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                <p>contact@oostaoo.com</p>
                             </div>
                         </div>
 
@@ -39,7 +39,7 @@ function Contact({id}){
                                 <img src={pictotel} alt="" className='picto'/>
                             </div>
                             <div className='info_text'>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                <p>01 42 63 77 27</p>
                             </div>
                         </div>
 
@@ -48,7 +48,7 @@ function Contact({id}){
                                 <img src={pictolieu} alt="" className='picto'/>
                             </div>
                             <div className='info_text'>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                <p>3 rue Geoffroy-Marie, Paris, 75009</p>
                             </div>
                         </div>
 

@@ -1,0 +1,68 @@
+.main_container{
+    flex-direction: column;
+}
+
+.slider_container{
+    width: 90%;
+    height: 480px;
+    margin-top: 40px;
+   margin-bottom: 40px;
+    // border: solid red 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.card_container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    -webkit-animation: fadeinout 2s ease-in-out ;
+    animation: fadeinout 2s ease-in-out ;
+    opacity: 1;
+}
+
+.arrow_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.arrow{
+    width: 50px;
+}
+
+.job_img{
+    width: 100%
+}
+
+@-webkit-keyframes fadeinout {
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+@keyframes fadeinout {
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+
+
+
+
+
+@media (max-width: 769px){
+
+    .slider_container{
+       width: 85%;
+       margin-bottom: 40px;
+       height: 500px;
+    }
+    
+}

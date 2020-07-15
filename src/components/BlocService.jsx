@@ -9,15 +9,17 @@ const BlocService = (props) => {
     const showMore = () => {
 
         setMore(!more);
-        
+       
     }
 
     return (
+        <div className='service_card_container'>
         <div className='service_sub_container'>
             <h1 className='service_name'>{props.name}</h1>
             <p className='service_explication'>{props.explication}</p>
             {more && <p className='service_explication more'>{props.more}</p>}
             <a onClick={showMore} className='more_button'>Plus</a>
+        </div>
         </div>
     )
 }
