@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <div style={{ fontSize: "200px", backgroundColor: "red" }}>
-        Hello trigger 9 !
+        Hello trigger 10 !
       </div>
       <Nav />
       <Header id="accueil" />
