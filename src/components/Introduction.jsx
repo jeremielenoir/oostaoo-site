@@ -20,11 +20,8 @@ function Introduction(props) {
     <div className='main_container'>
         <div className='introduction_main_container'> 
 
-            <BlocExplication number={'01'} title={'Convergence'} explication={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima blanditiis ea, quia, magnam ducimus architecto provident quo nulla enim, nemo nihil repellendus tenetur nam. Dolores vero nihil unde quidem quod.'} />
+            <BlocExplication number={'01'} title={'Talents'} explication={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima blanditiis ea, quia, magnam ducimus architecto provident quo nulla enim, nemo nihil repellendus tenetur nam. Dolores vero nihil unde quidem quod.'} />
             <BlocExplication number={'02'} title={'Missions'} explication={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima blanditiis ea, quia, magnam ducimus architecto provident quo nulla enim, nemo nihil repellendus tenetur nam. Dolores vero nihil unde quidem quod.'} />
-            <BlocExplication number={'03'} title={'Technos'} explication={'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima blanditiis ea, quia, magnam ducimus architecto provident quo nulla enim, nemo nihil repellendus tenetur nam. Dolores vero nihil unde quidem quod.'} />
-
-
         </div>
     </div>
 </>
