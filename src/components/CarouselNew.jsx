@@ -72,7 +72,7 @@ export default class CarouselNew extends Component {
         
         return(
             <div className='main_container' id='job'>
-                <BlocSection section_title={"Nos offres d'emploi"} section_intro={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi alias iste ducimus tenetur saepe reprehenderit quasi reiciendis ab architecto.'} />
+                <BlocSection section_title={"Nos offres d'emploi"} section_intro={'tout cracheux ipsum dolor sit amet consectetur, adipisicing elit. Sequi alias iste ducimus tenetur saepe reprehenderit quasi reiciendis ab architecto.'} />
                 <div className='slider_container'>
                     <div onClick={() => this.changePositionPrev()} className="arrow_container"><img src={back} alt="" className="arrow"/></div>
                     

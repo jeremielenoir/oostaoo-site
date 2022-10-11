@@ -2,8 +2,8 @@ const jobDb =[
 
             {
                 link_img: "https://images.unsplash.com/photo-1550133730-695473e544be?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
-                titre: "Développeur React", 
-                description : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras laoreet leo elementum leo auctor, at semper risus efficitur.'
+                titre: "Développeur act", 
+                description : 'Dévelopeur expérimenté et polyvalent, acteur responsable majeur des projets qui s’adonne à la coordination et à l’accompagnement de son équipe de dévelopeur à l’aide de ses connaissance technique précises.'
             },
             {
                 link_img: "https://images.unsplash.com/photo-1532630571098-79a3d222b00d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1138&q=80",

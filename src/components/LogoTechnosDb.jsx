@@ -2,76 +2,75 @@
 const logoTechnosDb = [
 
     {
-        name: "android", 
+        name: "Android", 
         link: "../assets/logo/android.png",
     },
     {
-        name: "angular", 
+        name: "Angular", 
         link: "../assets/logo/angular.png",
     },
     {
-        name: "bootstrap", 
+        name: "Bootstrap", 
         link: "../assets/logo/Bootstrap.png",
     },
     {
-        name: "css3", 
+        name: "Css3", 
         link: "../assets/logo/css3.png",
     },
     {
-        name: "html5", 
+        name: "Html5", 
         link: "../assets/logo/html5.png",
     },
     {
-        name: "javascript", 
+        name: "Javascript", 
         link: "../assets/logo/JavaScript.png",
     },
     {
-        name: "git", 
+        name: "Git", 
         link: "../assets/logo/git.png",
     },
     {
-        name: "ios", 
+        name: "Ios", 
         link: "../assets/logo/iOS.png",
     },
-   
     {
-        name: "jquery", 
+        name: "Jquery", 
         link: "../assets/logo/JQuery.png",
     },
     {
-        name: "kibana", 
+        name: "Kibana", 
         link: "../assets/logo/kibana.png",
     },
     {
-        name: "nodejs", 
+        name: "Nodejs", 
         link: "../assets/logo/NodeJS.png",
     },
     {
-        name: "php", 
+        name: "Php", 
         link: "../assets/logo/PHP.png",
     },
     {
-        name: "python", 
+        name: "Python", 
         link: "../assets/logo/Python.png",
     },
     {
-        name: "react", 
+        name: "React", 
         link: "../assets/logo/react.png",
     },
     {
-        name: "swift", 
+        name: "Swift", 
         link: "../assets/logo/Swift.png",
     },
     {
-        name: "symfony", 
+        name: "Symfony", 
         link: "../assets/logo/symfony.png",
     },
     {
-        name: "vuejs", 
+        name: "Vuejs", 
         link: "../assets/logo/VueJS.png",
     },
     {
-        name: "zend", 
+        name: "Zend", 
         link: "../assets/logo/zend.png",
     },
     

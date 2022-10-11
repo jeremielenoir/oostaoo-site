@@ -9,10 +9,30 @@ import Contact from "./components/Contact";
 import CarouselNew from "./components/CarouselNew";
 
 import "./App.scss";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#3edac6',
+      contrastText: "#fff",
+    },
+    secondary: {
+      main: '#3edac6',
+      contrastText: "#fff",
+    }
+  }
+});
+
+
+
+
+
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Nav />
       <Header id="accueil" />
       <Introduction />
@@ -21,7 +41,7 @@ function App() {
       <References id="references" />
       <CarouselNew id="job" />
       <Contact id="contact" />
-    </>
+    </ThemeProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/ContactForm.scss';
-
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 
 class ContactForm extends React.Component {
 
@@ -39,7 +40,7 @@ class ContactForm extends React.Component {
                 </div>
                 <textarea required name="text" id="" cols="90" rows="10" value={this.state.value} onChange={this.handleChange} placeholder='Ecrivez votre message ici'/>
                 <br/>
-                <input className='submit' type='submit' value='Envoyer'/>
+                <Button variant="contained" endIcon={<SendIcon />}>Envoyer</Button>
 
             </form>
         </div>

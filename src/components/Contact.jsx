@@ -6,6 +6,8 @@ import ContactForm from './ContactForm';
 import pictomail from '../assets/img/pictomail.png';
 import pictolieu from '../assets/img/pictolieu.png';
 import pictotel from '../assets/img/pictotel.png';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 function Contact({id}){
 
@@ -55,10 +57,49 @@ function Contact({id}){
 
                     </div>
 
-                    <div className='contact_container'>
+                    <div>
+                    
 
-                        <ContactForm/>
+                    <Box
+                    component="form"
+                    sx={{
+                        '& .MuiTextField-root': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                    >
+                    <div>
+                        <TextField
+                        id="outlined-multiline-flexible"
+                        label="Multiline"
+                        multiline
+                        maxRows={4}
+                        value={value}
+                        onChange={handleChange}
+                        />
+                        <TextField
+                        id="outlined-textarea"
+                        label="Multiline Placeholder"
+                        placeholder="Placeholder"
+                        multiline
+                        />
+                        <TextField
+                        id="outlined-multiline-static"
+                        label="Multiline"
+                        multiline
+                        rows={4}
+                        defaultValue="Default Value"
+                        />
                     </div>
+                    </Box>        
+                    
+                    </div>
+                    
+                    
+                    
+                
+                    
+                     
                 </div>
             </div>
 

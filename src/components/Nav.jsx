@@ -5,6 +5,8 @@ import twitter from '../assets/img/twitter.png';
 import fb from '../assets/img/facebook.png';
 import linkedin from '../assets/img/linkedin.png';
 import { Link, animateScroll as scroll } from "react-scroll";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 function Nav(){
 return (
@@ -12,13 +14,13 @@ return (
 <div className='top_nav'>
 
     <div className='top_nav_contact'>
-        <p className='contact_indicator'>Tel: 01 42 63 77 27</p>
-        <p className='contact_indicator'>Email: contact@oostaoo.com</p>
+        <a href="tel:+330142637727"className='contact_indicator'><FontAwesomeIcon icon={faPhone} size="1x" transform="left-8"/>01 42 63 77 27</a>
+        <a href="mailto:contact@oostaoo.com"className='contact_indicator'><FontAwesomeIcon icon={faEnvelope} size="1x" transform="left-8"/>contact@oostaoo.com</a>
     </div>
     <div className='top_nav_sns'>
-        <a href=""><img className='sns' src={fb} alt=""/></a>
-        <a href=""><img className='sns'src={twitter} alt=""/></a>
-        <a href=""><img className='sns'src={linkedin} alt=""/></a>
+        <a href="https://www.facebook.com/oostaoo/"><img className='sns' src={fb} alt=""/></a>
+        <a href="https://twitter.com/oostaoo?lang=fr"><img className='sns'src={twitter} alt=""/></a>
+        <a href="https://www.linkedin.com/company/oostaoo-consulting/"><img className='sns'src={linkedin} alt=""/></a>
     </div>
 
 </div>
@@ -33,7 +35,7 @@ return (
                 to="accueil"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-100}
                 duration={500}>
                 Accueil
                 </Link>
@@ -43,7 +45,7 @@ return (
                 to="services"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-100}
                 duration={500}>
                Nos services
                </Link>
@@ -53,7 +55,7 @@ return (
                 to="technos"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-100}
                 duration={500}>
                Nos technos
                </Link>
@@ -63,7 +65,7 @@ return (
                 to="references"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-100}
                 duration={500}>
                 Nos références
                 </Link>
@@ -73,7 +75,7 @@ return (
                 to="job"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-130}
                 duration={500}>
                 Nos offres d'emploi
                 </Link>
@@ -83,7 +85,7 @@ return (
                 to="contact"
                 spy={true}
                 smooth={true}
-                offset={-70}
+                offset={-150}
                 duration={500}>
                Contact
                </Link>

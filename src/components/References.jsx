@@ -12,7 +12,7 @@ function References({id}){
         <div className='main_container'>
             <div className='section_container' id={id}>
 
-                <BlocSection section_title={'Nos Références'} section_intro={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi alias iste ducimus tenetur saepe reprehenderit quasi reiciendis ab architecto.'} />
+                <BlocSection section_title={'Nos Références'} section_intro={'?'} />
 
                 <div className='references_container'>
                     <BlocReferences/>

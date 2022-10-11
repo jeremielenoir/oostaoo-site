@@ -1,9 +1,9 @@
-$block_background_color : #f2f1ef;
+$block_background_color : #d8d8d8;
 $text_main_color : #394449;
 $text_secondary_color : #3edac6 ;
 
 .service_container{
-    margin-top: 50px;
+    margin-top: 30px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -17,9 +17,10 @@ $text_secondary_color : #3edac6 ;
 }
 
 .service_sub_container{
+    
     width: 100%;
     background-color: $block_background_color;
-    border-radius: 15px;
+    border-radius: 25px;
     padding: 10px;
     margin-bottom: 20px;
     display: flex;
@@ -29,14 +30,15 @@ $text_secondary_color : #3edac6 ;
 
 .service_name{
 
-    margin-top: 30px;
-    font-size: 1.25rem;
+    margin-top: 40px;
+    font-size: 1.5rem;
     color : $text_main_color;
     text-align: center;
 }
 
 .service_explication{
-
+    
+    margin-bottom: 0px;
     font-size: 1rem;
     color : $text_main_color;
     text-align: center;
