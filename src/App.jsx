@@ -19,7 +19,7 @@ const theme = createTheme({
       contrastText: "#fff",
     },
     secondary: {
-      main: '#3edac6',
+      main: '#fff',
       contrastText: "#fff",
     }
   }
@@ -32,7 +32,8 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme}>
+    
       <Nav />
       <Header id="accueil" />
       <Introduction />

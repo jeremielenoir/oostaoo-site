@@ -16,6 +16,7 @@
     "axios": "^0.19.2",
     "node-sass": "^4.14.1",
     "popmotion": "^8.7.3",
+    "prop-types": "^15.8.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-image-tooltip": "^4.0.2",

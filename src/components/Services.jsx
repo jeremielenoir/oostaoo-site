@@ -19,7 +19,7 @@ function Services({id}){
             <div className='section_container' id={id}>
                 <BlocSection section_title={'Nos Services'} section_intro={'Comme nous aimons nous appeler, nous sommes la « Javascript entreprise » et proposons principalement des profils possèdant une maitrise experte de Javascript, des profils divers allants de Juniors fraichement sortis de grande école jusqu’aux pointures du métier.'} />
 
-                <Grid container spacing="20" alignItems="stretch" sx={{ padding: 5 }}>
+                <Grid container spacing="25" alignItems="stretch" sx={{ padding: 8 }}>
                     <Grid item xs="4" container>
                         <BlocService icon={faUserTie} name={'Lead developpeur front'} explication={'Notre lead dévelopeur est expérimenté et polyvalent, il possède les qualités nécessaire afin d’être l‘acteur responsable majeur de projet en s’adonnant à la coordination et à l’accompagnement de son équipe de dévelopeur à l’aide de ses connaissances techniques solides et précises.'} explication2={'Des compétences techniques solides en front-end, back-end et full-stack, ainsi que des connaissances poussées dans diverses technologies. Notamment une connaissance variés en langage informatique (JS, HTML, JAVA, PHP, etc), en méthodologie de gestion de projet (Agile Scrum), et en outils de développement et de déploiements (Git, Gitlab).'}/>
                     </Grid>

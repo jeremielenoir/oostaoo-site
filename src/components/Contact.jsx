@@ -13,7 +13,7 @@ function Contact({ id }) {
         <>
             <div className='container'>
 
-                <div className='header'>
+                <div className='header' id={id}>
                     <img src={background} alt="" className='background' />
                     <div className='text_header_container'>
                         <p className='header_intro'>Contactez-nous!</p>

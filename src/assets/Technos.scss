@@ -8,6 +8,8 @@
     
 }
 
+
+
 .line_techno{
     width: 100%;
     display: flex;
@@ -22,12 +24,6 @@
 .techno_img{
     width: 80px;
     margin: 15px 55px 15px 55px;
-    filter : grayscale(1);
-    transition: all ease 0.5s ;
-    &:hover{
-        filter: none;
-        
-    }
 }
 
 @media(max-width: 414px){
