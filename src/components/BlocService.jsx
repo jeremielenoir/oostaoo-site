@@ -7,15 +7,11 @@ import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 
 //composant functionnel react
-const BlocService = (props) => {
+const BlocService = ({ icon, name, explication, explication2 }) => {
 
-    const { icon, name, explication, explication2} = props;
+ return (
 
-    const [displayFull, setDisplayFull] = useState(false);
-
-    return (
-
-        <Paper elevation="4" sx={{padding: 2}}>
+        <Paper elevation="4" sx={{ padding: 2 }}>
             <Grid container direction="column">
                 <Grid item container justifyContent="center">
                     <FontAwesomeIcon icon={icon} size="4x" transform="down-5" color='' />
@@ -24,10 +20,6 @@ const BlocService = (props) => {
                     <h1 className='service_name'>{name}</h1>
                     <p className='service_explication'>{explication}</p>
                     <p className='service_explication'>{explication2}</p>
-                    { displayFull && 
-                        (<h2>toto</h2>)
-                    }
-                    <Button onClick={()=> {setDisplayFull(!displayFull)}}>test</Button>
                 </Grid>
             </Grid>
         </Paper>
@@ -35,15 +27,5 @@ const BlocService = (props) => {
     )
 }
 
-BlocService.propTypes = {
-    name : PropTypes.string.isRequired,
-    icon : PropTypes.node.isRequired,
-    explication : PropTypes.string,
-    explication2 : PropTypes.string,
-}
-
-BlocService.defaultProps = {
-    explication2 : null, explication : "Veuillez expliquer"
-}
 
 export default BlocService;

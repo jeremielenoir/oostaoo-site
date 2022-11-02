@@ -6,10 +6,11 @@ import Services from "./components/Services";
 import Technos from "./components/Technos";
 import References from "./components/References";
 import Contact from "./components/Contact";
-import CarouselNew from "./components/CarouselNew";
-
+import OffreJob from "./components/OffreJob";
 import "./App.scss";
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import ListeJob from "./components/ListeJob";
 
 
 const theme = createTheme({
@@ -19,7 +20,7 @@ const theme = createTheme({
       contrastText: "#fff",
     },
     secondary: {
-      main: '#fff',
+      main: '#0d76a8',
       contrastText: "#fff",
     }
   }
@@ -32,6 +33,7 @@ const theme = createTheme({
 
 function App() {
   return (
+   
   <ThemeProvider theme={theme}>
     
       <Nav />
@@ -40,9 +42,11 @@ function App() {
       <Services id="services" />
       <Technos id="technos" />
       <References id="references" />
-      <CarouselNew id="job" />
+      <ListeJob id="job" />
       <Contact id="contact" />
+      
     </ThemeProvider>
+    
   );
 }
 
