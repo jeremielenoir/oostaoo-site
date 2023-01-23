@@ -14,7 +14,7 @@ export default function Home() {
          </Head>
          <main className={styles.main}>
             <Nav />
-            <HeaderHero />
+            <HeaderHero text={'Trouvez le talent que vous cherchez'} />
             hello world
          </main>
       </>
