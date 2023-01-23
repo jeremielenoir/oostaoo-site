@@ -11,7 +11,7 @@ const Intro = () => {
             <p>
                Dévelopeur expérimenté et polyvalent, acteur responsable majeur des projets qui
                s&apos;adonne à la coordination et à l&apos;accompagnement de son équipe de
-               dévelopeur à l’aide de ses connaissance technique précises.
+               dévelopeur à l&apos;aide de ses connaissance technique précises.
             </p>
          </div>
          <div className={styles.subContainer}>
