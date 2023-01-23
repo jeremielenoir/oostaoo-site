@@ -1,4 +1,5 @@
-import Nav from "@/components/nav/Nav.tsx";
+import JobOffers from "@/components/JobOffers/JobOffers";
+import Nav from "@/components/nav/Nav";
 import Head from "next/head";
 import styles from "./Home.module.css";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <main className={styles.main}>
         <Nav />
         hello world
+        <JobOffers />
       </main>
     </>
   );

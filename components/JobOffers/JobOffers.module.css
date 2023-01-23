@@ -1,0 +1,50 @@
+.offer {
+   background: white;
+   display: flex;
+   flex-direction: column;
+   margin: 0.5rem;
+}
+
+.offerHeader {
+   margin: 1rem;
+   display: flex;
+}
+
+.offerIconWrapper {
+   width: 3rem;
+   height: 3rem;
+   border-radius: 50%;
+   background: #F44336;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.offerIcon {
+
+}
+
+.offerTitle {
+   font-weight: lighter;
+   font-size: 1.6rem;
+}
+
+.offerAvailability {
+   font-size: smaller;
+   color: green;
+}
+
+.offerImage {
+   height: 10rem;
+   background: rgb(185, 185, 185);
+}
+
+.offerDescription {
+   margin: 1rem;
+}
+
+.offerLink {
+   margin: 1rem;
+   width: 3rem;
+   height: 3rem;
+}
