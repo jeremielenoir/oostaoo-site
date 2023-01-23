@@ -5,9 +5,13 @@ import linkedin from "../../assets/img/linkedin.png";
 import Image from "next/image";
 import styles from "./Nav.module.css";
 import Link from "next/link.js";
+import { Button } from "@mui/material";
+import { useState } from "react";
 // import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
 export default function Nav() {
+  const [displayFull, setDisplayFull] = useState("accueil");
+
   return (
     <div className={styles.navContainer}>
       <section className={styles.navTop}>
@@ -29,32 +33,41 @@ export default function Nav() {
         <ul className={styles.navBottomRight}>
           <li>
             <Link href="#accueil">
-              <button>Accueil</button>
+              <Button
+                variant={displayFull === "accueil" ? "contained" : ""}
+                onClick={() => {
+                  setDisplayFull("accueil");
+                }}
+              >
+                Accueil
+              </Button>
             </Link>
           </li>
           <li>
             <Link href="#services">
-              <button>Services</button>
+              <Button variant="text">Servies</Button>
             </Link>
           </li>
           <li>
             <Link href="#technos">
-              <button>Technos</button>
+              <Button variant="text">Technos</Button>
             </Link>
           </li>
           <li>
             <Link href="#references">
-              <button>References</button>
+              <Button variant="text">References</Button>
             </Link>
           </li>
           <li>
             <Link href="#offres">
-              <button>Offres</button>
+              <Button variant="text">Offres</Button>
             </Link>
           </li>
           <li>
             <Link href="#contact">
-              <button>Contact</button>
+              <Button style={{ color: "#3edac6" }} variant="text">
+                Contact
+              </Button>
             </Link>
           </li>
         </ul>
