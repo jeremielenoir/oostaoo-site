@@ -10,7 +10,7 @@ const Intro = () => {
             <h2>TALENTS</h2>
             <p>
                Dévelopeur expérimenté et polyvalent, acteur responsable majeur des projets qui
-               s&quot;adonne à la coordination et à l&quot;accompagnement de son équipe de
+               s&apos;adonne à la coordination et à l&apos;accompagnement de son équipe de
                dévelopeur à l’aide de ses connaissance technique précises.
             </p>
          </div>
