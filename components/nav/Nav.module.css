@@ -1,12 +1,12 @@
 .navContainer {
+    position: fixed;
+    width: 100%;
     /* Le background devra être supprimer  */
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* variable color ? */
-    color: #3edac6;
     font-size: 1.1rem;
 }
 
@@ -14,10 +14,12 @@
     display: none;
     width: 100%;
     /* une variable de padding ? */
-    padding: 0.5rem 3rem;
+    padding: 0.7rem 3rem;
     background-color: #272c31;
     justify-content: space-between;
     align-items: center;
+    color: var(--main-color)
+    /* color: #3edac6; */
 }
 
 .navTopLeft {
@@ -36,7 +38,14 @@
 }
 
 .navBottom {
-    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0.7rem 0;
+    color: black;
+    width: 100%;
+    box-shadow: 0 4px 5px 0 #ccc;
+
 }
 
 .navBottomRight {

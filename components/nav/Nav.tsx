@@ -30,13 +30,13 @@ export default function Nav() {
           </a>
         </div>
         <div className={styles.navTopRight}>
-          <Image src={facebook} alt="logo facebook" width={33} />
-          <Image src={twitter} alt="logo twitter" width={33} />
-          <Image src={linkedin} alt="logo linkedin" width={33} />
+          <Image src={facebook} alt="logo facebook" height={33} width={33} />
+          <Image src={twitter} alt="logo twitter" height={33} width={33} />
+          <Image src={linkedin} alt="logo linkedin" height={33} width={33} />
         </div>
       </section>
       <section className={styles.navBottom}>
-        <Image src={logOostaoo} alt="logo Oostaoo" width={100} />
+        <Image src={logOostaoo} alt="logo Oostaoo" height={70} width={100} />
         <ul className={styles.navBottomRight}>
           <li>
             <Link href="#accueil">
