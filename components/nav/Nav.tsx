@@ -7,7 +7,8 @@ import styles from "./Nav.module.css";
 import Link from "next/link.js";
 import { Button } from "@mui/material";
 import { useState } from "react";
-// import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import MailRoundedIcon from "@mui/icons-material/MailRounded";
 
 export default function Nav() {
   const [displayFull, setDisplayFull] = useState("accueil");
@@ -16,11 +17,17 @@ export default function Nav() {
     <div className={styles.navContainer}>
       <section className={styles.navTop}>
         <div className={styles.navTopLeft}>
-          <a href="">
-            {/* <LocalPhoneIcon /> */}
+          <a className={styles.navTopLeftContact} href="tel:+330142637727">
+            <LocalPhoneIcon />
             01 42 63 77 27
           </a>
-          <a href="">contact@oostaoo.com</a>
+          <a
+            className={styles.navTopLeftContact}
+            href="mailto:contact@oostaoo.com"
+          >
+            <MailRoundedIcon />
+            contact@oostaoo.com
+          </a>
         </div>
         <div className={styles.navTopRight}>
           <Image src={facebook} alt="logo facebook" width={33} />
@@ -45,27 +52,60 @@ export default function Nav() {
           </li>
           <li>
             <Link href="#services">
-              <Button variant="text">Servies</Button>
+              <Button
+                variant={displayFull === "services" ? "contained" : ""}
+                onClick={() => {
+                  setDisplayFull("services");
+                }}
+              >
+                Services
+              </Button>
             </Link>
           </li>
           <li>
             <Link href="#technos">
-              <Button variant="text">Technos</Button>
+              <Button
+                variant={displayFull === "Technos" ? "contained" : ""}
+                onClick={() => {
+                  setDisplayFull("Technos");
+                }}
+              >
+                Technos
+              </Button>
             </Link>
           </li>
           <li>
             <Link href="#references">
-              <Button variant="text">References</Button>
+              <Button
+                variant={displayFull === "references" ? "contained" : ""}
+                onClick={() => {
+                  setDisplayFull("references");
+                }}
+              >
+                References
+              </Button>
             </Link>
           </li>
           <li>
             <Link href="#offres">
-              <Button variant="text">Offres</Button>
+              <Button
+                variant={displayFull === "offres" ? "contained" : ""}
+                onClick={() => {
+                  setDisplayFull("offres");
+                }}
+              >
+                Offres
+              </Button>
             </Link>
           </li>
           <li>
             <Link href="#contact">
-              <Button style={{ color: "#3edac6" }} variant="text">
+              <Button
+                variant={displayFull === "contact" ? "contained" : ""}
+                onClick={() => {
+                  setDisplayFull("contact");
+                }}
+              >
                 Contact
               </Button>
             </Link>

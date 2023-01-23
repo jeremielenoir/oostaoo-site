@@ -22,8 +22,13 @@
 
 .navTopLeft {
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
     
+}
+.navTopLeftContact {
+ display: flex;
+ align-items: flex-end;;
+ gap: 0.5rem;
 }
 .navTopRight {
     display: flex;
