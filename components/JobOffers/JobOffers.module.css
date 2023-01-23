@@ -16,16 +16,18 @@
 }
 
 .offerList{
-   display: flex;
-   flex-direction: column;
-   flex-wrap: wrap;
+   display: grid;
+   grid-template-columns: 1fr;
+   min-width: 100vw;
+   /* max-width: 350px; */
 }
 
 .offer {
    background: white;
    display: flex;
    flex-direction: column;
-   width: 350px;
+   min-width: 300px;
+   max-width: 350px;
    border-radius: 1%;
    margin: 0.5rem 1rem;
    max-width: 410px;
@@ -75,7 +77,12 @@
 
 @media screen and (min-width:685px){
    .offerList {
-      flex-direction: row;
-      justify-content: center;
+      grid-template-columns: 1fr 1fr;
+   }
+}
+
+@media screen and (min-width:900px){
+   .offerList {
+      grid-template-columns: 1fr 1fr 1fr;
    }
 }
