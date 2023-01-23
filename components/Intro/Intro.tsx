@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
 
 import styles from './Intro.module.css';
 
-const Intro = () => {
+const Intro: FC = () => {
    return (
       <div className={styles.container}>
          <div className={styles.subContainer}>
