@@ -1,0 +1,62 @@
+.navContainer {
+    /* Le background devra être supprimer  */
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* variable color ? */
+    color: #3edac6;
+    font-size: 1.1rem;
+}
+
+.navTop {
+    display: none;
+    width: 100%;
+    /* une variable de padding ? */
+    padding: 0.5rem 3rem;
+    background-color: #272c31;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navTopLeft {
+    display: flex;
+    gap: 1rem;
+    
+}
+.navTopRight {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navBottom {
+    padding: 0.5rem 0;
+}
+
+.navBottomRight {
+    display: none;
+}
+
+@media screen and (min-width:620px){
+    .navTop{
+        display: flex;
+    }
+}
+
+@media screen and (min-width:900px){
+    .navBottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 3rem;
+        width: 100%;
+    }
+    .navBottomRight {
+        display: flex;
+    }
+}
+
+
+
+
