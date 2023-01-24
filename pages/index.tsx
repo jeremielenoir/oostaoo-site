@@ -1,3 +1,4 @@
+import JobOffers from "@/components/JobOffers/JobOffers";
 import Nav from "@/components/nav/Nav";
 import Services from "@/components/Services/Services";
 import Head from "next/head";
@@ -16,10 +17,11 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Nav />
-        <div className={styles.ghostContainer}></div>
+        <div className={styles.ghostContainer} id="accueil"></div>
         <HeaderHero text={"Trouvez le talent que vous cherchez"} />
         <Intro />
         <Services />
+        <JobOffers />
       </main>
     </>
   );

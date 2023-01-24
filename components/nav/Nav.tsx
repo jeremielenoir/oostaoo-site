@@ -30,9 +30,15 @@ export default function Nav() {
           </a>
         </div>
         <div className={styles.navTopRight}>
-          <Image src={facebook} alt="logo facebook" height={33} width={33} />
-          <Image src={twitter} alt="logo twitter" height={33} width={33} />
-          <Image src={linkedin} alt="logo linkedin" height={33} width={33} />
+          <a href="https://www.facebook.com/oostaoo/">
+            <Image src={facebook} alt="logo facebook" height={33} width={33} />
+          </a>
+          <a href="https://twitter.com/oostaoo?lang=fr">
+            <Image src={twitter} alt="logo twitter" height={33} width={33} />
+          </a>
+          <a href="https://www.linkedin.com/company/oostaoo-consulting/">
+            <Image src={linkedin} alt="logo linkedin" height={33} width={33} />
+          </a>
         </div>
       </section>
       <section className={styles.navBottom}>

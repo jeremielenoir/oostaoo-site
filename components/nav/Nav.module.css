@@ -1,7 +1,6 @@
 .navContainer {
     position: fixed;
     width: 100%;
-    /* Le background devra être supprimer  */
     background-color: white;
     display: flex;
     justify-content: center;
@@ -33,10 +32,6 @@
 }
 
 .navTopLeftContact:hover {
-    text-decoration: underline;
-}
-
-.navTopRight:hover {
     text-decoration: underline;
 }
 

@@ -39,6 +39,9 @@
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
 } */
+:root {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+}
 
 
 * {
