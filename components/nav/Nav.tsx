@@ -4,7 +4,8 @@ import twitter from "../../assets/img/twitter.png";
 import linkedin from "../../assets/img/linkedin.png";
 import Image from "next/image";
 import styles from "./Nav.module.css";
-import Link from "next/link.js";
+// import Link from "next/link.js";
+import { Link, animateScroll as scroll } from "react-scroll";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
@@ -45,7 +46,15 @@ export default function Nav() {
         <Image src={logOostaoo} alt="logo Oostaoo" height={70} width={100} />
         <ul className={styles.navBottomRight}>
           <li>
-            <Link href="#accueil">
+            <Link
+              activeClass="active"
+              to={"accueil"}
+              spy
+              spyThrottle={600}
+              smooth
+              duration={500}
+              onSetActive={() => setDisplayFull("accueil")}
+            >
               <Button
                 variant={displayFull === "accueil" ? "contained" : ""}
                 onClick={() => {
@@ -57,7 +66,16 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            <Link href="#services">
+            {/* <Link href="#services"> */}
+            <Link
+              to={"services"}
+              spy
+              spyThrottle={600}
+              smooth
+              offset={-100}
+              duration={500}
+              onSetActive={() => setDisplayFull("services")}
+            >
               <Button
                 variant={displayFull === "services" ? "contained" : ""}
                 onClick={() => {
@@ -69,7 +87,16 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            <Link href="#technos">
+            {/* <Link href="#technos"> */}
+            <Link
+              to="technos"
+              spy
+              spyThrottle={600}
+              smooth
+              offset={-100}
+              duration={500}
+              onSetActive={() => setDisplayFull("Technos")}
+            >
               <Button
                 variant={displayFull === "Technos" ? "contained" : ""}
                 onClick={() => {
@@ -81,7 +108,16 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            <Link href="#references">
+            {/* <Link href="#references"> */}
+            <Link
+              to="references"
+              spy
+              spyThrottle={600}
+              smooth
+              offset={-100}
+              duration={500}
+              onSetActive={() => setDisplayFull("references")}
+            >
               <Button
                 variant={displayFull === "references" ? "contained" : ""}
                 onClick={() => {
@@ -93,7 +129,16 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            <Link href="#offres">
+            {/* <Link href="#offres"> */}
+            <Link
+              to="offres"
+              spy
+              spyThrottle={600}
+              smooth
+              offset={-130}
+              duration={500}
+              onSetActive={() => setDisplayFull("Offres")}
+            >
               <Button
                 variant={displayFull === "offres" ? "contained" : ""}
                 onClick={() => {
@@ -105,7 +150,16 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            <Link href="#contact">
+            {/* <Link href="#contact"> */}
+            <Link
+              to="contact"
+              spy
+              spyThrottle={600}
+              smooth
+              offset={-150}
+              duration={500}
+              onSetActive={() => setDisplayFull("Contact")}
+            >
               <Button
                 variant={displayFull === "contact" ? "contained" : ""}
                 onClick={() => {

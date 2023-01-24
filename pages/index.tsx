@@ -1,5 +1,5 @@
 import JobOffers from "@/components/JobOffers/JobOffers";
-import Nav from "@/components/nav/Nav";
+import Nav from "@/components/Nav/Nav";
 import Services from "@/components/Services/Services";
 import Head from "next/head";
 import styles from "./Home.module.css";
