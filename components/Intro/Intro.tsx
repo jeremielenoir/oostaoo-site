@@ -10,7 +10,7 @@ const Intro: FC = () => {
             return (
                <div className={styles.subContainer} key={index}>
                   <h1>{element.number}</h1>
-                  <h2>{element.title.toUpperCase()}</h2>
+                  <h2>{element.title[0].toUpperCase() + element.title.slice(1)}</h2>
                   <p>{element.text}</p>
                </div>
             );
