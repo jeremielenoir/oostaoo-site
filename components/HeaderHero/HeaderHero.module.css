@@ -1,0 +1,26 @@
+.container {
+   position: relative;
+}
+
+.headerHero {
+   object-fit: cover;
+   width: 100%;
+}
+
+.heroTextContainer {
+   position: absolute;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.heroText {
+   color: #fff;
+   font-size: 2.5rem;
+   font-weight: 700;
+   padding: 10px;
+   text-shadow: rgb(0 0 0 / 13%) 1px 0 10px;
+}
