@@ -1,49 +1,137 @@
 import styles from "./ContactForm.module.css";
 
-import { FormControl, InputLabel, Input, FormHelperText, TextField, Button } from "@mui/material";
+import { TextField, Button, Box } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const NAME_REGEX = /^(?![\s.]+$)[a-zA-Z\s.]{1,4}$/;
+const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const MESSAGE_REGEX = /^(?:\b\w+\b[\s\r\n]*){1,250}$/;
 
 const ContactForm = () => {
+  const [name, setName] = useState('');
+  const [validName, setValidName] = useState(false);
+  const [nameFocus, setNameFocus] = useState(false);
 
-    const [fullname, setFullname] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
+  const [email, setEmail] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
+  const [emaifFocus, setEmailFocus] = useState(false);
+  
+  const [message, setMessage] = useState('');
+  const [validMessage, setValidMessage] = useState(false);
+  const [messageFocus, setMessageFocus] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+  const [errMsg, setErrMsg] = useState("");
+	const [success, setSuccess] = useState(false);
+
+  const clearInputs = () => {
+    setName("");
+    setEmail("");
+    setMessage("");
+  }
+
+  useEffect(() => {
+    const result = NAME_REGEX.test(name);
+    setValidName(result);
+  },[name]);
+
+  useEffect(() => {
+    const result = EMAIL_REGEX.test(email);
+    setValidEmail(result);
+  },[email]);
+
+  useEffect(() => {
+    const result = MESSAGE_REGEX.test(message);
+    setValidMessage(result);
+  },[message]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!NAME_REGEX.test(name) || !EMAIL_REGEX.test(email) || !MESSAGE_REGEX.test(message)) {
+      setErrMsg("Informations Invalides");
+      return;
     }
+    // Here we put our request Logic
+    // const result = await senMessage(name, email, message);
+		// if (result === "success") {
+		// 	setSuccess(true);
+		// 	clearInputs();
+		// }
+		// else {
+		// 	setErrMsg(result);
+		// }
+    // For now we will set every submi as a success
+    setSuccess(true);
+    clearInputs();
 
-    return (
-        <section>
-            <FormControl onSubmit={handleSubmit}>
-                <TextField 
-                    id="outlined-basic" 
-                    label="Nom et Prénom" 
-                    variant="outlined" 
-                    placeholder="Doe John" 
-                    value={fullname} 
-                    onChange={(e) => setFullname(e.target.value)} 
+  }
+
+  return (
+      <>
+        {
+          success
+          ?
+          <section>
+            <h3>Message Envoyé !</h3>
+          </section>
+          :
+          <section>
+            <p
+              className={errMsg ? "" : styles.offscreen}
+            >
+              {errMsg}
+            </p>
+            <form onSubmit={handleSubmit}>
+              <div>
+                <TextField
+                id="username"
+                autoComplete="off"            
+                onChange={(e) => setName(e.target.value)}
+                onFocus={() => setNameFocus(true)}
+                onBlur={() => setNameFocus(false)}
+                required
+                label="Nom et Prénom" 
+                variant="outlined" 
+                placeholder="Doe John"
                 />
-                <TextField 
-                    id="outlined-basic" 
-                    label="Email" 
-                    variant="outlined" 
-                    placeholder="exemple@mail.fr" 
-                    value={email} 
-                    onChange={(e) => setEmail(e.target.value)} 
+                <TextField
+                  id="email"
+                  autoComplete="off" 
+                  onChange={(e) => setEmail(e.target.value)}
+                  onFocus={() => setEmailFocus(true)}
+                  onBlur={() => setEmailFocus(false)}
+                  required
+                  label="Email" 
+                  variant="outlined" 
+                  placeholder="exemple@mail.fr" 
                 />
-                <TextField 
-                    id="outlined-basic" 
-                    label="Nous Contacter" 
-                    variant="outlined" 
-                    placeholder="Bonjour, je souhaiterais prendre contact..." 
-                    value={message} 
-                    onChange={(e) => setMessage(e.target.value)} 
+                <TextField
+                  id="message"
+                  onChange={(e) => setMessage(e.target.value)}
+                  onFocus={() => setMessageFocus(true)}
+                  onBlur={() => setMessageFocus(false)}
+                  required
+                  multiline
+                  rows={4} 
+                  label="Nous Contacter" 
+                  variant="outlined" 
+                  placeholder="Bonjour, je souhaiterais prendre contact..." 
+                  value={message} 
                 />
-                <Button variant="contained" endIcon={<SendIcon />}>Envoyer</Button>
-            </FormControl>
-        </section>
+                <Button
+                  disabled={!validName || !validEmail || !validMessage ? true : false}
+                  type="submit"
+                  variant="contained"
+                  endIcon={<SendIcon />}
+                >
+                  Envoyer
+                </Button>
+
+              </div>
+            </form>          
+          </section>
+        }
+      </>
     );
 }
 
