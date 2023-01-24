@@ -6,9 +6,9 @@ import { introElements } from '../../assets/Intro';
 const Intro: FC = () => {
    return (
       <div className={styles.container}>
-         {introElements.map((element) => {
+         {introElements.map((element, index) => {
             return (
-               <div className={styles.subContainer}>
+               <div className={styles.subContainer} key={index}>
                   <h1>{element.number}</h1>
                   <h2>{element.title.toUpperCase()}</h2>
                   <p>{element.text}</p>
