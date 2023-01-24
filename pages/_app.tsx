@@ -14,7 +14,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
