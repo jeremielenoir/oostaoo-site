@@ -5,6 +5,7 @@ import Head from 'next/head';
 import styles from './Home.module.css';
 import Intro from '@/components/Intro/Intro';
 import HeaderHero from '@/components/HeaderHero/HeaderHero';
+import ContactForm from "@/components/ContactForm/ContactForm";
 
 export default function Home() {
    return (
@@ -21,6 +22,7 @@ export default function Home() {
             <Intro />
             <Services />
             <JobOffers />
+            <ContactForm />
          </main>
       </>
    );
