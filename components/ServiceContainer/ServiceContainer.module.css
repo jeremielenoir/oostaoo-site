@@ -1,0 +1,25 @@
+.container {
+   font-family: 'Roboto', sans-serif;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 16px;
+   gap: 32px;
+   flex: 1;
+   color: #394449;
+   border-radius: 4px;
+   box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px -1px, rgb(0 0 0 / 14%) 0px 4px 5px 0px,
+      rgb(0 0 0 / 12%) 0px 1px 10px 0px;
+}
+
+.container h1 {
+   font-size: 1.5rem;
+}
+
+.container p {
+   text-align: center;
+   font-size: 1rem;
+   line-height: 1.2;
+   white-space: pre-line;
+   padding: 10px;
+}
