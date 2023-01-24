@@ -1,8 +1,12 @@
 import styles from "./ContactForm.module.css";
 
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 
 const NAME_REGEX = /^(?![\s.]+$)[a-zA-Z\s.]{1,4}$/;
 const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -67,23 +71,44 @@ const ContactForm = () => {
   }
 
   return (
-      <>
+      <section className={styles.contactSection}>
+        <div className={styles.contactInfo}>
+          <div className={styles.contactInfoWrapper}>
+            <span className={styles.IconWrapper}>
+              <LocalPhoneOutlinedIcon className={styles.offerIcon} style={{fill: "white"}} />
+            </span>
+            <p>........</p>
+          </div>
+          <div className={styles.contactInfoWrapper}>
+            <span className={styles.IconWrapper}>
+              <MailOutlineIcon className={styles.offerIcon} style={{fill: "white"}} />
+            </span>
+            <p>........</p>
+          </div>
+          <div className={styles.contactInfoWrapper}>
+            <span className={styles.IconWrapper}>
+              <PlaceOutlinedIcon className={styles.offerIcon} style={{fill: "white"}} />
+            </span>
+            <p>........</p>
+          </div>
+        </div>
         {
           success
           ?
-          <section>
+          <div>
             <h3>Message Envoyé !</h3>
-          </section>
+          </div>
           :
-          <section>
+          <div className={styles.contactSectionForm}>
             <p
-              className={errMsg ? "" : styles.offscreen}
+              className={errMsg ? styles.errMsg : styles.offscreen}
             >
               {errMsg}
             </p>
-            <form onSubmit={handleSubmit}>
-              <div>
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <div className={styles.formUpperElement}>
                 <TextField
+                className={styles.formUpperElementName}
                 id="username"
                 autoComplete="off"            
                 onChange={(e) => setName(e.target.value)}
@@ -95,6 +120,7 @@ const ContactForm = () => {
                 placeholder="Doe John"
                 />
                 <TextField
+                  className={styles.formUpperElementEmail}
                   id="email"
                   autoComplete="off" 
                   onChange={(e) => setEmail(e.target.value)}
@@ -105,33 +131,32 @@ const ContactForm = () => {
                   variant="outlined" 
                   placeholder="exemple@mail.fr" 
                 />
-                <TextField
-                  id="message"
-                  onChange={(e) => setMessage(e.target.value)}
-                  onFocus={() => setMessageFocus(true)}
-                  onBlur={() => setMessageFocus(false)}
-                  required
-                  multiline
-                  rows={4} 
-                  label="Nous Contacter" 
-                  variant="outlined" 
-                  placeholder="Bonjour, je souhaiterais prendre contact..." 
-                  value={message} 
-                />
-                <Button
-                  disabled={!validName || !validEmail || !validMessage ? true : false}
-                  type="submit"
-                  variant="contained"
-                  endIcon={<SendIcon />}
-                >
-                  Envoyer
-                </Button>
-
               </div>
+              <TextField
+                id="message"
+                onChange={(e) => setMessage(e.target.value)}
+                onFocus={() => setMessageFocus(true)}
+                onBlur={() => setMessageFocus(false)}
+                required
+                multiline
+                rows={8} 
+                label="Nous Contacter" 
+                variant="outlined" 
+                placeholder="Bonjour, je souhaiterais prendre contact..." 
+                value={message} 
+              />
+              <Button
+                disabled={!validName || !validEmail || !validMessage ? true : false}
+                type="submit"
+                variant="contained"
+                endIcon={<SendIcon />}
+              >
+                Envoyer
+              </Button>              
             </form>          
-          </section>
+          </div>
         }
-      </>
+      </section>
     );
 }
 
