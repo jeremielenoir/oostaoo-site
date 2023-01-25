@@ -1,10 +1,11 @@
-import { AppProps } from "next/app";
-import Head from "next/head.js";
-import "../styles/index.css";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "../styles/theme";
+import { AppProps } from 'next/app';
+import Head from 'next/head.js';
+import '../styles/index.css';
+import { ThemeProvider } from '@mui/material/styles';
+import { theme } from '../styles/theme';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+
   return (
     <>
       <Head>
@@ -14,7 +15,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
       </ThemeProvider>
     </>
   );
