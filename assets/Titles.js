@@ -1,4 +1,4 @@
-export const Titles = {
+export const titles = {
    services: {
       title: 'Nos Services',
       description:

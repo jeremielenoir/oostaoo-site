@@ -1,33 +1,33 @@
 import React from 'react';
 
 import styles from './Services.module.css';
-import { Titles } from '../../assets/Titles';
-import { AllServices } from '../../assets/Services';
+import { titles } from '../../assets/Titles';
+import { allServices } from '../../assets/Services';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ServiceContainer from '../ServiceContainer/ServiceContainer';
 
 const Services = () => {
    return (
-      <div className={styles.container}>
-         <SectionTitle title={Titles.services.title} description={Titles.services.description} />
+      <section className={styles.container}>
+         <SectionTitle title={titles.services.title} description={titles.services.description} />
          <div className={styles.allServices}>
             <ServiceContainer
-               icon={AllServices.lead.icon}
-               title={AllServices.lead.title}
-               description={AllServices.lead.description}
+               icon={allServices.lead.icon}
+               title={allServices.lead.title}
+               description={allServices.lead.description}
             />
             <ServiceContainer
-               icon={AllServices.fullstack.icon}
-               title={AllServices.fullstack.title}
-               description={AllServices.fullstack.description}
+               icon={allServices.fullstack.icon}
+               title={allServices.fullstack.title}
+               description={allServices.fullstack.description}
             />
             <ServiceContainer
-               icon={AllServices.front.icon}
-               title={AllServices.front.title}
-               description={AllServices.front.description}
+               icon={allServices.front.icon}
+               title={allServices.front.title}
+               description={allServices.front.description}
             />
          </div>
-      </div>
+      </section>
    );
 };
 
