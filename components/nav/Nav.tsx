@@ -55,8 +55,8 @@ export default function Nav() {
             <Link
               activeClass="active"
               to={"accueil"}
-              spy
               spyThrottle={600}
+              spy
               smooth
               duration={500}
               onSetActive={() => setDisplayFull("accueil")}
@@ -73,9 +73,9 @@ export default function Nav() {
           </li>
           <li>
             <Link
-              to={"services"}
-              spy
+              to="services"
               spyThrottle={600}
+              spy
               smooth
               offset={-100}
               duration={500}
@@ -94,17 +94,17 @@ export default function Nav() {
           <li>
             <Link
               to="technos"
-              spy
               spyThrottle={600}
+              spy
               smooth
               offset={-100}
               duration={500}
-              onSetActive={() => setDisplayFull("Technos")}
+              onSetActive={() => setDisplayFull("technos")}
             >
               <Button
-                variant={displayFull === "Technos" ? "contained" : ""}
+                variant={displayFull === "technos" ? "contained" : ""}
                 onClick={() => {
-                  setDisplayFull("Technos");
+                  setDisplayFull("technos");
                 }}
               >
                 Technos
@@ -114,8 +114,8 @@ export default function Nav() {
           <li>
             <Link
               to="references"
-              spy
               spyThrottle={600}
+              spy
               smooth
               offset={-100}
               duration={500}
@@ -133,13 +133,13 @@ export default function Nav() {
           </li>
           <li>
             <Link
-              to="offres"
-              spy
+              to={"offres"}
               spyThrottle={600}
+              spy
               smooth
-              offset={-130}
+              offset={-150}
               duration={500}
-              onSetActive={() => setDisplayFull("Offres")}
+              onSetActive={() => setDisplayFull("offres")}
             >
               <Button
                 variant={displayFull === "offres" ? "contained" : ""}
@@ -154,12 +154,12 @@ export default function Nav() {
           <li>
             <Link
               to="contact"
-              spy
               spyThrottle={600}
+              spy
               smooth
               offset={-150}
               duration={500}
-              onSetActive={() => setDisplayFull("Contact")}
+              onSetActive={() => setDisplayFull("contact")}
             >
               <Button
                 variant={displayFull === "contact" ? "contained" : ""}
