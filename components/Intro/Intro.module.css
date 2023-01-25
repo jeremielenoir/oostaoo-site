@@ -33,6 +33,16 @@
    line-height: 1.5;
 }
 
+@media screen and (max-width: 900px) {
+   .subContainer h1 {
+      font-size: 5rem;
+   }
+
+   .subContainer h2 {
+      font-size: 2rem;
+   }
+}
+
 @media screen and (max-width: 600px) {
    .container {
       flex-direction: column;
@@ -43,5 +53,9 @@
    .subContainer {
       width: 100%;
       padding: 0 10px;
+   }
+
+   .subContainer h1 {
+      left: -0;
    }
 }
