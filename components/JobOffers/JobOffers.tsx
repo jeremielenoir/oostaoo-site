@@ -1,10 +1,6 @@
 import styles from "./JobOffers.module.css";
 
-import Image from "next/image";
 import JobOffer from "./JobOffer";
-
-import logoLinkedIn from "../../assets/img/linkedin.png";
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
 import { jobs } from "./jobData";
 
