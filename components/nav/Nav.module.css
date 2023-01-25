@@ -54,6 +54,17 @@
     display: none;
 }
 
+.navBottomRightLink:focus .navBottomRightButton {
+    color: white;
+}
+
+.navBottomRightButton {
+    color: black;
+}
+/* .navBottomRightButton:active {
+    color: white;
+} */
+
 @media screen and (min-width:620px){
     .navTop{
         display: flex;

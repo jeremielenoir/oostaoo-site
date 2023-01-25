@@ -1,15 +1,21 @@
-import logOostaoo from "../../assets/logo-oostaoo.png";
+import logoOostaoo from "../../assets/logo-oostaoo.png";
 import facebook from "../../assets/img/facebook.png";
 import twitter from "../../assets/img/twitter.png";
 import linkedin from "../../assets/img/linkedin.png";
 import Image from "next/image";
 import styles from "./Nav.module.css";
-// import Link from "next/link.js";
 import { Link, animateScroll as scroll } from "react-scroll";
-import { Button } from "@mui/material";
+import { Button as MuiButton, ButtonProps } from "@mui/material";
 import { useState } from "react";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import MailRoundedIcon from "@mui/icons-material/MailRounded";
+
+interface IButtonProps extends ButtonProps {
+  variant: "contained" | "text" | undefined | "";
+}
+function Button({ children, ...rest }: IButtonProps) {
+  return <MuiButton {...rest}>{children}</MuiButton>;
+}
 
 export default function Nav() {
   const [displayFull, setDisplayFull] = useState("accueil");
@@ -43,7 +49,7 @@ export default function Nav() {
         </div>
       </section>
       <section className={styles.navBottom}>
-        <Image src={logOostaoo} alt="logo Oostaoo" height={70} width={100} />
+        <Image src={logoOostaoo} alt="logo Oostaoo" height={70} width={100} />
         <ul className={styles.navBottomRight}>
           <li>
             <Link
@@ -66,7 +72,6 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            {/* <Link href="#services"> */}
             <Link
               to={"services"}
               spy
@@ -87,7 +92,6 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            {/* <Link href="#technos"> */}
             <Link
               to="technos"
               spy
@@ -108,7 +112,6 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            {/* <Link href="#references"> */}
             <Link
               to="references"
               spy
@@ -129,7 +132,6 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            {/* <Link href="#offres"> */}
             <Link
               to="offres"
               spy
@@ -150,7 +152,6 @@ export default function Nav() {
             </Link>
           </li>
           <li>
-            {/* <Link href="#contact"> */}
             <Link
               to="contact"
               spy
