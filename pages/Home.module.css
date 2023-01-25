@@ -1,4 +1,7 @@
 .main {
-  background-color: grey;
   min-height: 100vh;
+}
+
+.ghostContainer {
+  height: 5rem;
 }

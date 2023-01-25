@@ -1,34 +1,37 @@
-import React from 'react';
+import React from "react";
 
-import styles from './Services.module.css';
-import { titles } from '../../assets/Titles';
-import { allServices } from '../../assets/Services';
-import SectionTitle from '../SectionTitle/SectionTitle';
-import ServiceContainer from '../ServiceContainer/ServiceContainer';
+import styles from "./Services.module.css";
+import { Titles } from "../../assets/Titles";
+import { AllServices } from "../../assets/Services";
+import SectionTitle from "../SectionTitle/SectionTitle";
+import ServiceContainer from "../ServiceContainer/ServiceContainer";
 
 const Services = () => {
-   return (
-      <section className={styles.container}>
-         <SectionTitle title={titles.services.title} description={titles.services.description} />
-         <div className={styles.allServices}>
-            <ServiceContainer
-               icon={allServices.lead.icon}
-               title={allServices.lead.title}
-               description={allServices.lead.description}
-            />
-            <ServiceContainer
-               icon={allServices.fullstack.icon}
-               title={allServices.fullstack.title}
-               description={allServices.fullstack.description}
-            />
-            <ServiceContainer
-               icon={allServices.front.icon}
-               title={allServices.front.title}
-               description={allServices.front.description}
-            />
-         </div>
-      </section>
-   );
+  return (
+    <div className={styles.container} id="services">
+      <SectionTitle
+        title={Titles.services.title}
+        description={Titles.services.description}
+      />
+      <div className={styles.allServices}>
+        <ServiceContainer
+          icon={AllServices.lead.icon}
+          title={AllServices.lead.title}
+          description={AllServices.lead.description}
+        />
+        <ServiceContainer
+          icon={AllServices.fullstack.icon}
+          title={AllServices.fullstack.title}
+          description={AllServices.fullstack.description}
+        />
+        <ServiceContainer
+          icon={AllServices.front.icon}
+          title={AllServices.front.title}
+          description={AllServices.front.description}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default Services;
