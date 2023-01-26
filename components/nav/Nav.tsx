@@ -5,20 +5,73 @@ import linkedin from "../../assets/img/linkedin.png";
 import Image from "next/image";
 import styles from "./Nav.module.css";
 import { Link, animateScroll as scroll } from "react-scroll";
-import { Button as MuiButton, ButtonProps } from "@mui/material";
-import { useState } from "react";
+import {  } from "@mui/material";
+import Button from '@mui/material/Button';
+import { FC, useEffect, useState } from "react";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import MailRoundedIcon from "@mui/icons-material/MailRounded";
 
-interface IButtonProps extends ButtonProps {
-  variant: "contained" | "text" | undefined | "";
-}
-function Button({ children, ...rest }: IButtonProps) {
-  return <MuiButton {...rest}>{children}</MuiButton>;
-}
-
 export default function Nav() {
   const [displayFull, setDisplayFull] = useState("accueil");
+
+  const [homeFocus, setHomeFocus] = useState(false);
+  const [servicesFocus, setServicesFocus] = useState(false);
+  const [technosFocus, setTechnosFocus] = useState(false);
+  const [referencesFocus, setReferencesFocus] = useState(false);
+  const [offersFocus, setOffersFocus] = useState(false);
+  const [contactFocus, setcontactFocus] = useState(false);
+
+  useEffect(() => {
+    console.log("effect");
+    if (displayFull === "accueil") {
+      setHomeFocus(true);
+      setServicesFocus(false);
+      setTechnosFocus(false)
+      setReferencesFocus(false);
+      setOffersFocus(false);
+      setcontactFocus(false);
+    }
+    else if (displayFull === "services") {
+      setHomeFocus(false);
+      setServicesFocus(true);
+      setTechnosFocus(false)
+      setReferencesFocus(false);
+      setOffersFocus(false);
+      setcontactFocus(false);      
+    }
+    else if (displayFull === "technos") {
+      setHomeFocus(false);
+      setServicesFocus(false);
+      setTechnosFocus(true)
+      setReferencesFocus(false);
+      setOffersFocus(false);
+      setcontactFocus(false);
+    }
+    else if (displayFull === "references") {
+      setHomeFocus(false);
+      setServicesFocus(false);
+      setTechnosFocus(false)
+      setReferencesFocus(true);
+      setOffersFocus(false);
+      setcontactFocus(false);
+    }
+    else if (displayFull === "offers") {
+      setHomeFocus(false);
+      setServicesFocus(false);
+      setTechnosFocus(false)
+      setReferencesFocus(false);
+      setOffersFocus(true);
+      setcontactFocus(false);
+    }
+    else if (displayFull === "contact") {
+      setHomeFocus(false);
+      setServicesFocus(false);
+      setTechnosFocus(false)
+      setReferencesFocus(false);
+      setOffersFocus(false);
+      setcontactFocus(true);
+    }
+  }, [setDisplayFull, displayFull]);
 
   return (
     <div className={styles.navContainer}>
@@ -52,7 +105,7 @@ export default function Nav() {
         <Image src={logoOostaoo} alt="logo Oostaoo" height={70} width={100} />
         <ul className={styles.navBottomRight}>
           <li>
-            <Link
+            <Link              
               activeClass="active"
               to={"accueil"}
               spy
@@ -62,7 +115,10 @@ export default function Nav() {
               onSetActive={() => setDisplayFull("accueil")}
             >
               <Button
-                variant={displayFull === "accueil" ? "contained" : ""}
+                className={homeFocus ? styles.navButtonFocused : styles.navButton}
+                // onFocus={() => setHomeFocus(true)}
+                // onBlur={() => setHomeFocus(false)}
+                variant={displayFull === "accueil" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("accueil");
                 }}
@@ -82,7 +138,10 @@ export default function Nav() {
               onSetActive={() => setDisplayFull("services")}
             >
               <Button
-                variant={displayFull === "services" ? "contained" : ""}
+                className={servicesFocus ? styles.navButtonFocused : styles.navButton}
+                // onFocus={() => setServicesFocus(true)}
+                // onBlur={() => setServicesFocus(false)}
+                variant={displayFull === "services" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("services");
                 }}
@@ -99,12 +158,15 @@ export default function Nav() {
               smooth
               offset={-100}
               duration={500}
-              onSetActive={() => setDisplayFull("Technos")}
+              onSetActive={() => setDisplayFull("technos")}
             >
               <Button
-                variant={displayFull === "Technos" ? "contained" : ""}
+                className={technosFocus ? styles.navButtonFocused : styles.navButton}
+                // onFocus={() => setTechnosFocus(true)}
+                // onBlur={() => setTechnosFocus(false)}
+                variant={displayFull === "technos" ? "contained" : undefined}
                 onClick={() => {
-                  setDisplayFull("Technos");
+                  setDisplayFull("technos");
                 }}
               >
                 Technos
@@ -122,7 +184,10 @@ export default function Nav() {
               onSetActive={() => setDisplayFull("references")}
             >
               <Button
-                variant={displayFull === "references" ? "contained" : ""}
+                className={referencesFocus ? styles.navButtonFocused : styles.navButton}
+                // onFocus={() => setReferencesFocus(true)}
+                // onBlur={() => setReferencesFocus(false)}
+                variant={displayFull === "references" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("references");
                 }}
@@ -133,21 +198,24 @@ export default function Nav() {
           </li>
           <li>
             <Link
-              to="offres"
+              to="offers"
               spy
               spyThrottle={600}
               smooth
               offset={-130}
               duration={500}
-              onSetActive={() => setDisplayFull("Offres")}
+              onSetActive={() => setDisplayFull("offers")}
             >
               <Button
-                variant={displayFull === "offres" ? "contained" : ""}
+                className={offersFocus ? styles.navButtonFocused : styles.navButton}
+                // onFocus={() => setOffersFocus(true)}
+                // onBlur={() => setOffersFocus(false)}              
+                variant={displayFull === "offers" ? "contained" : undefined}
                 onClick={() => {
-                  setDisplayFull("offres");
+                  setDisplayFull("offers");
                 }}
               >
-                Offres
+                offers
               </Button>
             </Link>
           </li>
@@ -162,7 +230,10 @@ export default function Nav() {
               onSetActive={() => setDisplayFull("Contact")}
             >
               <Button
-                variant={displayFull === "contact" ? "contained" : ""}
+                className={contactFocus ? styles.navButtonFocused : styles.navButton}
+                // onFocus={() => setcontactFocus(true)}
+                // onBlur={() => setcontactFocus(false)}
+                variant={displayFull === "contact" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("contact");
                 }}
