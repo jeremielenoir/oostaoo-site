@@ -1,10 +1,10 @@
 import JobOffers from "@/components/JobOffers/JobOffers";
-import Nav from "@/components/Nav/Nav";
-import Services from "@/components/Services/Services";
-import Head from "next/head";
-import styles from "./Home.module.css";
-import Intro from "@/components/Intro/Intro";
-import HeaderHero from "@/components/HeaderHero/HeaderHero";
+import Nav from '@/components/Nav/Nav';
+import Services from '@/components/Services/Services';
+import Head from 'next/head';
+import styles from './Home.module.css';
+import Intro from '@/components/Intro/Intro';
+import HeaderHero from '@/components/HeaderHero/HeaderHero';
 import ContactForm from "@/components/ContactForm/ContactForm";
 
 export default function Home() {
