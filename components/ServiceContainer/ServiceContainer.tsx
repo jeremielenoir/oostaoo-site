@@ -13,7 +13,7 @@ const ServiceContainer: FC<ServiceContainerProps> = ({ icon, title, description 
    const [isTextHidden, setIsTextHidden] = useState<boolean>(true);
 
    return (
-      <div className={styles.container}>
+      <div className={styles.container} onClick={() => setIsTextHidden(!isTextHidden)}>
          {icon === 'lead' ? (
             <Assessment />
          ) : icon === 'full' ? (
@@ -26,7 +26,6 @@ const ServiceContainer: FC<ServiceContainerProps> = ({ icon, title, description 
          <ExpandCircleDownOutlined
             className={styles.expandIcon}
             style={{ transform: isTextHidden ? 'rotate(0)' : 'rotate(180deg)' }}
-            onClick={() => setIsTextHidden(!isTextHidden)}
          />
          <p className={`${!isTextHidden ? styles.displayText : ''}`}>{description}</p>
       </div>
