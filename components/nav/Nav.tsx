@@ -107,7 +107,6 @@ export default function Nav() {
               activeClass="active"
               to={"accueil"}
               spy
-              spyThrottle={600}
               smooth
               duration={500}
               onSetActive={() => setDisplayFull("accueil")}
@@ -125,9 +124,8 @@ export default function Nav() {
           </li>
           <li>
             <Link
-              to={"services"}
+              to="services"
               spy
-              spyThrottle={600}
               smooth
               offset={-100}
               duration={500}
@@ -148,7 +146,6 @@ export default function Nav() {
             <Link
               to="technos"
               spy
-              spyThrottle={600}
               smooth
               offset={-100}
               duration={500}
@@ -157,6 +154,7 @@ export default function Nav() {
               <Button
                 className={technosFocus ? styles.navButtonFocused : styles.navButton}
                 variant={displayFull === "technos" ? "contained" : undefined}
+
                 onClick={() => {
                   setDisplayFull("technos");
                 }}
@@ -169,7 +167,6 @@ export default function Nav() {
             <Link
               to="references"
               spy
-              spyThrottle={600}
               smooth
               offset={-100}
               duration={500}
@@ -190,9 +187,8 @@ export default function Nav() {
             <Link
               to="offers"
               spy
-              spyThrottle={600}
               smooth
-              offset={-130}
+              offset={-150}
               duration={500}
               onSetActive={() => setDisplayFull("offers")}
             >
@@ -211,11 +207,10 @@ export default function Nav() {
             <Link
               to="contact"
               spy
-              spyThrottle={600}
               smooth
               offset={-150}
               duration={500}
-              onSetActive={() => setDisplayFull("Contact")}
+              onSetActive={() => setDisplayFull("contact")}
             >
               <Button
                 className={contactFocus ? styles.navButtonFocused : styles.navButton}
