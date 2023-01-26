@@ -11,9 +11,10 @@
    gap: 25px;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1000px) {
    .allServices {
       flex-direction: column;
+      width: 100%;
    }
 }
 
