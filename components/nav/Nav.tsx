@@ -4,10 +4,9 @@ import twitter from "../../assets/img/twitter.png";
 import linkedin from "../../assets/img/linkedin.png";
 import Image from "next/image";
 import styles from "./Nav.module.css";
-import { Link, animateScroll as scroll } from "react-scroll";
-import {  } from "@mui/material";
+import { Link } from "react-scroll";
 import Button from '@mui/material/Button';
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import MailRoundedIcon from "@mui/icons-material/MailRounded";
 
@@ -22,7 +21,6 @@ export default function Nav() {
   const [contactFocus, setcontactFocus] = useState(false);
 
   useEffect(() => {
-    console.log("effect");
     if (displayFull === "accueil") {
       setHomeFocus(true);
       setServicesFocus(false);
@@ -116,8 +114,6 @@ export default function Nav() {
             >
               <Button
                 className={homeFocus ? styles.navButtonFocused : styles.navButton}
-                // onFocus={() => setHomeFocus(true)}
-                // onBlur={() => setHomeFocus(false)}
                 variant={displayFull === "accueil" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("accueil");
@@ -139,8 +135,6 @@ export default function Nav() {
             >
               <Button
                 className={servicesFocus ? styles.navButtonFocused : styles.navButton}
-                // onFocus={() => setServicesFocus(true)}
-                // onBlur={() => setServicesFocus(false)}
                 variant={displayFull === "services" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("services");
@@ -162,8 +156,6 @@ export default function Nav() {
             >
               <Button
                 className={technosFocus ? styles.navButtonFocused : styles.navButton}
-                // onFocus={() => setTechnosFocus(true)}
-                // onBlur={() => setTechnosFocus(false)}
                 variant={displayFull === "technos" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("technos");
@@ -185,8 +177,6 @@ export default function Nav() {
             >
               <Button
                 className={referencesFocus ? styles.navButtonFocused : styles.navButton}
-                // onFocus={() => setReferencesFocus(true)}
-                // onBlur={() => setReferencesFocus(false)}
                 variant={displayFull === "references" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("references");
@@ -207,9 +197,7 @@ export default function Nav() {
               onSetActive={() => setDisplayFull("offers")}
             >
               <Button
-                className={offersFocus ? styles.navButtonFocused : styles.navButton}
-                // onFocus={() => setOffersFocus(true)}
-                // onBlur={() => setOffersFocus(false)}              
+                className={offersFocus ? styles.navButtonFocused : styles.navButton}         
                 variant={displayFull === "offers" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("offers");
@@ -231,8 +219,6 @@ export default function Nav() {
             >
               <Button
                 className={contactFocus ? styles.navButtonFocused : styles.navButton}
-                // onFocus={() => setcontactFocus(true)}
-                // onBlur={() => setcontactFocus(false)}
                 variant={displayFull === "contact" ? "contained" : undefined}
                 onClick={() => {
                   setDisplayFull("contact");
