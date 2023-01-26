@@ -35,26 +35,27 @@
    display: none;
    font-size: 2rem;
    margin-top: 20px;
-   transition: 0.5s;
+   transition: 0.3s;
 }
 
 @media screen and (max-width: 1000px) {
    .container {
       max-height: 170px;
-      transition: 0.5s;
+      transition: 0.3s ease-out;
       padding: 10px 20px;
       cursor: pointer;
    }
 
    .container:has(.displayText) {
       max-height: 1000px;
-      transition: 0.5s;
+      transition: 0.3s ease-out;
    }
 
    .container p {
       opacity: 0;
-      transform: translateY(-120px);
-      transition: 0.5s;
+      transform: translateY(-50px);
+      transition: 0.3s ease-out;
+      margin-top: 10px;
    }
 
    .container svg {
@@ -66,7 +67,7 @@
       visibility: visible;
       opacity: 1;
       transform: translateY(0);
-      transition: 0.5s;
+      transition: 0.3s ease-out;
    }
 
    .container .expandIcon {
