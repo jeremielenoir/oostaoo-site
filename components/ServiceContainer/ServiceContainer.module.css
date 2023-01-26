@@ -40,8 +40,9 @@
 
 @media screen and (max-width: 1000px) {
    .container {
-      max-height: 220px;
+      max-height: 200px;
       transition: 0.5s;
+      padding: 20px 20px;
    }
 
    .container:has(.displayText) {
@@ -53,6 +54,10 @@
       opacity: 0;
       transform: translateY(-120px);
       transition: 0.5s;
+   }
+
+   .container svg {
+      font-size: 3rem;
    }
 
    .container .displayText {
