@@ -12,3 +12,8 @@ export interface JobOffer {
     linkedin: string;
     visibility: boolean;
 }
+
+export type PropsLogosWrapper = {
+    logos: string[];
+    section: "technos" | "references";
+  };
