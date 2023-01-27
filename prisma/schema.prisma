@@ -9,3 +9,62 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  name      String
+  password  String
+  role      Int[]
+  jobOffers JobOffer[]
+}
+
+model JobOffer {
+  id            Int @id @default(autoincrement())
+  title         String
+  visibilty     Boolean
+  place         String?
+  sector        String?
+  startDate     DateTime @default(now()) @db.Timestamptz(3)
+  content       String
+  linkedInLink  String?
+  createdAt     DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime @default(now()) @db.Timestamptz(3)
+  author        User @relation(fields: [authorId], references: [id])
+  authorId      Int
+  service       Service @relation(fields: [serviceId], references: [id])
+  serviceId     Int
+  skills        SkillsOnJobOffers[]
+}
+
+model Service {
+  id          Int @id @default(autoincrement())
+  title       String
+  visibilty   Boolean
+  description String?
+  jobOffers   JobOffer[] 
+}
+
+model Skill {
+  id          Int @id @default(autoincrement())
+  title       String
+  visibilty   Boolean
+  description String?
+  logo        String?
+  jobOffer    SkillsOnJobOffers[]
+}
+
+model SkillsOnJobOffers {
+  id              Int @id @default(autoincrement())
+  jobOffer        JobOffer @relation(fields: [jobOfferId], references: [id])
+  jobOfferId      Int
+  skill           Skill @relation(fields: [skillId], references: [id])
+  skillId         Int
+}
+
+model Reference {
+  id          Int @id @default(autoincrement())
+  title       String
+  visibility  Boolean
+  logo        String?
+}
