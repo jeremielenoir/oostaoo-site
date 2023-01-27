@@ -9,3 +9,27 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
+  name      String
+  password  String
+  role      Int[]
+  jobOffers JobOffer[]
+}
+
+model JobOffer {
+  id            Int @id @default(autoincrement())
+  title         String
+  visibilty     Boolean
+  place         String?
+  sector        String?
+  startDate     DateTime @default(now()) @db.Timestamptz(3)
+  content       String
+  linkedInLink  String?
+  createdAt     DateTime @default(now()) @db.Timestamptz(3)
+  updatedAt     DateTime @default(now()) @db.Timestamptz(3)
+  author        User @relation(fields: [authorId], references: [id])
+  authorId      Int
+}
