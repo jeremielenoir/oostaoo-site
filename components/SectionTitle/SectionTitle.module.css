@@ -29,4 +29,12 @@
    .container {
       width: 100%;
    }
+
+   .title {
+      font-size: 2rem;
+   }
+
+   .description {
+      font-size: 1rem;
+   }
 }
