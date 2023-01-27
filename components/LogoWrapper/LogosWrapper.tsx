@@ -5,9 +5,10 @@ import styles from "./LogosWrapper.module.css";
 export default function LogosWrapper({ logos, section }: PropsLogosWrapper) {
   return (
     <div className={styles.logosWrapper}>
-      {logos.map((logo) => (
+      {logos.map((logo, index) => (
         <Image
           className={styles.logoContainer}
+          key={`section${index}`}
           src={`/../public/assets/${
             section === "technos" ? "technos" : "references"
           }/${logo}.png`}

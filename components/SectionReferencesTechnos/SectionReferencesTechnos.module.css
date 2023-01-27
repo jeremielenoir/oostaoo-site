@@ -1,9 +1,9 @@
-.technosWrapper {
+.SectionReferencesTechnosWrapper {
     display: none
 }
 
 @media screen and (min-width:620px){
-    .technosWrapper {
+    .SectionReferencesTechnosWrapper {
         display: flex;
         flex-direction: column;
         align-items: center;

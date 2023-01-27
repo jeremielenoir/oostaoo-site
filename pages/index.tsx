@@ -6,8 +6,7 @@ import styles from "./Home.module.css";
 import Intro from "@/components/Intro/Intro";
 import HeaderHero from "@/components/HeaderHero/HeaderHero";
 import ContactForm from "@/components/ContactForm/ContactForm";
-import { Technos } from "@/components/Technos/Technos";
-import { References } from "@/components/References/References";
+import { SectionReferencesTechnos } from "@/components/SectionReferencesTechnos/SectionReferencesTechnos";
 
 export default function Home() {
   return (
@@ -24,8 +23,8 @@ export default function Home() {
         <HeaderHero text={"Trouvez le talent que vous cherchez"} />
         <Intro />
         <Services />
-        <Technos />
-        <References />
+        <SectionReferencesTechnos section={"technos"} />
+        <SectionReferencesTechnos section={"references"} />
         <JobOffers />
         <HeaderHero text={"Contactez-nous !"} />
         <ContactForm />

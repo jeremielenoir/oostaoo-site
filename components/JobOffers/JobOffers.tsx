@@ -6,7 +6,7 @@ import { titles } from "@/assets/Titles.js";
 
 const JobOffers = () => {
   return (
-    <section className={styles.offersSection} id="offers">
+    <section className={styles.offersSection} id="offres">
       <SectionTitle
         title={titles.emplois.title}
         description={titles.emplois.description}
