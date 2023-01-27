@@ -1,8 +1,12 @@
 .main {
   background-color: white;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 0 2rem;
 }
 
 .ghostContainer {
-  height: 5rem;
+  height: 1.5rem;
 }
