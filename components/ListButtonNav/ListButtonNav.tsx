@@ -19,7 +19,6 @@ export const ListButtonNav: React.FC<ListButtonNavProps> = ({
             isDynamic
             offset={btnIndex === 0 ? 50 : btnIndex === lastElementIndex ? -560 : -200}
             duration={500}
-            spyThrottle={100}
             onSetActive={() => handleClick(section)}
          >
             <Button variant={displayFull === section ? 'contained' : undefined}>{section}</Button>
