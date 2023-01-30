@@ -34,7 +34,7 @@ model JobOffer {
   authorId      Int
   service       Service @relation(fields: [serviceId], references: [id])
   serviceId     Int
-  skills        SkillsOnJobOffers[]
+  skills        Skill[]
 }
 
 model Service {
@@ -51,15 +51,7 @@ model Skill {
   visibilty   Boolean
   description String?
   logo        String?
-  jobOffer    SkillsOnJobOffers[]
-}
-
-model SkillsOnJobOffers {
-  id              Int @id @default(autoincrement())
-  jobOffer        JobOffer @relation(fields: [jobOfferId], references: [id])
-  jobOfferId      Int
-  skill           Skill @relation(fields: [skillId], references: [id])
-  skillId         Int
+  jobOffer    JobOffer[]
 }
 
 model Reference {
