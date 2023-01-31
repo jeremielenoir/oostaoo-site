@@ -1,13 +1,13 @@
 .logosWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    gap: 2rem;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: space-around;
+   gap: 2rem;
 }
 
 @media screen and (min-width: 620px) {
-    .logosWrapper {
-        gap: 6rem;
-    }
- }
+   .logosWrapper {
+      gap: 4rem;
+   }
+}
