@@ -1,38 +1,40 @@
 export interface JobOffer {
-    id: number;
-    title: string;
-    status: string;
-    place: string;
-    sector: string;
-    publishDate: number;
-    startDate: number;
-    weeklyWorkTime: string;
-    details: string;
-    image: string;
-    linkedin: string;
-    visibility: boolean;
+   id: number;
+   title: string;
+   status: string;
+   place: string;
+   sector: string;
+   publishDate: number;
+   startDate: number;
+   weeklyWorkTime: string;
+   details: string;
+   image: string;
+   linkedin: string;
+   visibility: boolean;
 }
 
 export type PropsLogosWrapper = {
-    logos: string[];
-    section: "technos" | "references";
+   logos: string[];
+   section: 'technos' | 'references';
 };
 
 export type SectionReferencesTechnosProps = {
-    section: "technos" | "references";
-}
+   section: 'technos' | 'references';
+};
 
 export type ListButtonNavProps = {
-    handleClick: (section: string) => void;
-    displayFull: string;
-    section: "accueil" | "services" | "technos" | "references" | "offres" | "contact";
-}
+   handleClick: (section: string) => void;
+   displayFull: string;
+   section: 'accueil' | 'services' | 'technos' | 'references' | 'offres' | 'contact';
+   btnIndex: number;
+   lastElementIndex: number;
+};
 
 export type ListButtonNavArray = [
-    "accueil",
-    "services",
-    "technos",
-    "references",
-    "offres",
-    "contact"
-  ];
+   'accueil',
+   'services',
+   'technos',
+   'references',
+   'offres',
+   'contact',
+];
