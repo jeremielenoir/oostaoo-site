@@ -1,10 +1,13 @@
-import styles from "./JobOffers.module.css";
-import JobOffer from "./JobOffer";
-import { jobs } from "./jobData";
-import SectionTitle from "../SectionTitle/SectionTitle";
-import { titles } from "@/assets/Titles.js";
+import { FC } from 'react';
 
-const JobOffers = () => {
+import styles from './JobOffers.module.css';
+import JobOffer from './JobOffer';
+import SectionTitle from '../SectionTitle/SectionTitle';
+import { jobs } from '../../assets/jobData';
+import { titles } from '@/assets/Titles.js';
+import { JobType } from '@/types/types';
+
+const JobOffers: FC = () => {
   return (
     <section className={styles.offersSection} id="offres">
       <SectionTitle
@@ -12,7 +15,7 @@ const JobOffers = () => {
         description={titles.emplois.description}
       />
       <div className={styles.offerList}>
-        {jobs.map((job) => (
+        {jobs.map((job: JobType) => (
           <JobOffer key={job.id} job={job} />
         ))}
       </div>
