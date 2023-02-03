@@ -1,37 +1,34 @@
-import styles from "./ContactForm.module.css";
+import { useEffect, useState } from 'react';
 
-import { TextField, Button } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
-import { useEffect, useState } from "react";
+import { TextField, Button } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 
-import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
-
-const NAME_REGEX = /^(?![\s.]+$)[a-zA-Z\s.]{1,40}$/;
-const EMAIL_REGEX = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const MESSAGE_REGEX = /^(?:\b\w+\b[\s\r\n]*){1,250}$/;
+import styles from './ContactForm.module.css';
+import { NAME_REGEX, EMAIL_REGEX, MESSAGE_REGEX } from '../../assets/RegExps';
 
 const ContactForm = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [validName, setValidName] = useState(false);
   const [nameFocus, setNameFocus] = useState(false);
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const [validMessage, setValidMessage] = useState(false);
   const [messageFocus, setMessageFocus] = useState(false);
 
-  const [errMsg, setErrMsg] = useState("");
+  const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
 
   const clearInputs = () => {
-    setName("");
-    setEmail("");
-    setMessage("");
+    setName('');
+    setEmail('');
+    setMessage('');
   };
 
   useEffect(() => {
@@ -56,7 +53,7 @@ const ContactForm = () => {
       !EMAIL_REGEX.test(email) ||
       !MESSAGE_REGEX.test(message)
     ) {
-      setErrMsg("Informations Invalides");
+      setErrMsg('Informations Invalides');
       return;
     }
     // Here we put our request Logic
@@ -80,7 +77,7 @@ const ContactForm = () => {
           <span className={styles.IconWrapper}>
             <LocalPhoneOutlinedIcon
               className={styles.offerIcon}
-              style={{ fill: "white" }}
+              style={{ fill: 'white' }}
             />
           </span>
           <a href="tel:+330142637727">01 42 63 77 27</a>
@@ -89,7 +86,7 @@ const ContactForm = () => {
           <span className={styles.IconWrapper}>
             <MailOutlineIcon
               className={styles.offerIcon}
-              style={{ fill: "white" }}
+              style={{ fill: 'white' }}
             />
           </span>
           <a href="mailto:contact@oostaoo.com">contact@oostaoo.com</a>
@@ -98,7 +95,7 @@ const ContactForm = () => {
           <span className={styles.IconWrapper}>
             <PlaceOutlinedIcon
               className={styles.offerIcon}
-              style={{ fill: "white" }}
+              style={{ fill: 'white' }}
             />
           </span>
           <a href="https://www.google.com/maps/place/OOSTAOO+CONSULTING/@48.8733599,2.3433706,15z/data=!4m5!3m4!1s0x0:0x9609e46b78e3a337!8m2!3d48.8733333!4d2.3433717">
@@ -172,9 +169,7 @@ const ContactForm = () => {
             </div>
             <Button
               className={styles.submitButton}
-              disabled={
-                !validName || !validEmail || !validMessage ? true : false
-              }
+              disabled={!validName || !validEmail || !validMessage}
               type="submit"
               variant="contained"
               endIcon={<SendIcon />}
