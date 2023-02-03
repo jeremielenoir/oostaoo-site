@@ -1,13 +1,16 @@
+import { FC } from 'react';
+
 import styles from './SectionReferencesTechnos.module.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
-import { titles } from '../../assets/Titles';
 import LogosWrapper from '../LogoWrapper/LogosWrapper';
+
+import { titles } from '../../assets/Titles';
 import { SectionReferencesTechnosProps } from '@/types/types.js';
 import { logoArray } from '../../assets/Logos';
 
-export const SectionReferencesTechnos: React.FC<
-  SectionReferencesTechnosProps
-> = ({ section }) => {
+export const SectionReferencesTechnos: FC<SectionReferencesTechnosProps> = ({
+  section,
+}) => {
   return (
     <section className={styles.SectionReferencesTechnosWrapper} id={section}>
       <SectionTitle
