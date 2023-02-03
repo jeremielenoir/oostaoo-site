@@ -22,20 +22,6 @@ export type SectionReferencesTechnosProps = {
   section: 'technos' | 'references';
 };
 
-export type ListButtonNavProps = {
-  handleClick: (section: string) => void;
-  displayFull: string;
-  section:
-    | 'accueil'
-    | 'services'
-    | 'technos'
-    | 'references'
-    | 'offres'
-    | 'contact';
-  btnIndex: number;
-  lastElementIndex: number;
-};
-
 export type ListButtonNavArray = [
   'accueil',
   'services',
