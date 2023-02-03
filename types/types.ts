@@ -13,11 +13,6 @@ export interface JobOffer {
   visibility: boolean;
 }
 
-export type PropsLogosWrapper = {
-  logos: string[];
-  section: 'technos' | 'references';
-};
-
 export type SectionReferencesTechnosProps = {
   section: 'technos' | 'references';
 };
