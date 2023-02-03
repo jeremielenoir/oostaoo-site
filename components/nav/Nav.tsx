@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FC } from 'react';
 import Image from 'next/image';
 
 import MailRoundedIcon from '@mui/icons-material/MailRounded';
@@ -22,7 +22,7 @@ const navSectionsArray: ListButtonNavArray = [
   'contact',
 ];
 
-export default function Nav() {
+const Nav: FC = () => {
   const [displayFull, setDisplayFull] = useState('accueil');
 
   const handleClick = (section: string) => {
@@ -74,4 +74,6 @@ export default function Nav() {
       </section>
     </header>
   );
-}
+};
+
+export default Nav;
