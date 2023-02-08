@@ -1,12 +1,14 @@
 import { FC } from 'react';
 
-import styles from './SectionReferencesTechnos.module.css';
+import { SectionReferencesTechnosProps } from '@/types/types';
+
 import SectionTitle from '../SectionTitle/SectionTitle';
 import LogosWrapper from '../LogoWrapper/LogosWrapper';
 
 import titles from '../../assets/Titles';
-import { SectionReferencesTechnosProps } from '@/types/types';
 import logoArray from '../../assets/Logos';
+
+import styles from './SectionReferencesTechnos.module.css';
 
 export const SectionReferencesTechnos: FC<SectionReferencesTechnosProps> = ({
   section,
