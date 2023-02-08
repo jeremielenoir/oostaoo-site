@@ -1,4 +1,4 @@
-export const logoArray = {
+const logoArray = {
   technos: [
     'android',
     'angular',
@@ -31,3 +31,5 @@ export const logoArray = {
     'wynd',
   ],
 };
+
+export default logoArray;
