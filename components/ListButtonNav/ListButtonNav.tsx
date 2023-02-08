@@ -24,24 +24,22 @@ export const ListButtonNav: FC<ListButtonNavProps> = ({
   section,
   btnIndex,
   lastElementIndex,
-}) => {
-  return (
-    <li>
-      <Link
-        to={section}
-        spy
-        smooth
-        isDynamic
-        offset={
-          btnIndex === 0 ? 50 : btnIndex === lastElementIndex ? -560 : -200
-        }
-        duration={500}
-        onSetActive={() => handleClick(section)}
-      >
-        <Button variant={displayFull === section ? 'contained' : undefined}>
-          {section}
-        </Button>
-      </Link>
-    </li>
-  );
-};
+}) => (
+  <li>
+    <Link
+      to={section}
+      spy
+      smooth
+      isDynamic
+      offset={btnIndex === 0 ? 50 : btnIndex === lastElementIndex ? -560 : -200}
+      duration={500}
+      onSetActive={() => handleClick(section)}
+    >
+      <Button variant={displayFull === section ? 'contained' : undefined}>
+        {section}
+      </Button>
+    </Link>
+  </li>
+);
+
+export default ListButtonNav;

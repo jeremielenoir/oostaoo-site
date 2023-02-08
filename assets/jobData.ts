@@ -1,6 +1,6 @@
 import { JobType } from '@/types/types';
 
-export const jobs: JobType[] = [
+const jobs: JobType[] = [
   {
     id: 1,
     title: 'Développeur Lead',
@@ -47,3 +47,5 @@ export const jobs: JobType[] = [
     visibility: true,
   },
 ];
+
+export default jobs;

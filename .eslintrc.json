@@ -1,20 +1,50 @@
 {
-   "plugins": ["@typescript-eslint", "jest-dom", "testing-library"],
-   "extends": [
-      "next/core-web-vitals",
-      "airbnb",
-      "airbnb-typescript",
-      "plugin:react/recommended",
-      "plugin:@next/next/recommended",
-      "airbnb"
-   ],
-   "parserOptions": {
-      "project": "./tsconfig.json"
-   },
-   "rules": {
-      "react/react-in-jsx-scope": "off"
-   },
-   "env": {
-      "jest": true
-   }
+  "plugins": ["@typescript-eslint", "jest-dom", "testing-library"],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:react/recommended",
+    "plugin:@next/next/recommended",
+    "airbnb"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "tsx": "never"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      2,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "react/function-component-definition": [
+      2,
+      { "namedComponents": "arrow-function" }
+    ],
+    "no-nested-ternary": 0,
+    "@typescript-eslint/indent": "off",
+    "operator-linebreak": [
+      "error",
+      "after",
+      {
+        "overrides": {
+          ":": "before",
+          "?": "before"
+        }
+      }
+    ]
+  },
+  "env": {
+    "jest": true
+  }
 }

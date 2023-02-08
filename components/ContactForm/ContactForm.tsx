@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FormEvent } from 'react';
 
 import { TextField, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
@@ -46,7 +46,7 @@ const ContactForm = () => {
     setValidMessage(result);
   }, [message]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (
       !NAME_REGEX.test(name) ||
@@ -58,12 +58,11 @@ const ContactForm = () => {
     }
     // Here we put our request Logic
     // const result = await sendMessage(name, email, message);
-    // if (result === "success") {
-    // 	setSuccess(true);
-    // 	clearInputs();
-    // }
-    // else {
-    // 	setErrMsg(result);
+    // if (result === 'success') {
+    //   setSuccess(true);
+    //   clearInputs();
+    // } else {
+    //   setErrMsg(result);
     // }
     // For now we will set every submi as a success
     setSuccess(true);
