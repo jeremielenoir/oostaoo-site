@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
 
 import '../styles/index.css';
-import { theme } from '../styles/theme';
+import theme from '../styles/theme';
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <>

@@ -11,7 +11,7 @@ import linkedin from '../../assets/img/linkedin.png';
 import styles from './Nav.module.css';
 
 import { ListButtonNav } from '../ListButtonNav/ListButtonNav';
-import { ListButtonNavArray } from '../../types/types.ts';
+import { ListButtonNavArray } from '../../types/types';
 
 const navSectionsArray: ListButtonNavArray = [
   'accueil',
