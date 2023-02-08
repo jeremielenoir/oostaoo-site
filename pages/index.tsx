@@ -3,12 +3,12 @@ import Head from 'next/head';
 import JobOffers from '@/components/JobOffers/JobOffers';
 import Nav from '@/components/nav/Nav';
 import Services from '@/components/Services/Services';
-import styles from './Home.module.css';
 import Intro from '@/components/Intro/Intro';
 import HeaderHero from '@/components/HeaderHero/HeaderHero';
 import ContactForm from '@/components/ContactForm/ContactForm';
 
 import { SectionReferencesTechnos } from '@/components/SectionReferencesTechnos/SectionReferencesTechnos';
+import styles from './Home.module.css';
 
 const Home = () => (
   <>

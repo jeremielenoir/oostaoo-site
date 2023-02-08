@@ -1,11 +1,13 @@
 import { FC } from 'react';
 
-import styles from './JobOffers.module.css';
+import titles from '@/assets/Titles';
+import { JobType } from '@/types/types';
+
 import JobOffer from './JobOffer';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import jobs from '../../assets/jobData';
-import titles from '@/assets/Titles';
-import { JobType } from '@/types/types';
+
+import styles from './JobOffers.module.css';
 
 const JobOffers: FC = () => (
   <section className={styles.offersSection} id="offres">

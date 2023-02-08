@@ -1,16 +1,12 @@
 import Image from 'next/image';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
+import { JobType } from '@/types/types';
+
 import logoLinkedIn from '../../assets/img/linkedin.png';
 import styles from './JobOffers.module.css';
 
-import type { JobType } from '../../types/types';
-
-type Props = {
-  job: JobType
-};
-
-const JobOffer = ({ job }: Props) => (
+const JobOffer = ({ job }: { job: JobType }) => (
   <section className={styles.offer}>
     <header className={styles.offerHeader}>
       <span className={styles.offerIconWrapper}>
