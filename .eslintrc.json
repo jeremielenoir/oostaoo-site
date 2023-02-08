@@ -18,6 +18,7 @@
       "ignorePackages",
       {
         "js": "never",
+        "ts": "never",
         "mjs": "never",
         "jsx": "never",
         "tsx": "never"

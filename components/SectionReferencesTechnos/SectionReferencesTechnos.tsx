@@ -5,7 +5,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 import LogosWrapper from '../LogoWrapper/LogosWrapper';
 
 import titles from '../../assets/Titles';
-import { SectionReferencesTechnosProps } from '@/types/types.js';
+import { SectionReferencesTechnosProps } from '@/types/types';
 import logoArray from '../../assets/Logos';
 
 export const SectionReferencesTechnos: FC<SectionReferencesTechnosProps> = ({
