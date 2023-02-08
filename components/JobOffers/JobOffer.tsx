@@ -1,15 +1,16 @@
-import { FC } from 'react';
-
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import Image from 'next/image';
 import styles from './JobOffers.module.css';
 
-import Image from 'next/image';
-
 import logoLinkedIn from '../../assets/img/linkedin.png';
-import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
-import { JobType } from '@/types/types';
+import type { JobType } from '../../types/types';
 
-const JobOffer = ({ job }: { job: JobType }) => (
+type Props = {
+  job: JobType
+};
+
+const JobOffer = ({ job }: Props) => (
   <section className={styles.offer}>
     <header className={styles.offerHeader}>
       <span className={styles.offerIconWrapper}>
@@ -30,7 +31,8 @@ const JobOffer = ({ job }: { job: JobType }) => (
       height={200}
     />
     <p className={styles.offerDescription}>
-      {`${job.details.substring(0, 250)}...`}
+      {job.details.substring(0, 250)}
+      ...
     </p>
     <a className={styles.offerLink} href={job.linkedin}>
       <Image src={logoLinkedIn} alt="LinkedIn link" />

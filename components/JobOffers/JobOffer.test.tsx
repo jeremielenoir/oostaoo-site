@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-// TODO import for TS
-// import type { RenderResult } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 import JobOffer from './JobOffer';
 
@@ -22,7 +22,7 @@ const mockJob = {
 
 describe('JobOffer Component', () => {
   // TODO use this type in TS
-  let component  //: RenderResult;
+  let component: RenderResult;
 
   beforeEach(() => {
     component = render(<JobOffer job={mockJob} />);
@@ -46,7 +46,7 @@ describe('JobOffer Component', () => {
 
   test('Should display a resume of the job details', () => {
     const jobDetailsResume = mockJob.details.substring(0, 250);
-    const detailsText = component.getByText(jobDetailsResume + '...');
+    const detailsText = component.getByText(`${jobDetailsResume}...`);
     expect(detailsText).toBeInTheDocument();
   });
 
