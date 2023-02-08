@@ -11,7 +11,7 @@ import linkedin from '../../assets/img/linkedin.png';
 import styles from './Nav.module.css';
 
 import { ListButtonNav } from '../ListButtonNav/ListButtonNav';
-import { ListButtonNavArray } from '@/types/types.js';
+import { ListButtonNavArray } from '../../types/types.ts';
 
 const navSectionsArray: ListButtonNavArray = [
   'accueil',
@@ -65,7 +65,7 @@ const Nav: FC = () => {
               displayFull={displayFull}
               handleClick={handleClick}
               section={section}
-              key={index}
+              key={section}
               btnIndex={index}
               lastElementIndex={navSectionsArray.length - 1}
             />

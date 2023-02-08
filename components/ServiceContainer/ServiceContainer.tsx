@@ -24,7 +24,14 @@ const ServiceContainer: FC<ServiceContainerProps> = ({
   return (
     <div
       className={styles.container}
+      role="button"
+      tabIndex={0}
       onClick={() => setIsTextHidden(!isTextHidden)}
+      onKeyDown={(event) => {
+        if (event.key === 'enter') {
+          setIsTextHidden(!isTextHidden);
+        }
+      }}
     >
       {icon === 'lead' ? (
         <Assessment />
