@@ -18,6 +18,7 @@
       "ignorePackages",
       {
         "js": "never",
+        "ts": "never",
         "mjs": "never",
         "jsx": "never",
         "tsx": "never"
@@ -42,7 +43,8 @@
           "?": "before"
         }
       }
-    ]
+    ],
+    "linebreak-style": 0
   },
   "env": {
     "jest": true

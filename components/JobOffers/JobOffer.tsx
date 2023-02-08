@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
-import styles from './JobOffers.module.css';
 
 import logoLinkedIn from '../../assets/img/linkedin.png';
+import styles from './JobOffers.module.css';
 
 import type { JobType } from '../../types/types';
 
