@@ -13,7 +13,7 @@ import styles from './Nav.module.css';
 import { ListButtonNav } from '../ListButtonNav/ListButtonNav';
 import { ListButtonNavArray } from '../../types/types';
 
-const navSectionsArray: ListButtonNavArray = [
+export const navSectionsArray: ListButtonNavArray = [
   'accueil',
   'services',
   'technos',
