@@ -8,7 +8,7 @@ interface PropsLogosWrapper {
   section: 'technos' | 'references';
 }
 const LogosWrapper: FC<PropsLogosWrapper> = ({ logos, section }) => (
-  <div className={styles.logosWrapper}>
+  <div data-testid="logosWrapper" className={styles.logosWrapper}>
     {logos.map((logo) => (
       <Image
         className={styles.logoContainer}

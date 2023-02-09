@@ -13,7 +13,11 @@ import styles from './SectionReferencesTechnos.module.css';
 const SectionReferencesTechnos: FC<SectionReferencesTechnosProps> = ({
   section,
 }) => (
-  <section className={styles.SectionReferencesTechnosWrapper} id={section}>
+  <section
+    data-testid="sectionReferencesTechnos"
+    className={styles.SectionReferencesTechnosWrapper}
+    id={section}
+  >
     <SectionTitle
       title={
         section === 'technos' ? titles.technos.title : titles.references.title
