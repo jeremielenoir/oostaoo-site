@@ -7,7 +7,7 @@ import Intro from '@/components/Intro/Intro';
 import HeaderHero from '@/components/HeaderHero/HeaderHero';
 import ContactForm from '@/components/ContactForm/ContactForm';
 
-import { SectionReferencesTechnos } from '@/components/SectionReferencesTechnos/SectionReferencesTechnos';
+import SectionReferencesTechnos from '@/components/SectionReferencesTechnos/SectionReferencesTechnos';
 import styles from './Home.module.css';
 
 const Home = () => (
