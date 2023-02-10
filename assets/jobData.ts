@@ -1,4 +1,4 @@
-import { JobType } from '@/types/types';
+import type { JobType } from '../types/types';
 
 const jobs: JobType[] = [
   {

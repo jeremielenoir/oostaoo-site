@@ -20,14 +20,17 @@ const JobOffer = ({ job }: { job: JobType }) => (
         <span className={styles.offerAvailability}>{job.status}</span>
       </div>
     </header>
-    <Image
-      className={styles.offerImage}
-      src=""
-      alt="job offer visual"
-      height={200}
-    />
+    <div className={styles.offerImageWrapper}>
+      <Image
+        className={styles.offerImage}
+        src={job.image}
+        alt="job offer visual"
+        layout="fill"
+      />
+    </div>
     <p className={styles.offerDescription}>
-      {`${job.details.substring(0, 250)}...`}
+      {job.details.substring(0, 250)}
+      ...
     </p>
     <a className={styles.offerLink} href={job.linkedin}>
       <Image src={logoLinkedIn} alt="LinkedIn link" />
