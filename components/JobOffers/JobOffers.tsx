@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import titles from '@/assets/Titles';
+import titles from '../../assets/Titles';
 import { JobType } from '@/types/types';
 
 import JobOffer from './JobOffer';
