@@ -8,7 +8,7 @@ interface TitleProps {
 }
 
 const SectionTitle: FC<TitleProps> = ({ title, description }) => (
-  <div className={styles.container}>
+  <div data-testid="sectionTitle" className={styles.container}>
     <h2 className={styles.title}>{title}</h2>
     <p className={styles.description}>{description}</p>
   </div>
