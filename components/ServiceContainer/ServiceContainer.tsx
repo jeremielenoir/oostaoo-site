@@ -23,6 +23,7 @@ const ServiceContainer: FC<ServiceContainerProps> = ({
 
   return (
     <div
+      data-testid="service"
       className={styles.container}
       role="button"
       tabIndex={0}
@@ -41,7 +42,7 @@ const ServiceContainer: FC<ServiceContainerProps> = ({
         icon === 'front' && <AssignmentInd />
       )}
 
-      <h1>{title}</h1>
+      <h1 data-testid="serviceTitle">{title}</h1>
       <ExpandCircleDownOutlined
         className={styles.expandIcon}
         style={{ transform: isTextHidden ? 'rotate(0)' : 'rotate(180deg)' }}
