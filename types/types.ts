@@ -25,3 +25,10 @@ export type JobType = {
   linkedin: string;
   visibility: boolean;
 };
+
+export type ServiceType = {
+  id: number;
+  icon: string;
+  title: string;
+  description: string;
+};
