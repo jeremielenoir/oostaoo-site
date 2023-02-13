@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import Services from './Services';
+import servicesData from '../../assets/Services';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ServiceContainer from '../ServiceContainer/ServiceContainer';
 
@@ -17,6 +18,6 @@ describe('Services Component', () => {
   });
 
   test('Should display ServiceContainer sub-component', () => {
-    expect(ServiceContainer).toHaveBeenCalledTimes(3);
+    expect(ServiceContainer).toHaveBeenCalledTimes(servicesData.length);
   });
 });
