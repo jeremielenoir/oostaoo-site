@@ -16,6 +16,7 @@ const Services: FC = () => (
     <div className={styles.allServices}>
       {services.map((service: ServiceType) => (
         <ServiceContainer
+          key={service.id}
           icon={service.icon}
           title={service.title}
           description={service.description}
