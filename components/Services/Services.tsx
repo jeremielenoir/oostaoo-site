@@ -1,8 +1,9 @@
 import { FC } from 'react';
+import { ServiceType } from '@/types/types';
 
 import styles from './Services.module.css';
 import titles from '../../assets/Titles';
-import allServices from '../../assets/Services';
+import services from '../../assets/Services';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ServiceContainer from '../ServiceContainer/ServiceContainer';
 
@@ -13,21 +14,13 @@ const Services: FC = () => (
       description={titles.services.description}
     />
     <div className={styles.allServices}>
-      <ServiceContainer
-        icon={allServices.lead.icon}
-        title={allServices.lead.title}
-        description={allServices.lead.description}
-      />
-      <ServiceContainer
-        icon={allServices.fullstack.icon}
-        title={allServices.fullstack.title}
-        description={allServices.fullstack.description}
-      />
-      <ServiceContainer
-        icon={allServices.front.icon}
-        title={allServices.front.title}
-        description={allServices.front.description}
-      />
+      {services.map((service: ServiceType) => (
+        <ServiceContainer
+          icon={service.icon}
+          title={service.title}
+          description={service.description}
+        />
+      ))}
     </div>
   </div>
 );
