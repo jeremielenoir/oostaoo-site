@@ -1,5 +1,4 @@
 import { render, fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import ServiceContainer from './ServiceContainer';
@@ -23,7 +22,7 @@ describe('ServiceContainer component tests', () => {
     expect(getByText('test description')).toHaveClass('null');
   });
 
-  test('component should show Assessment pictogram for leqd icon', () => {
+  test('component should show Assessment pictogram for lead icon', () => {
     const { getByTestId } = render(<ServiceContainer icon="lead" />);
     expect(getByTestId('assessment')).toBeInTheDocument();
   });
