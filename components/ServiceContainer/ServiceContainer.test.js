@@ -1,35 +1,40 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import ServiceContainer from './ServiceContainer';
 
-import services from '../../assets/Services';
-
-// const mockService = services[0];
-
 describe('ServiceContainer component tests', () => {
   test('component should render', () => {
-    render(<ServiceContainer
-      icon={services.at(0).icon}
-      title={services.at(0).title}
-      description={services.at(0).description}
-    />);
+    render(<ServiceContainer />);
   });
 
-  // Here there is a problem with how many node is render in the component
-  // Need to be worked on
+  test('Clicking the component should make the sercice descriptio appear or disappear', () => {
+    const { getByTestId, getByText } = render(<ServiceContainer
+      icon="lead"
+      title="test title"
+      description="test description"
+    />);
 
-  // test('Clicking the component should fire a function', async () => {
-  //   const component = render(<ServiceContainer
-  //     icon={mockService.icon}
-  //     title={mockService.title}
-  //     description={mockService.description}
-  //   />);
+    fireEvent.click(getByTestId('service'));
+    expect(getByText('test description')).toHaveClass('displayText');
 
-  //   console.log(component);
+    fireEvent.click(getByTestId('service'));
+    expect(getByText('test description')).toHaveClass('null');
+  });
 
-  //   // fireEvent.click(component.getByTestId('service'));
+  test('component should show Assessment pictogram for leqd icon', () => {
+    const { getByTestId } = render(<ServiceContainer icon="lead" />);
+    expect(getByTestId('assessment')).toBeInTheDocument();
+  });
 
-  //   // expect(ServiceContainer.handleClick).toHaveBeenCalledTimes(1);
-  // });
+  test('component should show Hqndy;qn pictogram for full icon', () => {
+    const { getByTestId } = render(<ServiceContainer icon="full" />);
+    expect(getByTestId('handyman')).toBeInTheDocument();
+  });
+
+  test('component should show QssignementInd pictogram for front icon', () => {
+    const { getByTestId } = render(<ServiceContainer icon="front" />);
+    expect(getByTestId('assignementInd')).toBeInTheDocument();
+  });
 });
