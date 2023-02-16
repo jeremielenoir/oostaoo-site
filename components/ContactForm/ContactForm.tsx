@@ -104,15 +104,25 @@ const ContactForm = () => {
       </div>
       {success ? (
         <div>
-          <h3>Message Envoyé !</h3>
+          <h3 data-testid="successMessage">Message Envoyé !</h3>
         </div>
       ) : (
         <div className={styles.contactSectionForm}>
-          <p className={errMsg ? styles.errMsg : styles.offscreen}>{errMsg}</p>
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <p
+            data-testid="errorMessage"
+            className={errMsg ? styles.errMsg : styles.offscreen}
+          >
+            {errMsg}
+          </p>
+          <form
+            data-testid="form"
+            className={styles.form}
+            onSubmit={handleSubmit}
+          >
             <div className={styles.formUpperElement}>
               <div className={styles.formUpperElementName}>
                 <TextField
+                  data-testid="usernameField"
                   className={styles.formUpperElementNameField}
                   id="username"
                   autoComplete="off"
@@ -130,6 +140,7 @@ const ContactForm = () => {
               </div>
               <div className={styles.formUpperElementEmail}>
                 <TextField
+                  data-testid="emailField"
                   className={styles.formUpperElementEmailField}
                   id="email"
                   autoComplete="off"
@@ -149,6 +160,7 @@ const ContactForm = () => {
             </div>
             <div className={styles.formUpperElementMsg}>
               <TextField
+                data-testid="messageField"
                 className={styles.formUpperElementMsgField}
                 id="message"
                 onChange={(e) => setMessage(e.target.value)}
@@ -167,6 +179,7 @@ const ContactForm = () => {
               ) : null}
             </div>
             <Button
+              data-testid="formSubmitButton"
               className={styles.submitButton}
               disabled={!validName || !validEmail || !validMessage}
               type="submit"
