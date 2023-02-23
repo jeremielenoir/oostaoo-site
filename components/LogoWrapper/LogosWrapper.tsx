@@ -13,7 +13,7 @@ const LogosWrapper: FC<PropsLogosWrapper> = ({ logos, section }) => (
       <Image
         className={styles.logoContainer}
         key={logo}
-        src={`/../public/assets/${section}/${logo}.png`}
+        src={`/assets/${section}/${logo}.png`}
         alt={`logo ${logo}`}
         width={section === 'technos' ? 80 : 150}
         height={section === 'technos' ? 80 : 150}
