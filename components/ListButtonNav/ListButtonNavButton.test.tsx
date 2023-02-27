@@ -7,10 +7,34 @@ const mockButtonComponent = jest.fn();
 
 jest.mock('@mui/material/Button', () => ({
   __esModule: true,
-  default: ({ variant }: { variant?: string }) => mockButtonComponent({ variant }),
+  default: ({ variant, children }: {
+    variant?: string
+    children: string
+  }) => mockButtonComponent({ variant, children }),
 }));
 
 afterEach(() => jest.resetAllMocks());
+
+describe('ListButtonNav Text', () => {
+  test('should render the right text in button', () => {
+    render(
+      <ListButtonNav
+        handleClick={mockHandleClick}
+        displayFull="offres"
+        section="offres"
+        btnIndex={0}
+        lastElementIndex={6}
+      />,
+    );
+
+    expect(mockButtonComponent).toHaveBeenCalledTimes(1);
+    expect(mockButtonComponent).toHaveBeenCalledWith(
+      expect.objectContaining({
+        children: 'offres',
+      }),
+    );
+  });
+});
 
 describe('ListButtonNav Button', () => {
   test('should have a prop variant equal to "contained"', () => {
