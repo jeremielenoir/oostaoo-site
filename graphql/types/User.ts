@@ -3,11 +3,21 @@ import { objectType } from 'nexus';
 const User = objectType({
   name: 'User',
   definition(t) {
-    t.nonNull.id('id');
-    t.nonNull.string('email');
-    t.nonNull.string('name');
-    t.nonNull.string('password');
-    t.nonNull.list.int('role');
+    t.nonNull.id('id', {
+      description: "user's unique identifier",
+    });
+    t.nonNull.string('email', {
+      description: "user's email address",
+    });
+    t.nonNull.string('name', {
+      description: "user's full name",
+    });
+    t.nonNull.string('password', {
+      description: "user's password",
+    });
+    t.nonNull.list.int('role', {
+      description: "an array of user's role numbers",
+    });
     t.list.field('jobOffers', {
       type: 'JobOffer',
       resolve: async (parent, args, { db }) => {

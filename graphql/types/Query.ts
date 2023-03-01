@@ -1,19 +1,22 @@
 import {
-  queryType, nonNull, stringArg,
+  queryType, nonNull, stringArg, arg,
 } from 'nexus';
 
 const Query = queryType({
   definition(t) {
     t.string('hello', {
-      resolve: () => 'Hello World',
+      resolve: () => 'Hello Oostaoo!',
     });
 
     t.list.field('users', {
       type: 'User',
-      // args: {
-      //   sortBy: arg({ type: 'SortOrder' }),
-      // },
-      resolve: async (_, args, { db }) => db.user.findMany(),
+      args: {
+        sortUserBy: arg({ type: 'SortUserBy', default: 'name' }),
+        sortOrder: arg({ type: 'SortOrder', default: 'asc' }),
+      },
+      resolve: async (_, { sortUserBy, sortOrder }, { db }) => db.user.findMany({
+        orderBy: sortUserBy && { [sortUserBy]: sortOrder },
+      }),
     });
 
     t.field('user', {
@@ -31,6 +34,23 @@ const Query = queryType({
 
         return user;
       },
+    });
+
+    t.list.field('jobOffers', {
+      type: 'JobOffer',
+      args: {
+        sortJobOfferBy: arg({ type: 'SortJobOfferBy', default: 'title' }),
+        sortOrder: arg({ type: 'SortOrder', default: 'asc' }),
+        FilterJobOfferBy: arg({ type: 'FilterJobOfferBy', default: 'visibility' }),
+      },
+      resolve: async (_, {
+        sortJobOfferBy,
+        sortOrder,
+        filterJobOfferBy,
+      }, { db }) => db.jobOffer.findMany({
+        orderBy: sortJobOfferBy && { [sortJobOfferBy]: sortOrder },
+        where: filterJobOfferBy && { [filterJobOfferBy]: true },
+      }),
     });
   },
 });

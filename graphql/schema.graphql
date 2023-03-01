@@ -2,26 +2,78 @@
 ### Do not make changes to this file directly
 
 
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
+"""Filter job offers by a field"""
+enum FilterJobOfferBy {
+  startDate
+  visibility
+}
+
 type JobOffer {
-  description: String
+  authorId: Int
   id: ID!
-  imageUrl: String
-  status: Int
+  linkedInLink: String
+  place: String
+  sector: String
+  service: String
+  serviceId: Int
+  skills: String
+  startDate: String!
   title: String!
-  url: String
+  visibilty: Boolean!
+}
+
+type Mutation {
+  createUser(email: String!, name: String!, password: String!, role: Int): User
+  deleteUser(id: ID!): User
+  updateUser(email: String, id: ID!, name: String, password: String, role: Int): User
 }
 
 type Query {
   hello: String
+  jobOffers(FilterJobOfferBy: FilterJobOfferBy = visibility, sortJobOfferBy: SortJobOfferBy = title, sortOrder: SortOrder = asc): [JobOffer]
   user(id: String!): User
-  users: [User]
+  users(sortOrder: SortOrder = asc, sortUserBy: SortUserBy = name): [User]
+}
+
+"""Sort job offers by a field"""
+enum SortJobOfferBy {
+  id
+  startDate
+  title
+}
+
+"""Sort order"""
+enum SortOrder {
+  asc
+  desc
+}
+
+"""Sort users by a field"""
+enum SortUserBy {
+  email
+  id
+  name
 }
 
 type User {
+  """user's email address"""
   email: String!
+
+  """user's unique identifier"""
   id: ID!
   jobOffers: [JobOffer]
+
+  """user's full name"""
   name: String!
+
+  """user's password"""
   password: String!
+
+  """an array of user's role numbers"""
   role: [Int]!
 }

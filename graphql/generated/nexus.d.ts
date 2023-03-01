@@ -5,8 +5,23 @@
 
 
 import type { Context } from "./../context"
-
-
+import type { core } from "nexus"
+declare global {
+  interface NexusGenCustomInputMethods<TypeName extends string> {
+    /**
+     * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+     */
+    DateTime<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
+  }
+}
+declare global {
+  interface NexusGenCustomOutputMethods<TypeName extends string> {
+    /**
+     * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+     */
+    DateTime<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
+  }
+}
 
 
 declare global {
@@ -17,6 +32,10 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  FilterJobOfferBy: "startDate" | "visibility"
+  SortJobOfferBy: "id" | "startDate" | "title"
+  SortOrder: "asc" | "desc"
+  SortUserBy: "email" | "id" | "name"
 }
 
 export interface NexusGenScalars {
@@ -25,17 +44,24 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  DateTime: any
 }
 
 export interface NexusGenObjects {
   JobOffer: { // root type
-    description?: string | null; // String
+    authorId?: number | null; // Int
     id: string; // ID!
-    imageUrl?: string | null; // String
-    status?: number | null; // Int
+    linkedInLink?: string | null; // String
+    place?: string | null; // String
+    sector?: string | null; // String
+    service?: string | null; // String
+    serviceId?: number | null; // Int
+    skills?: string | null; // String
+    startDate: string; // String!
     title: string; // String!
-    url?: string | null; // String
+    visibilty: boolean; // Boolean!
   }
+  Mutation: {};
   Query: {};
   User: { // root type
     email: string; // String!
@@ -54,19 +80,30 @@ export interface NexusGenUnions {
 
 export type NexusGenRootTypes = NexusGenObjects
 
-export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
   JobOffer: { // field return type
-    description: string | null; // String
+    authorId: number | null; // Int
     id: string; // ID!
-    imageUrl: string | null; // String
-    status: number | null; // Int
+    linkedInLink: string | null; // String
+    place: string | null; // String
+    sector: string | null; // String
+    service: string | null; // String
+    serviceId: number | null; // Int
+    skills: string | null; // String
+    startDate: string; // String!
     title: string; // String!
-    url: string | null; // String
+    visibilty: boolean; // Boolean!
+  }
+  Mutation: { // field return type
+    createUser: NexusGenRootTypes['User'] | null; // User
+    deleteUser: NexusGenRootTypes['User'] | null; // User
+    updateUser: NexusGenRootTypes['User'] | null; // User
   }
   Query: { // field return type
     hello: string | null; // String
+    jobOffers: Array<NexusGenRootTypes['JobOffer'] | null> | null; // [JobOffer]
     user: NexusGenRootTypes['User'] | null; // User
     users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
   }
@@ -82,15 +119,26 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   JobOffer: { // field return type name
-    description: 'String'
+    authorId: 'Int'
     id: 'ID'
-    imageUrl: 'String'
-    status: 'Int'
+    linkedInLink: 'String'
+    place: 'String'
+    sector: 'String'
+    service: 'String'
+    serviceId: 'Int'
+    skills: 'String'
+    startDate: 'String'
     title: 'String'
-    url: 'String'
+    visibilty: 'Boolean'
+  }
+  Mutation: { // field return type name
+    createUser: 'User'
+    deleteUser: 'User'
+    updateUser: 'User'
   }
   Query: { // field return type name
     hello: 'String'
+    jobOffers: 'JobOffer'
     user: 'User'
     users: 'User'
   }
@@ -105,9 +153,36 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createUser: { // args
+      email: string; // String!
+      name: string; // String!
+      password: string; // String!
+      role?: number | null; // Int
+    }
+    deleteUser: { // args
+      id: string; // ID!
+    }
+    updateUser: { // args
+      email?: string | null; // String
+      id: string; // ID!
+      name?: string | null; // String
+      password?: string | null; // String
+      role?: number | null; // Int
+    }
+  }
   Query: {
+    jobOffers: { // args
+      FilterJobOfferBy: NexusGenEnums['FilterJobOfferBy'] | null; // FilterJobOfferBy
+      sortJobOfferBy: NexusGenEnums['SortJobOfferBy'] | null; // SortJobOfferBy
+      sortOrder: NexusGenEnums['SortOrder'] | null; // SortOrder
+    }
     user: { // args
       id: string; // String!
+    }
+    users: { // args
+      sortOrder: NexusGenEnums['SortOrder'] | null; // SortOrder
+      sortUserBy: NexusGenEnums['SortUserBy'] | null; // SortUserBy
     }
   }
 }
@@ -122,7 +197,7 @@ export type NexusGenObjectNames = keyof NexusGenObjects;
 
 export type NexusGenInputNames = never;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = keyof NexusGenEnums;
 
 export type NexusGenInterfaceNames = never;
 
