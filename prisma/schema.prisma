@@ -22,7 +22,7 @@ model User {
 model JobOffer {
   id            Int @id @default(autoincrement())
   title         String
-  visibilty     Boolean
+  visibility     Boolean
   place         String?
   sector        String?
   startDate     DateTime @default(now()) @db.Timestamptz(3)

@@ -4,24 +4,25 @@ const User = objectType({
   name: 'User',
   definition(t) {
     t.nonNull.id('id', {
-      description: "user's unique identifier",
+      description: "User's unique identifier",
     });
     t.nonNull.string('email', {
-      description: "user's email address",
+      description: "User's email address",
     });
     t.nonNull.string('name', {
-      description: "user's full name",
+      description: "User's full name",
     });
     t.nonNull.string('password', {
-      description: "user's password",
+      description: "User's password",
     });
     t.nonNull.list.int('role', {
-      description: "an array of user's role numbers",
+      description: "An array of user's role numbers",
     });
     t.list.field('jobOffers', {
       type: 'JobOffer',
-      resolve: async (parent, args, { db }) => {
-        const authorId = parseInt(parent.id, 10);
+      description: 'Job offers added by the user',
+      resolve: async (parent, _, { db }) => {
+        const authorId = parent.id;
         return db.jobOffer.findMany({
           where: { authorId },
         });

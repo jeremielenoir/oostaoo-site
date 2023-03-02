@@ -32,10 +32,9 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  FilterJobOfferBy: "startDate" | "visibility"
-  SortJobOfferBy: "id" | "startDate" | "title"
+  SortJobOffersBy: "id" | "startDate" | "title"
   SortOrder: "asc" | "desc"
-  SortUserBy: "email" | "id" | "name"
+  SortUsersBy: "email" | "id" | "name"
 }
 
 export interface NexusGenScalars {
@@ -49,20 +48,31 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   JobOffer: { // root type
-    authorId?: number | null; // Int
+    authorId: number; // Int!
     id: string; // ID!
     linkedInLink?: string | null; // String
     place?: string | null; // String
     sector?: string | null; // String
-    service?: string | null; // String
-    serviceId?: number | null; // Int
-    skills?: string | null; // String
-    startDate: string; // String!
+    serviceId: number; // Int!
+    startDate: NexusGenScalars['DateTime']; // DateTime!
     title: string; // String!
-    visibilty: boolean; // Boolean!
+    visibility: boolean; // Boolean!
   }
   Mutation: {};
   Query: {};
+  Service: { // root type
+    description?: string | null; // String
+    id: string; // ID!
+    title: string; // String!
+    visibility: string; // String!
+  }
+  Skill: { // root type
+    description?: string | null; // String
+    id: string; // ID!
+    logo?: string | null; // String
+    title: string; // String!
+    visibility: string; // String!
+  }
   User: { // root type
     email: string; // String!
     id: string; // ID!
@@ -84,17 +94,18 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnu
 
 export interface NexusGenFieldTypes {
   JobOffer: { // field return type
-    authorId: number | null; // Int
+    author: NexusGenRootTypes['User'] | null; // User
+    authorId: number; // Int!
     id: string; // ID!
     linkedInLink: string | null; // String
     place: string | null; // String
     sector: string | null; // String
-    service: string | null; // String
-    serviceId: number | null; // Int
-    skills: string | null; // String
-    startDate: string; // String!
+    service: NexusGenRootTypes['Service'] | null; // Service
+    serviceId: number; // Int!
+    skills: NexusGenRootTypes['Skill'] | null; // Skill
+    startDate: NexusGenScalars['DateTime']; // DateTime!
     title: string; // String!
-    visibilty: boolean; // Boolean!
+    visibility: boolean; // Boolean!
   }
   Mutation: { // field return type
     createUser: NexusGenRootTypes['User'] | null; // User
@@ -102,10 +113,29 @@ export interface NexusGenFieldTypes {
     updateUser: NexusGenRootTypes['User'] | null; // User
   }
   Query: { // field return type
-    hello: string | null; // String
+    jobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
     jobOffers: Array<NexusGenRootTypes['JobOffer'] | null> | null; // [JobOffer]
+    service: NexusGenRootTypes['Service'] | null; // Service
+    services: Array<NexusGenRootTypes['Service'] | null> | null; // [Service]
+    skill: NexusGenRootTypes['Skill'] | null; // Skill
+    skills: Array<NexusGenRootTypes['Skill'] | null> | null; // [Skill]
     user: NexusGenRootTypes['User'] | null; // User
     users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
+  }
+  Service: { // field return type
+    description: string | null; // String
+    id: string; // ID!
+    jobOffers: Array<NexusGenRootTypes['JobOffer'] | null> | null; // [JobOffer]
+    title: string; // String!
+    visibility: string; // String!
+  }
+  Skill: { // field return type
+    description: string | null; // String
+    id: string; // ID!
+    jobOffers: Array<NexusGenRootTypes['JobOffer'] | null> | null; // [JobOffer]
+    logo: string | null; // String
+    title: string; // String!
+    visibility: string; // String!
   }
   User: { // field return type
     email: string; // String!
@@ -119,17 +149,18 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   JobOffer: { // field return type name
+    author: 'User'
     authorId: 'Int'
     id: 'ID'
     linkedInLink: 'String'
     place: 'String'
     sector: 'String'
-    service: 'String'
+    service: 'Service'
     serviceId: 'Int'
-    skills: 'String'
-    startDate: 'String'
+    skills: 'Skill'
+    startDate: 'DateTime'
     title: 'String'
-    visibilty: 'Boolean'
+    visibility: 'Boolean'
   }
   Mutation: { // field return type name
     createUser: 'User'
@@ -137,10 +168,29 @@ export interface NexusGenFieldTypeNames {
     updateUser: 'User'
   }
   Query: { // field return type name
-    hello: 'String'
+    jobOffer: 'JobOffer'
     jobOffers: 'JobOffer'
+    service: 'Service'
+    services: 'Service'
+    skill: 'Skill'
+    skills: 'Skill'
     user: 'User'
     users: 'User'
+  }
+  Service: { // field return type name
+    description: 'String'
+    id: 'ID'
+    jobOffers: 'JobOffer'
+    title: 'String'
+    visibility: 'String'
+  }
+  Skill: { // field return type name
+    description: 'String'
+    id: 'ID'
+    jobOffers: 'JobOffer'
+    logo: 'String'
+    title: 'String'
+    visibility: 'String'
   }
   User: { // field return type name
     email: 'String'
@@ -172,17 +222,30 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
+    jobOffer: { // args
+      id: string; // String!
+    }
     jobOffers: { // args
-      FilterJobOfferBy: NexusGenEnums['FilterJobOfferBy'] | null; // FilterJobOfferBy
-      sortJobOfferBy: NexusGenEnums['SortJobOfferBy'] | null; // SortJobOfferBy
+      limit: number | null; // Int
+      offset?: number | null; // Int
+      showPrivate?: boolean | null; // Boolean
+      sortBy: NexusGenEnums['SortJobOffersBy'] | null; // SortJobOffersBy
       sortOrder: NexusGenEnums['SortOrder'] | null; // SortOrder
+    }
+    service: { // args
+      id: string; // String!
+    }
+    skill: { // args
+      id: string; // String!
     }
     user: { // args
       id: string; // String!
     }
     users: { // args
+      limit: number | null; // Int
+      offset?: number | null; // Int
+      sortBy: NexusGenEnums['SortUsersBy'] | null; // SortUsersBy
       sortOrder: NexusGenEnums['SortOrder'] | null; // SortOrder
-      sortUserBy: NexusGenEnums['SortUserBy'] | null; // SortUserBy
     }
   }
 }

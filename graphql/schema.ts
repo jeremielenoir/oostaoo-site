@@ -6,32 +6,28 @@ import {
   Mutation,
   User,
   JobOffer,
+  Service,
+  Skill,
 } from './types';
 
-export const DateTime = asNexusMethod(DateTimeResolver, 'DateTime');
+const DateTime = asNexusMethod(DateTimeResolver, 'DateTime');
 
 const SortOrder = enumType({
   name: 'SortOrder',
-  description: 'Sort order',
+  description: 'Sort order types',
   members: ['asc', 'desc'],
 });
 
-const SortUserBy = enumType({
-  name: 'SortUserBy',
+const SortUsersBy = enumType({
+  name: 'SortUsersBy',
   description: 'Sort users by a field',
   members: ['id', 'name', 'email'],
 });
 
-const SortJobOfferBy = enumType({
-  name: 'SortJobOfferBy',
+const SortJobOffersBy = enumType({
+  name: 'SortJobOffersBy',
   description: 'Sort job offers by a field',
   members: ['id', 'startDate', 'title'],
-});
-
-const FilterJobOfferBy = enumType({
-  name: 'FilterJobOfferBy',
-  description: 'Filter job offers by a field',
-  members: ['visibility', 'startDate'],
 });
 
 export default makeSchema({
@@ -40,11 +36,12 @@ export default makeSchema({
     Mutation,
     User,
     JobOffer,
+    Service,
+    Skill,
     DateTime,
-    SortUserBy,
-    SortJobOfferBy,
+    SortUsersBy,
+    SortJobOffersBy,
     SortOrder,
-    FilterJobOfferBy,
   ],
   outputs: {
     schema: path.join(process.cwd(), 'graphql/schema.graphql'),

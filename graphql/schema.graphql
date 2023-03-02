@@ -7,24 +7,42 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
-"""Filter job offers by a field"""
-enum FilterJobOfferBy {
-  startDate
-  visibility
-}
-
 type JobOffer {
-  authorId: Int
+  """Author user of the job offer"""
+  author: User
+
+  """User identifier of the job offer author"""
+  authorId: Int!
+
+  """Unique identifier for the job offer"""
   id: ID!
+
+  """LinkedIn link of the job offer"""
   linkedInLink: String
+
+  """Place of the job offer"""
   place: String
+
+  """Sector of the job offer"""
   sector: String
-  service: String
-  serviceId: Int
-  skills: String
-  startDate: String!
+
+  """Service of the job offer"""
+  service: Service
+
+  """Service identifier of the job offer"""
+  serviceId: Int!
+
+  """Skills list asked to get the job offer"""
+  skills: Skill
+
+  """Start date of the job offer"""
+  startDate: DateTime!
+
+  """Title of the job offer"""
   title: String!
-  visibilty: Boolean!
+
+  """Visibility boolean of the job offer"""
+  visibility: Boolean!
 }
 
 type Mutation {
@@ -34,46 +52,89 @@ type Mutation {
 }
 
 type Query {
-  hello: String
-  jobOffers(FilterJobOfferBy: FilterJobOfferBy = visibility, sortJobOfferBy: SortJobOfferBy = title, sortOrder: SortOrder = asc): [JobOffer]
+  jobOffer(id: String!): JobOffer
+  jobOffers(limit: Int = 20, offset: Int = 0, showPrivate: Boolean = false, sortBy: SortJobOffersBy = startDate, sortOrder: SortOrder = desc): [JobOffer]
+  service(id: String!): Service
+  services: [Service]
+  skill(id: String!): Skill
+  skills: [Skill]
   user(id: String!): User
-  users(sortOrder: SortOrder = asc, sortUserBy: SortUserBy = name): [User]
+  users(limit: Int = 20, offset: Int = 0, sortBy: SortUsersBy = name, sortOrder: SortOrder = asc): [User]
+}
+
+type Service {
+  """Service's description"""
+  description: String
+
+  """Service's unique identifier"""
+  id: ID!
+
+  """Service's job offers"""
+  jobOffers: [JobOffer]
+
+  """Service's title"""
+  title: String!
+
+  """Service's visibility"""
+  visibility: String!
+}
+
+type Skill {
+  """Skill's description"""
+  description: String
+
+  """Skill's unique identifier"""
+  id: ID!
+
+  """Service's job offers"""
+  jobOffers: [JobOffer]
+
+  """Skill's image"""
+  logo: String
+
+  """Skill's title"""
+  title: String!
+
+  """Skill's visibility"""
+  visibility: String!
 }
 
 """Sort job offers by a field"""
-enum SortJobOfferBy {
+enum SortJobOffersBy {
   id
   startDate
   title
 }
 
-"""Sort order"""
+"""Sort order types"""
 enum SortOrder {
   asc
   desc
 }
 
 """Sort users by a field"""
-enum SortUserBy {
+enum SortUsersBy {
   email
   id
   name
 }
 
 type User {
-  """user's email address"""
+  """User's email address"""
   email: String!
 
-  """user's unique identifier"""
+  """User's unique identifier"""
   id: ID!
+
+  """Job offers added by the user"""
   jobOffers: [JobOffer]
 
-  """user's full name"""
+  """User's full name"""
   name: String!
 
-  """user's password"""
+  """User's password"""
   password: String!
 
-  """an array of user's role numbers"""
+  """An array of user's role numbers"""
   role: [Int]!
 }
