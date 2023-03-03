@@ -1,8 +1,9 @@
 import { asNexusMethod, enumType, makeSchema } from 'nexus';
 import * as path from 'path';
 import { DateTimeResolver } from 'graphql-scalars';
+import Queries from './types/queries';
+
 import {
-  Query,
   Mutation,
   User,
   JobOffer,
@@ -32,7 +33,7 @@ const SortJobOffersBy = enumType({
 
 export default makeSchema({
   types: [
-    Query,
+    ...Queries,
     Mutation,
     User,
     JobOffer,

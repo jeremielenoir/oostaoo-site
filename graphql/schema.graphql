@@ -55,9 +55,9 @@ type Query {
   jobOffer(id: String!): JobOffer
   jobOffers(limit: Int = 20, offset: Int = 0, showPrivate: Boolean = false, sortBy: SortJobOffersBy = startDate, sortOrder: SortOrder = desc): [JobOffer]
   service(id: String!): Service
-  services: [Service]
+  services(showPrivate: Boolean = false, sortOrder: SortOrder = asc): [Service]
   skill(id: String!): Skill
-  skills: [Skill]
+  skills(showPrivate: Boolean = false, sortOrder: SortOrder = asc): [Skill]
   user(id: String!): User
   users(limit: Int = 20, offset: Int = 0, sortBy: SortUsersBy = name, sortOrder: SortOrder = asc): [User]
 }

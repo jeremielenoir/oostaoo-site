@@ -235,8 +235,16 @@ export interface NexusGenArgTypes {
     service: { // args
       id: string; // String!
     }
+    services: { // args
+      showPrivate?: boolean | null; // Boolean
+      sortOrder: NexusGenEnums['SortOrder'] | null; // SortOrder
+    }
     skill: { // args
       id: string; // String!
+    }
+    skills: { // args
+      showPrivate?: boolean | null; // Boolean
+      sortOrder: NexusGenEnums['SortOrder'] | null; // SortOrder
     }
     user: { // args
       id: string; // String!

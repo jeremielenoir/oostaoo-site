@@ -22,7 +22,7 @@ model User {
 model JobOffer {
   id            Int @id @default(autoincrement())
   title         String
-  visibility     Boolean
+  visibility    Boolean
   place         String?
   sector        String?
   startDate     DateTime @default(now()) @db.Timestamptz(3)
@@ -40,7 +40,7 @@ model JobOffer {
 model Service {
   id          Int @id @default(autoincrement())
   title       String
-  visibilty   Boolean
+  visibility  Boolean
   description String?
   jobOffers   JobOffer[] 
 }
@@ -48,7 +48,7 @@ model Service {
 model Skill {
   id          Int @id @default(autoincrement())
   title       String
-  visibilty   Boolean
+  visibility  Boolean
   description String?
   logo        String?
   jobOffer    JobOffer[]

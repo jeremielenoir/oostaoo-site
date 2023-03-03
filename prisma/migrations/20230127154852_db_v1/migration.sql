@@ -13,7 +13,7 @@ CREATE TABLE "User" (
 CREATE TABLE "JobOffer" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
-    "visibilty" BOOLEAN NOT NULL,
+    "visibility" BOOLEAN NOT NULL,
     "place" TEXT,
     "sector" TEXT,
     "startDate" TIMESTAMPTZ(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -31,7 +31,7 @@ CREATE TABLE "JobOffer" (
 CREATE TABLE "Service" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
-    "visibilty" BOOLEAN NOT NULL,
+    "visibility" BOOLEAN NOT NULL,
     "description" TEXT,
 
     CONSTRAINT "Service_pkey" PRIMARY KEY ("id")
@@ -41,7 +41,7 @@ CREATE TABLE "Service" (
 CREATE TABLE "Skill" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
-    "visibilty" BOOLEAN NOT NULL,
+    "visibility" BOOLEAN NOT NULL,
     "description" TEXT,
     "logo" TEXT,
 
