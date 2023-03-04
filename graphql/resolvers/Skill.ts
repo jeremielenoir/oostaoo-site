@@ -18,6 +18,8 @@ const Skill = objectType({
     t.string('logo', {
       description: "Skill's image",
     });
+
+    // TODO : find the way to get the jobOffers list with Prisma ManyToMany
     t.list.field('jobOffers', {
       type: 'JobOffer',
       description: "Service's job offers",

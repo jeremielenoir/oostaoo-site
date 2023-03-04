@@ -46,8 +46,17 @@ type JobOffer {
 }
 
 type Mutation {
+  createJobOffer(authorId: Int!, content: String!, linkedInLink: String, place: String, sector: String, serviceId: Int!, startDate: DateTime!, title: String!, visibility: Boolean!): JobOffer
+  createService(description: String, title: String!, visibility: Boolean!): Service
+  createSkill(description: String, logo: String, title: String!, visibility: Boolean!): Skill
   createUser(email: String!, name: String!, password: String!, role: Int): User
+  deleteJobOffer(id: ID!): JobOffer
+  deleteService(id: ID!): Service
+  deleteSkill(id: ID!): Skill
   deleteUser(id: ID!): User
+  updateJobOffer(authorId: Int, content: String, id: ID!, linkedInLink: String, place: String, sector: String, serviceId: Int, startDate: String, title: String, visibility: Boolean): JobOffer
+  updateService(description: String, id: ID!, title: String, visibility: Boolean): Service
+  updateSkill(description: String, id: ID!, logo: String, title: String, visibility: Boolean): Skill
   updateUser(email: String, id: ID!, name: String, password: String, role: Int): User
 }
 

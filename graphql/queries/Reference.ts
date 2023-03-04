@@ -5,8 +5,8 @@ import {
 export default extendType({
   type: 'Query',
   definition(t) {
-    t.list.field('skills', {
-      type: 'Skill',
+    t.list.field('references', {
+      type: 'Reference',
       args: {
         sortOrder: arg({ type: 'SortOrder', default: 'asc' }),
         showPrivate: booleanArg({ default: false }),
@@ -19,19 +19,19 @@ export default extendType({
       }),
     });
 
-    t.field('skill', {
-      type: 'Skill',
+    t.field('reference', {
+      type: 'Reference',
       args: {
         id: nonNull(stringArg()),
       },
       resolve: async (_, { id }, { db }) => {
-        const skill = await db.reference.findUnique({ where: { id: parseInt(id, 10) } });
+        const reference = await db.reference.findUnique({ where: { id: parseInt(id, 10) } });
 
-        if (!skill) {
-          throw new Error(`SKill with id ${id} not found`);
+        if (!reference) {
+          throw new Error(`Reference with id ${id} not found`);
         }
 
-        return skill;
+        return reference;
       },
     });
   },

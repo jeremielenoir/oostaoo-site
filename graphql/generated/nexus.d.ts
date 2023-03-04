@@ -108,8 +108,17 @@ export interface NexusGenFieldTypes {
     visibility: boolean; // Boolean!
   }
   Mutation: { // field return type
+    createJobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
+    createService: NexusGenRootTypes['Service'] | null; // Service
+    createSkill: NexusGenRootTypes['Skill'] | null; // Skill
     createUser: NexusGenRootTypes['User'] | null; // User
+    deleteJobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
+    deleteService: NexusGenRootTypes['Service'] | null; // Service
+    deleteSkill: NexusGenRootTypes['Skill'] | null; // Skill
     deleteUser: NexusGenRootTypes['User'] | null; // User
+    updateJobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
+    updateService: NexusGenRootTypes['Service'] | null; // Service
+    updateSkill: NexusGenRootTypes['Skill'] | null; // Skill
     updateUser: NexusGenRootTypes['User'] | null; // User
   }
   Query: { // field return type
@@ -163,8 +172,17 @@ export interface NexusGenFieldTypeNames {
     visibility: 'Boolean'
   }
   Mutation: { // field return type name
+    createJobOffer: 'JobOffer'
+    createService: 'Service'
+    createSkill: 'Skill'
     createUser: 'User'
+    deleteJobOffer: 'JobOffer'
+    deleteService: 'Service'
+    deleteSkill: 'Skill'
     deleteUser: 'User'
+    updateJobOffer: 'JobOffer'
+    updateService: 'Service'
+    updateSkill: 'Skill'
     updateUser: 'User'
   }
   Query: { // field return type name
@@ -204,14 +222,70 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    createJobOffer: { // args
+      authorId: number; // Int!
+      content: string; // String!
+      linkedInLink?: string | null; // String
+      place?: string | null; // String
+      sector?: string | null; // String
+      serviceId: number; // Int!
+      startDate: NexusGenScalars['DateTime']; // DateTime!
+      title: string; // String!
+      visibility: boolean; // Boolean!
+    }
+    createService: { // args
+      description?: string | null; // String
+      title: string; // String!
+      visibility: boolean; // Boolean!
+    }
+    createSkill: { // args
+      description?: string | null; // String
+      logo?: string | null; // String
+      title: string; // String!
+      visibility: boolean; // Boolean!
+    }
     createUser: { // args
       email: string; // String!
       name: string; // String!
       password: string; // String!
       role?: number | null; // Int
     }
+    deleteJobOffer: { // args
+      id: string; // ID!
+    }
+    deleteService: { // args
+      id: string; // ID!
+    }
+    deleteSkill: { // args
+      id: string; // ID!
+    }
     deleteUser: { // args
       id: string; // ID!
+    }
+    updateJobOffer: { // args
+      authorId?: number | null; // Int
+      content?: string | null; // String
+      id: string; // ID!
+      linkedInLink?: string | null; // String
+      place?: string | null; // String
+      sector?: string | null; // String
+      serviceId?: number | null; // Int
+      startDate?: string | null; // String
+      title?: string | null; // String
+      visibility?: boolean | null; // Boolean
+    }
+    updateService: { // args
+      description?: string | null; // String
+      id: string; // ID!
+      title?: string | null; // String
+      visibility?: boolean | null; // Boolean
+    }
+    updateSkill: { // args
+      description?: string | null; // String
+      id: string; // ID!
+      logo?: string | null; // String
+      title?: string | null; // String
+      visibility?: boolean | null; // Boolean
     }
     updateUser: { // args
       email?: string | null; // String

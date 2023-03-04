@@ -1,8 +1,9 @@
 import {
-  mutationType, nonNull, stringArg, intArg, idArg,
+  extendType, nonNull, stringArg, intArg, idArg,
 } from 'nexus';
 
-const Mutation = mutationType({
+export default extendType({
+  type: 'Mutation',
   definition(t) {
     t.field('createUser', {
       type: 'User',
@@ -24,15 +25,6 @@ const Mutation = mutationType({
           });
         } catch (error) {
           throw Error(`${error}`);
-
-          // throw new GraphQLError(`${error}`, {
-          //   extensions: {
-          //     code: ApolloServerErrorCode.INTERNAL_SERVER_ERROR,
-          //     http: {
-          //       status: 500,
-          //     },
-          //   },
-          // });
         }
       },
     });
@@ -49,7 +41,7 @@ const Mutation = mutationType({
       resolve: (_, args, { db }) => {
         try {
           const id = Number(args.id);
-          return db.user.update({
+          const user = db.user.update({
             where: { id },
             data: {
               email: args.email || undefined,
@@ -58,6 +50,12 @@ const Mutation = mutationType({
               role: args.role || undefined,
             },
           });
+
+          if (!user) {
+            throw new Error(`User with id = ${id} not found`);
+          }
+
+          return user;
         } catch (error) {
           throw Error(`${error}`);
         }
@@ -72,9 +70,13 @@ const Mutation = mutationType({
       resolve: (_, args, { db }) => {
         try {
           const id = Number(args.id);
-          return db.user.delete({
-            where: { id },
-          });
+          const user = db.user.delete({ where: { id } });
+
+          if (!user) {
+            throw new Error(`User with id = ${id} not found`);
+          }
+
+          return user;
         } catch (error) {
           throw Error(`${error}`);
         }
@@ -82,5 +84,3 @@ const Mutation = mutationType({
     });
   },
 });
-
-export default Mutation;
