@@ -54,6 +54,7 @@ type Mutation {
   deleteService(id: ID!): Service
   deleteSkill(id: ID!): Skill
   deleteUser(id: ID!): User
+  login(email: String!, password: String!): User
   updateJobOffer(authorId: Int, content: String, id: ID!, linkedInLink: String, place: String, sector: String, serviceId: Int, startDate: String, title: String, visibility: Boolean): JobOffer
   updateService(description: String, id: ID!, title: String, visibility: Boolean): Service
   updateSkill(description: String, id: ID!, logo: String, title: String, visibility: Boolean): Skill

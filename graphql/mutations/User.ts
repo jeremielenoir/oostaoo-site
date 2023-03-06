@@ -1,6 +1,9 @@
+import bcrypt from 'bcrypt';
 import {
   extendType, nonNull, stringArg, intArg, idArg,
 } from 'nexus';
+
+const saltRounds = 10;
 
 export default extendType({
   type: 'Mutation',
@@ -13,13 +16,16 @@ export default extendType({
         password: nonNull(stringArg()),
         role: intArg(),
       },
-      resolve: (_, args, { db }) => {
+      resolve: async (_, args, { db }) => {
         try {
+          const foundUser = await db.user.findUnique({ where: { email: args.email } });
+          if (foundUser) throw new Error('A user with this email already exists');
+
           return db.user.create({
             data: {
               email: args.email,
               name: args.name,
-              password: args.password,
+              password: bcrypt.hashSync(args.password, saltRounds),
               role: args.role || undefined,
             },
           });
@@ -38,24 +44,36 @@ export default extendType({
         password: stringArg(),
         role: intArg(),
       },
-      resolve: (_, args, { db }) => {
+      resolve: async (_, args, { db }) => {
         try {
           const id = Number(args.id);
-          const user = db.user.update({
+
+          const foundUser = await db.user.findUnique({ where: { id } });
+          if (!foundUser) {
+            throw new Error(`User with id = ${id} not found`);
+          }
+
+          if (args.email) {
+            const foundUserWithSameEmail = await db.user.findMany({
+              where: {
+                email: args.email,
+                NOT: { id },
+              },
+            });
+            if (foundUserWithSameEmail.length !== 0) {
+              throw new Error('A user with this email already exists');
+            }
+          }
+
+          return db.user.update({
             where: { id },
             data: {
               email: args.email || undefined,
               name: args.name || undefined,
-              password: args.password || undefined,
+              password: args.password ? bcrypt.hashSync(args.password, saltRounds) : undefined,
               role: args.role || undefined,
             },
           });
-
-          if (!user) {
-            throw new Error(`User with id = ${id} not found`);
-          }
-
-          return user;
         } catch (error) {
           throw Error(`${error}`);
         }
@@ -67,10 +85,10 @@ export default extendType({
       args: {
         id: nonNull(idArg()),
       },
-      resolve: (_, args, { db }) => {
+      resolve: async (_, args, { db }) => {
         try {
           const id = Number(args.id);
-          const user = db.user.delete({ where: { id } });
+          const user = await db.user.delete({ where: { id } });
 
           if (!user) {
             throw new Error(`User with id = ${id} not found`);

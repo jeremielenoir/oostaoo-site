@@ -116,6 +116,7 @@ export interface NexusGenFieldTypes {
     deleteService: NexusGenRootTypes['Service'] | null; // Service
     deleteSkill: NexusGenRootTypes['Skill'] | null; // Skill
     deleteUser: NexusGenRootTypes['User'] | null; // User
+    login: NexusGenRootTypes['User'] | null; // User
     updateJobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
     updateService: NexusGenRootTypes['Service'] | null; // Service
     updateSkill: NexusGenRootTypes['Skill'] | null; // Skill
@@ -180,6 +181,7 @@ export interface NexusGenFieldTypeNames {
     deleteService: 'Service'
     deleteSkill: 'Skill'
     deleteUser: 'User'
+    login: 'User'
     updateJobOffer: 'JobOffer'
     updateService: 'Service'
     updateSkill: 'Skill'
@@ -261,6 +263,10 @@ export interface NexusGenArgTypes {
     }
     deleteUser: { // args
       id: string; // ID!
+    }
+    login: { // args
+      email: string; // String!
+      password: string; // String!
     }
     updateJobOffer: { // args
       authorId?: number | null; // Int
