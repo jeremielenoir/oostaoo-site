@@ -1,3 +1,5 @@
+import { GraphQLError } from 'graphql';
+import { ApolloServerErrorCode } from '@apollo/server/errors';
 import {
   extendType, nonNull, stringArg, intArg, idArg, booleanArg,
 } from 'nexus';
@@ -18,25 +20,19 @@ export default extendType({
         authorId: nonNull(intArg()),
         serviceId: nonNull(intArg()),
       },
-      resolve: (_, args, { db }) => {
-        try {
-          return db.jobOffer.create({
-            data: {
-              title: args.title,
-              visibility: args.visibility,
-              place: args.place || undefined,
-              sector: args.sector || undefined,
-              startDate: args.startDate,
-              content: args.content,
-              linkedInLink: args.linkedInLink || undefined,
-              authorId: args.authorId,
-              serviceId: args.serviceId,
-            },
-          });
-        } catch (error) {
-          throw Error(`${error}`);
-        }
-      },
+      resolve: async (_, args, { db }) => db.jobOffer.create({
+        data: {
+          title: args.title,
+          visibility: args.visibility,
+          place: args.place || undefined,
+          sector: args.sector || undefined,
+          startDate: args.startDate,
+          content: args.content,
+          linkedInLink: args.linkedInLink || undefined,
+          authorId: args.authorId,
+          serviceId: args.serviceId,
+        },
+      }),
     });
 
     t.field('updateJobOffer', {
@@ -53,32 +49,32 @@ export default extendType({
         authorId: intArg(),
         serviceId: intArg(),
       },
-      resolve: (_, args, { db }) => {
-        try {
-          const id = Number(args.id);
-          const jobOffer = db.jobOffer.update({
-            where: { id },
-            data: {
-              title: args.title || undefined,
-              visibility: args.visibility || undefined,
-              place: args.place || undefined,
-              sector: args.sector || undefined,
-              startDate: args.startDate || undefined,
-              content: args.content || undefined,
-              linkedInLink: args.linkedInLink || undefined,
-              authorId: args.authorId || undefined,
-              serviceId: args.serviceId || undefined,
+      resolve: async (_, args, { db }) => {
+        const id = parseInt(args.id, 10);
+        const jobOffer = await db.jobOffer.update({
+          where: { id },
+          data: {
+            title: args.title || undefined,
+            visibility: args.visibility || undefined,
+            place: args.place || undefined,
+            sector: args.sector || undefined,
+            startDate: args.startDate || undefined,
+            content: args.content || undefined,
+            linkedInLink: args.linkedInLink || undefined,
+            authorId: args.authorId || undefined,
+            serviceId: args.serviceId || undefined,
+          },
+        });
+
+        if (!jobOffer) {
+          throw new GraphQLError(`JobOffer with id = ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
             },
           });
-
-          if (!jobOffer) {
-            throw new Error(`JobOffer with id = ${id} not found`);
-          }
-
-          return jobOffer;
-        } catch (error) {
-          throw Error(`${error}`);
         }
+
+        return jobOffer;
       },
     });
 
@@ -87,19 +83,19 @@ export default extendType({
       args: {
         id: nonNull(idArg()),
       },
-      resolve: (_, args, { db }) => {
-        try {
-          const id = Number(args.id);
-          const jobOffer = db.jobOffer.delete({ where: { id } });
+      resolve: async (_, args, { db }) => {
+        const id = parseInt(args.id, 10);
+        const jobOffer = await db.jobOffer.delete({ where: { id } });
 
-          if (!jobOffer) {
-            throw new Error(`JobOffer with id = ${id} not found`);
-          }
-
-          return jobOffer;
-        } catch (error) {
-          throw Error(`${error}`);
+        if (!jobOffer) {
+          throw new GraphQLError(`JobOffer with id = ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
         }
+
+        return jobOffer;
       },
     });
   },

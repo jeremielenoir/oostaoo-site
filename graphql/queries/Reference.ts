@@ -1,3 +1,5 @@
+import { ApolloServerErrorCode } from '@apollo/server/errors';
+import { GraphQLError } from 'graphql';
 import {
   arg, booleanArg, extendType, nonNull, stringArg,
 } from 'nexus';
@@ -15,7 +17,7 @@ export default extendType({
         where: args.showPrivate
           ? undefined
           : { visibility: true },
-        orderBy: { title: args.sortOrder },
+        orderBy: { title: args.sortOrder || 'asc' },
       }),
     });
 
@@ -28,7 +30,11 @@ export default extendType({
         const reference = await db.reference.findUnique({ where: { id: parseInt(id, 10) } });
 
         if (!reference) {
-          throw new Error(`Reference with id ${id} not found`);
+          throw new GraphQLError(`Reference with id ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
         }
 
         return reference;

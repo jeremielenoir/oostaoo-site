@@ -1,3 +1,5 @@
+import { ApolloServerErrorCode } from '@apollo/server/errors';
+import { GraphQLError } from 'graphql'; 
 import {
   extendType, nonNull, stringArg, arg, intArg, booleanArg,
 } from 'nexus';
@@ -39,7 +41,11 @@ export default extendType({
         const jobOffer = await db.jobOffer.findUnique({ where: { id: parseInt(id, 10) } });
 
         if (!jobOffer) {
-          throw new Error(`Job offer with id ${id} not found`);
+          throw new GraphQLError(`Job offer with id ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
         }
 
         return jobOffer;

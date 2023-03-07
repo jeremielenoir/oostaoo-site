@@ -1,3 +1,5 @@
+import { GraphQLError } from 'graphql';
+import { ApolloServerErrorCode } from '@apollo/server/errors';
 import {
   extendType, nonNull, stringArg, idArg, booleanArg,
 } from 'nexus';
@@ -12,19 +14,13 @@ export default extendType({
         visibility: nonNull(booleanArg()),
         description: stringArg(),
       },
-      resolve: (_, args, { db }) => {
-        try {
-          return db.service.create({
-            data: {
-              title: args.title,
-              visibility: args.visibility,
-              description: args.description || undefined,
-            },
-          });
-        } catch (error) {
-          throw Error(`${error}`);
-        }
-      },
+      resolve: async (_, args, { db }) => db.service.create({
+        data: {
+          title: args.title,
+          visibility: args.visibility,
+          description: args.description || undefined,
+        },
+      }),
     });
 
     t.field('updateService', {
@@ -35,26 +31,26 @@ export default extendType({
         visibility: booleanArg(),
         description: stringArg(),
       },
-      resolve: (_, args, { db }) => {
-        try {
-          const id = Number(args.id);
-          const service = db.service.update({
-            where: { id },
-            data: {
-              title: args.title || undefined,
-              visibility: args.visibility || undefined,
-              description: args.description || undefined,
+      resolve: async (_, args, { db }) => {
+        const id = parseInt(args.id, 10);
+        const service = await db.service.update({
+          where: { id },
+          data: {
+            title: args.title || undefined,
+            visibility: args.visibility || undefined,
+            description: args.description || undefined,
+          },
+        });
+
+        if (!service) {
+          throw new GraphQLError(`Service with id = ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
             },
           });
-
-          if (!service) {
-            throw new Error(`Service with id = ${id} not found`);
-          }
-
-          return service;
-        } catch (error) {
-          throw Error(`${error}`);
         }
+
+        return service;
       },
     });
 
@@ -63,19 +59,19 @@ export default extendType({
       args: {
         id: nonNull(idArg()),
       },
-      resolve: (_, args, { db }) => {
-        try {
-          const id = Number(args.id);
-          const service = db.service.delete({ where: { id } });
+      resolve: async (_, args, { db }) => {
+        const id = parseInt(args.id, 10);
+        const service = await db.service.delete({ where: { id } });
 
-          if (!service) {
-            throw new Error(`Service with id = ${id} not found`);
-          }
-
-          return service;
-        } catch (error) {
-          throw Error(`${error}`);
+        if (!service) {
+          throw new GraphQLError(`Service with id = ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
         }
+
+        return service;
       },
     });
   },

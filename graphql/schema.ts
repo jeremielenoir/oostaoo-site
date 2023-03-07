@@ -1,11 +1,13 @@
 import { asNexusMethod, enumType, makeSchema } from 'nexus';
-import * as path from 'path';
+import path from 'path';
 import { DateTimeResolver } from 'graphql-scalars';
 import Queries from './queries';
 import Mutations from './mutations';
+import { LoginUserType } from './mutations/User';
 
 import {
   User,
+  // LoginUser,
   JobOffer,
   Service,
   Skill,
@@ -36,6 +38,7 @@ export default makeSchema({
     ...Queries,
     ...Mutations,
     User,
+    LoginUserType,
     JobOffer,
     Service,
     Skill,
@@ -45,11 +48,11 @@ export default makeSchema({
     SortOrder,
   ],
   outputs: {
-    schema: path.join(process.cwd(), 'graphql/schema.graphql'),
-    typegen: path.join(process.cwd(), 'graphql/generated/nexus.d.ts'),
+    schema: path.join(process.cwd(), 'graphql/schema.gen.graphql'),
+    typegen: path.join(process.cwd(), 'graphql/generated/nexusTypes.gen.ts'),
   },
   contextType: {
-    module: path.join(process.cwd(), 'graphql/context.ts'),
+    module: path.join(process.cwd(), 'graphql/contexts/dbContext.ts'),
     export: 'Context',
   },
   sourceTypes: {

@@ -1,3 +1,5 @@
+import { ApolloServerErrorCode } from '@apollo/server/errors';
+import { GraphQLError } from 'graphql';
 import {
   arg, extendType, nonNull, stringArg, booleanArg,
 } from 'nexus';
@@ -15,7 +17,7 @@ export default extendType({
         where: args.showPrivate
           ? undefined
           : { visibility: true },
-        orderBy: { title: args.sortOrder },
+        orderBy: { title: args.sortOrder || 'asc' },
       }),
     });
 
@@ -28,7 +30,11 @@ export default extendType({
         const service = await db.service.findUnique({ where: { id: parseInt(id, 10) } });
 
         if (!service) {
-          throw new Error(`Service with id ${id} not found`);
+          throw new GraphQLError(`Service with id ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
         }
 
         return service;

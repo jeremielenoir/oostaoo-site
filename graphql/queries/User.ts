@@ -1,3 +1,5 @@
+import { GraphQLError } from 'graphql';
+import { ApolloServerErrorCode } from '@apollo/server/errors';
 import {
   nonNull, stringArg, arg, intArg, extendType,
 } from 'nexus';
@@ -6,7 +8,7 @@ export default extendType({
   type: 'Query',
   definition(t) {
     t.list.field('users', {
-      type: 'User',
+      type: 'User' || null,
       args: {
         sortBy: arg({ type: 'SortUsersBy', default: 'name' }),
         sortOrder: arg({ type: 'SortOrder', default: 'asc' }),
@@ -31,11 +33,16 @@ export default extendType({
       args: {
         id: nonNull(stringArg()),
       },
-      resolve: async (_, { id }, { db }) => {
-        const user = await db.user.findUnique({ where: { id: parseInt(id, 10) } });
+      resolve: async (_, args, { db }) => {
+        const id = parseInt(args.id, 10);
+        const user = await db.user.findUnique({ where: { id } });
 
         if (!user) {
-          throw new Error(`User with id ${id} not found`);
+          throw new GraphQLError(`User with id ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
         }
 
         return user;

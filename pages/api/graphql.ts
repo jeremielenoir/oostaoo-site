@@ -1,25 +1,14 @@
-// import { PrismaClient } from '@prisma/client';
-import { createYoga } from 'graphql-yoga';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { ApolloServer } from '@apollo/server';
+import { startServerAndCreateNextHandler } from '@as-integrations/next';
+import type { NextApiRequest } from 'next';
 
-import context from '../../graphql/context';
-
-// import resolvers from '../../graphql/resolvers/Query';
+import dbContext from '../../graphql/contexts/dbContext';
 import schema from '../../graphql/schema';
 
-export default createYoga<{
-  req: NextApiRequest
-  res: NextApiResponse
-}>({
+const server = new ApolloServer({
   schema,
-  // resolvers,
-  context: async () => context(),
-  graphqlEndpoint: '/api/graphql',
 });
 
-export const config = {
-  api: {
-    // ? Disable body parsing (required for file uploads)
-    bodyParser: false,
-  },
-};
+export default startServerAndCreateNextHandler(server, {
+  context: async (request: NextApiRequest) => dbContext(request),
+});

@@ -19,7 +19,7 @@ const Service = objectType({
       type: 'JobOffer',
       description: "Service's job offers",
       resolve: async (parent, _, { db }) => {
-        const serviceId = parent.id;
+        const serviceId = parseInt(parent.id, 10);
         return db.jobOffer.findMany({
           where: { serviceId },
         });

@@ -32,9 +32,6 @@ type JobOffer {
   """Service identifier of the job offer"""
   serviceId: Int!
 
-  """Skills list asked to get the job offer"""
-  skills: Skill
-
   """Start date of the job offer"""
   startDate: DateTime!
 
@@ -45,20 +42,26 @@ type JobOffer {
   visibility: Boolean!
 }
 
+type LoginUser {
+  """User's connection token"""
+  token: String!
+  user: User!
+}
+
 type Mutation {
   createJobOffer(authorId: Int!, content: String!, linkedInLink: String, place: String, sector: String, serviceId: Int!, startDate: DateTime!, title: String!, visibility: Boolean!): JobOffer
   createService(description: String, title: String!, visibility: Boolean!): Service
   createSkill(description: String, logo: String, title: String!, visibility: Boolean!): Skill
-  createUser(email: String!, name: String!, password: String!, role: Int): User
+  createUser(email: String!, name: String!, password: String!, role: Int!): User
   deleteJobOffer(id: ID!): JobOffer
   deleteService(id: ID!): Service
   deleteSkill(id: ID!): Skill
   deleteUser(id: ID!): User
-  login(email: String!, password: String!): User
+  login(email: String!, password: String!): LoginUser
   updateJobOffer(authorId: Int, content: String, id: ID!, linkedInLink: String, place: String, sector: String, serviceId: Int, startDate: String, title: String, visibility: Boolean): JobOffer
   updateService(description: String, id: ID!, title: String, visibility: Boolean): Service
   updateSkill(description: String, id: ID!, logo: String, title: String, visibility: Boolean): Skill
-  updateUser(email: String, id: ID!, name: String, password: String, role: Int): User
+  updateUser(email: String, id: String!, name: String, password: String, role: Int): User
 }
 
 type Query {
@@ -95,9 +98,6 @@ type Skill {
 
   """Skill's unique identifier"""
   id: ID!
-
-  """Service's job offers"""
-  jobOffers: [JobOffer]
 
   """Skill's image"""
   logo: String
@@ -141,9 +141,6 @@ type User {
 
   """User's full name"""
   name: String!
-
-  """User's password"""
-  password: String!
 
   """An array of user's role numbers"""
   role: [Int]!

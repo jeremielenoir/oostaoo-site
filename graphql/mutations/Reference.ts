@@ -1,3 +1,5 @@
+import { GraphQLError } from 'graphql';
+import { ApolloServerErrorCode } from '@apollo/server/errors';
 import {
   extendType, nonNull, stringArg, idArg, booleanArg,
 } from 'nexus';
@@ -12,19 +14,13 @@ export default extendType({
         visibility: nonNull(booleanArg()),
         logo: stringArg(),
       },
-      resolve: (_, args, { db }) => {
-        try {
-          return db.reference.create({
-            data: {
-              title: args.title,
-              visibility: args.visibility,
-              logo: args.description || undefined,
-            },
-          });
-        } catch (error) {
-          throw Error(`${error}`);
-        }
-      },
+      resolve: async (_, args, { db }) => db.reference.create({
+        data: {
+          title: args.title,
+          visibility: args.visibility,
+          logo: args.description || undefined,
+        },
+      }),
     });
 
     t.field('updateReference', {
@@ -35,26 +31,26 @@ export default extendType({
         visibility: booleanArg(),
         logo: stringArg(),
       },
-      resolve: (_, args, { db }) => {
-        try {
-          const id = Number(args.id);
-          const reference = db.reference.update({
-            where: { id },
-            data: {
-              title: args.title || undefined,
-              visibility: args.visibility || undefined,
-              logo: args.description || undefined,
+      resolve: async (_, args, { db }) => {
+        const id = parseInt(args.id, 10);
+        const reference = await db.reference.update({
+          where: { id },
+          data: {
+            title: args.title || undefined,
+            visibility: args.visibility || undefined,
+            logo: args.description || undefined,
+          },
+        });
+
+        if (!reference) {
+          throw new GraphQLError(`Reference with id = ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
             },
           });
-
-          if (!reference) {
-            throw new Error(`Reference with id = ${id} not found`);
-          }
-
-          return reference;
-        } catch (error) {
-          throw Error(`${error}`);
         }
+
+        return reference;
       },
     });
 
@@ -63,19 +59,19 @@ export default extendType({
       args: {
         id: nonNull(idArg()),
       },
-      resolve: (_, args, { db }) => {
-        try {
-          const id = Number(args.id);
-          const reference = db.reference.delete({ where: { id } });
+      resolve: async (_, args, { db }) => {
+        const id = parseInt(args.id, 10);
+        const reference = await db.reference.delete({ where: { id } });
 
-          if (!reference) {
-            throw new Error(`Reference with id = ${id} not found`);
-          }
-
-          return reference;
-        } catch (error) {
-          throw Error(`${error}`);
+        if (!reference) {
+          throw new GraphQLError(`Reference with id = ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
         }
+
+        return reference;
       },
     });
   },

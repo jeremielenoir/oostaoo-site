@@ -48,14 +48,14 @@ const JobOffer = objectType({
     });
 
     // TODO : find the way to get the skills list with Prisma ManyToMany
-    t.field('skills', {
-      type: 'Skill',
-      description: 'Skills list asked to get the job offer',
-      resolve: async (parent, _, { db }) => {
-        const { id } = parent;
-        return db.service.findUnique({ where: { id } });
-      },
-    });
+    // t.field('skills', {
+    //   type: 'Skill',
+    //   description: 'Skills list asked to get the job offer',
+    //   resolve: async (parent, _, { db }) => {
+    //     const { id } = parent;
+    //     return db.service.findUnique({ where: { id } });
+    //   },
+    // });
   },
 });
 

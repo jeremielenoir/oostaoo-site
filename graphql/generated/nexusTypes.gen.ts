@@ -4,7 +4,7 @@
  */
 
 
-import type { Context } from "./../context"
+import type { Context } from "./../contexts/dbContext"
 import type { core } from "nexus"
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
@@ -58,6 +58,10 @@ export interface NexusGenObjects {
     title: string; // String!
     visibility: boolean; // Boolean!
   }
+  LoginUser: { // root type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+  }
   Mutation: {};
   Query: {};
   Service: { // root type
@@ -77,7 +81,6 @@ export interface NexusGenObjects {
     email: string; // String!
     id: string; // ID!
     name: string; // String!
-    password: string; // String!
     role: Array<number | null>; // [Int]!
   }
 }
@@ -102,10 +105,13 @@ export interface NexusGenFieldTypes {
     sector: string | null; // String
     service: NexusGenRootTypes['Service'] | null; // Service
     serviceId: number; // Int!
-    skills: NexusGenRootTypes['Skill'] | null; // Skill
     startDate: NexusGenScalars['DateTime']; // DateTime!
     title: string; // String!
     visibility: boolean; // Boolean!
+  }
+  LoginUser: { // field return type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
   }
   Mutation: { // field return type
     createJobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
@@ -116,7 +122,7 @@ export interface NexusGenFieldTypes {
     deleteService: NexusGenRootTypes['Service'] | null; // Service
     deleteSkill: NexusGenRootTypes['Skill'] | null; // Skill
     deleteUser: NexusGenRootTypes['User'] | null; // User
-    login: NexusGenRootTypes['User'] | null; // User
+    login: NexusGenRootTypes['LoginUser'] | null; // LoginUser
     updateJobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
     updateService: NexusGenRootTypes['Service'] | null; // Service
     updateSkill: NexusGenRootTypes['Skill'] | null; // Skill
@@ -142,7 +148,6 @@ export interface NexusGenFieldTypes {
   Skill: { // field return type
     description: string | null; // String
     id: string; // ID!
-    jobOffers: Array<NexusGenRootTypes['JobOffer'] | null> | null; // [JobOffer]
     logo: string | null; // String
     title: string; // String!
     visibility: string; // String!
@@ -152,7 +157,6 @@ export interface NexusGenFieldTypes {
     id: string; // ID!
     jobOffers: Array<NexusGenRootTypes['JobOffer'] | null> | null; // [JobOffer]
     name: string; // String!
-    password: string; // String!
     role: Array<number | null>; // [Int]!
   }
 }
@@ -167,10 +171,13 @@ export interface NexusGenFieldTypeNames {
     sector: 'String'
     service: 'Service'
     serviceId: 'Int'
-    skills: 'Skill'
     startDate: 'DateTime'
     title: 'String'
     visibility: 'Boolean'
+  }
+  LoginUser: { // field return type name
+    token: 'String'
+    user: 'User'
   }
   Mutation: { // field return type name
     createJobOffer: 'JobOffer'
@@ -181,7 +188,7 @@ export interface NexusGenFieldTypeNames {
     deleteService: 'Service'
     deleteSkill: 'Skill'
     deleteUser: 'User'
-    login: 'User'
+    login: 'LoginUser'
     updateJobOffer: 'JobOffer'
     updateService: 'Service'
     updateSkill: 'Skill'
@@ -207,7 +214,6 @@ export interface NexusGenFieldTypeNames {
   Skill: { // field return type name
     description: 'String'
     id: 'ID'
-    jobOffers: 'JobOffer'
     logo: 'String'
     title: 'String'
     visibility: 'String'
@@ -217,7 +223,6 @@ export interface NexusGenFieldTypeNames {
     id: 'ID'
     jobOffers: 'JobOffer'
     name: 'String'
-    password: 'String'
     role: 'Int'
   }
 }
@@ -250,7 +255,7 @@ export interface NexusGenArgTypes {
       email: string; // String!
       name: string; // String!
       password: string; // String!
-      role?: number | null; // Int
+      role: number; // Int!
     }
     deleteJobOffer: { // args
       id: string; // ID!
@@ -295,7 +300,7 @@ export interface NexusGenArgTypes {
     }
     updateUser: { // args
       email?: string | null; // String
-      id: string; // ID!
+      id: string; // String!
       name?: string | null; // String
       password?: string | null; // String
       role?: number | null; // Int

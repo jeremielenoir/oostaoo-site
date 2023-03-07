@@ -1,3 +1,5 @@
+import { GraphQLError } from 'graphql';
+import { ApolloServerErrorCode } from '@apollo/server/errors';
 import {
   arg, booleanArg, extendType, nonNull, stringArg,
 } from 'nexus';
@@ -15,7 +17,7 @@ export default extendType({
         where: args.showPrivate
           ? undefined
           : { visibility: true },
-        orderBy: { title: args.sortOrder },
+        orderBy: { title: args.sortOrder || 'asc' },
       }),
     });
 
@@ -28,7 +30,11 @@ export default extendType({
         const skill = await db.skill.findUnique({ where: { id: parseInt(id, 10) } });
 
         if (!skill) {
-          throw new Error(`SKill with id ${id} not found`);
+          throw new GraphQLError(`Skill with id ${id} not found`, {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
         }
 
         return skill;

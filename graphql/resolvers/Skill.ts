@@ -20,16 +20,16 @@ const Skill = objectType({
     });
 
     // TODO : find the way to get the jobOffers list with Prisma ManyToMany
-    t.list.field('jobOffers', {
-      type: 'JobOffer',
-      description: "Service's job offers",
-      resolve: async (parent, _, { db }) => {
-        const jobOfferId = parent.id;
-        return db.jobOffer.findMany({
-          where: { jobOfferId },
-        });
-      },
-    });
+    // t.list.field('jobOffers', {
+    //   type: 'JobOffer',
+    //   description: "Service's job offers",
+    //   resolve: async (parent, _, { db }) => {
+    //     const jobOfferId = parent.id;
+    //     return db.jobOffer.findMany({
+    //       where: { jobOfferId },
+    //     });
+    //   },
+    // });
   },
 });
 
