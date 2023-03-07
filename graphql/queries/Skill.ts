@@ -32,7 +32,7 @@ export default extendType({
         if (!skill) {
           throw new GraphQLError(`Skill with id ${id} not found`, {
             extensions: {
-              code: ApolloServerErrorCode.BAD_REQUEST,
+              code: ApolloServerErrorCode.BAD_USER_INPUT,
             },
           });
         }

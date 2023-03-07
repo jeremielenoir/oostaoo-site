@@ -38,9 +38,10 @@ export default extendType({
         const user = await db.user.findUnique({ where: { id } });
 
         if (!user) {
-          throw new GraphQLError(`User with id ${id} not found`, {
+          throw new GraphQLError('Invalid argument value', {
             extensions: {
-              code: ApolloServerErrorCode.BAD_REQUEST,
+              code: ApolloServerErrorCode.BAD_USER_INPUT,
+              argumentName: 'id',
             },
           });
         }

@@ -45,7 +45,7 @@ export default extendType({
         if (!service) {
           throw new GraphQLError(`Service with id = ${id} not found`, {
             extensions: {
-              code: ApolloServerErrorCode.BAD_REQUEST,
+              code: ApolloServerErrorCode.BAD_USER_INPUT,
             },
           });
         }
@@ -66,7 +66,7 @@ export default extendType({
         if (!service) {
           throw new GraphQLError(`Service with id = ${id} not found`, {
             extensions: {
-              code: ApolloServerErrorCode.BAD_REQUEST,
+              code: ApolloServerErrorCode.BAD_USER_INPUT,
             },
           });
         }

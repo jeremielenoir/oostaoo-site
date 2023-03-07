@@ -43,7 +43,7 @@ export default extendType({
         if (!jobOffer) {
           throw new GraphQLError(`Job offer with id ${id} not found`, {
             extensions: {
-              code: ApolloServerErrorCode.BAD_REQUEST,
+              code: ApolloServerErrorCode.BAD_USER_INPUT,
             },
           });
         }

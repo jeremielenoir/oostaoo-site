@@ -69,7 +69,7 @@ export default extendType({
         if (!jobOffer) {
           throw new GraphQLError(`JobOffer with id = ${id} not found`, {
             extensions: {
-              code: ApolloServerErrorCode.BAD_REQUEST,
+              code: ApolloServerErrorCode.BAD_USER_INPUT,
             },
           });
         }
@@ -90,7 +90,7 @@ export default extendType({
         if (!jobOffer) {
           throw new GraphQLError(`JobOffer with id = ${id} not found`, {
             extensions: {
-              code: ApolloServerErrorCode.BAD_REQUEST,
+              code: ApolloServerErrorCode.BAD_USER_INPUT,
             },
           });
         }
