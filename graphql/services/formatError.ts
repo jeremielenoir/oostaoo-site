@@ -1,7 +1,7 @@
 import { ApolloServerErrorCode } from '@apollo/server/errors';
 import { GraphQLFormattedError } from 'graphql';
 
-export default (formattedError: GraphQLFormattedError, error: unknown) => {
+export default (formattedError: GraphQLFormattedError) => {
   if (
     formattedError?.extensions?.code ===
     ApolloServerErrorCode.GRAPHQL_VALIDATION_FAILED
