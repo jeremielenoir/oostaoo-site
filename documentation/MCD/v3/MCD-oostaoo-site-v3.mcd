@@ -1,0 +1,19 @@
+USER: user number, email, name, password, role
+:
+WRITE, 0N USER, 11 JOB OFFER
+:::
+DESCRIBE, 0N SERVICE, 11 JOB OFFER
+:
+SERVICE: service number, title, description, is active
+
+BELONG, 0N ROLE, 11 USER
+:::
+JOB OFFER: offer number, title, place, sector, content, linkedIn link, job start date, offer create date, offer update date, is active
+:
+REQUIRE, 0N JOB OFFER, 0N SKILL
+:
+SKILL: skill number, title, logo, description, is active
+
+ROLE: role number, title
+:::::::
+REFERENCE: reference number, name, logo, is active

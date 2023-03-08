@@ -3,60 +3,91 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "./generated/prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  relationMode = "foreignKeys" // https://www.prisma.io/docs/concepts/components/prisma-schema/relations/relationmode
+}
+
+model Role {
+  id            Int         @id @default(autoincrement())
+  title         String      @unique
+  users         User[]
+
+  @@map("role")
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  email     String  @unique
-  name      String
-  password  String
-  role      Int[]
-  jobOffers JobOffer[]
+  id            Int         @id @default(autoincrement())
+  email         String      @unique
+  name          String
+  password      String
+  role          Role        @relation(fields: [roleId], references: [id], onUpdate: Cascade, onDelete: Restrict)
+  roleId        Int         @map("role_id")
+  jobOffers     JobOffer[]
+
+  @@map("user")
 }
 
 model JobOffer {
-  id            Int @id @default(autoincrement())
+  id            Int         @id @default(autoincrement())
   title         String
-  visibilty     Boolean
   place         String?
   sector        String?
-  startDate     DateTime @default(now()) @db.Timestamptz(3)
   content       String
-  linkedInLink  String?
-  createdAt     DateTime @default(now()) @db.Timestamptz(3)
-  updatedAt     DateTime @default(now()) @db.Timestamptz(3)
-  author        User @relation(fields: [authorId], references: [id])
-  authorId      Int
-  service       Service @relation(fields: [serviceId], references: [id])
-  serviceId     Int
-  skills        Skill[]
+  linkedInLink  String?     @map("linkedin_link")
+  startDate     DateTime    @default(now()) @db.Timestamptz(3) @map("start_date")
+  createdAt     DateTime    @default(now()) @db.Timestamptz(3) @map("created_at")
+  updatedAt     DateTime    @updatedAt @db.Timestamptz(3) @map("updated_at")
+  isActive      Boolean     @map("is_active")
+  author        User?       @relation(fields: [authorId], references: [id], onUpdate: Cascade, onDelete: SetNull)
+  authorId      Int?        @map("user_id")
+  service       Service     @relation(fields: [serviceId], references: [id], onUpdate: Cascade, onDelete: Restrict)
+  serviceId     Int         @map("service_id")
+  skills        JobOfferHasSkill[]     
+
+  @@map("job_offer")
 }
 
 model Service {
-  id          Int @id @default(autoincrement())
-  title       String
-  visibilty   Boolean
-  description String?
-  jobOffers   JobOffer[] 
+  id            Int         @id @default(autoincrement())
+  title         String
+  description   String?
+  isActive      Boolean     @map("is_active")
+  jobOffers     JobOffer[]
+
+  @@map("service")
 }
 
 model Skill {
-  id          Int @id @default(autoincrement())
-  title       String
-  visibilty   Boolean
-  description String?
-  logo        String?
-  jobOffer    JobOffer[]
+  id            Int         @id @default(autoincrement())
+  title         String      @unique
+  logo          String?
+  description   String?
+  isActive      Boolean     @map("is_active")
+  jobOffers     JobOfferHasSkill[]
+
+  @@map("skill")
 }
 
 model Reference {
-  id          Int @id @default(autoincrement())
-  title       String
-  visibility  Boolean
-  logo        String?
+  id            Int         @id @default(autoincrement())
+  title         String
+  logo          String?
+  isActive      Boolean     @map("is_active")
+
+  @@map("reference")
+}
+
+model JobOfferHasSkill {
+  id            Int         @id @default(autoincrement())
+  jobOffer      JobOffer    @relation(fields: [jobOfferId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  jobOfferId    Int         @map("job_offer_id")
+  skill         Skill       @relation(fields: [skillId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  skillId       Int         @map("skill_id")
+
+  @@map("job_offer_has_skill")
 }
