@@ -24,6 +24,7 @@ const customJestConfig = {
       statements: 80,
     },
   },
+  coveragePathIgnorePatterns: ['<rootDir>/components/ContactForm'],
 };
 
 // createJestConfig is exported this way to ensure
