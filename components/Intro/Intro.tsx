@@ -1,11 +1,13 @@
-import { FC } from 'react';
-
 import styles from './Intro.module.css';
-import introElements from '../../assets/Intro';
+import { IntroType } from '@/types/dataTypes';
 
-const Intro: FC = () => (
+interface IntroProps {
+  introArray: IntroType[];
+}
+
+const Intro = ({ introArray }: IntroProps) => (
   <div className={styles.container}>
-    {introElements.map((element) => (
+    {introArray.map((element) => (
       <div className={styles.subContainer} key={element.number}>
         <h1>{element.number}</h1>
         <h2>
@@ -17,5 +19,4 @@ const Intro: FC = () => (
     ))}
   </div>
 );
-
 export default Intro;

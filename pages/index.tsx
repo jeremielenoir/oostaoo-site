@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Head from 'next/head';
 
 import JobOffers from '@/components/JobOffers/JobOffers';
@@ -6,11 +7,18 @@ import Services from '@/components/Services/Services';
 import Intro from '@/components/Intro/Intro';
 import HeaderHero from '@/components/HeaderHero/HeaderHero';
 import ContactForm from '@/components/ContactForm/ContactForm';
-
 import SectionReferencesTechnos from '@/components/SectionReferencesTechnos/SectionReferencesTechnos';
+
+import { IntroType, ServicesType } from '@/types/dataTypes';
+
 import styles from './Home.module.css';
 
-const Home = () => (
+interface HomeProps {
+  introArray: IntroType[];
+  servicesArray: ServicesType[];
+}
+
+const Home: FC<HomeProps> = ({ introArray, servicesArray }) => (
   <>
     <Head>
       <title>Oostaoo.com - Bienvenue</title>
@@ -22,8 +30,8 @@ const Home = () => (
     <main className={styles.main}>
       <div className={styles.ghostContainer} id="accueil" />
       <HeaderHero text="Trouvez le talent que vous cherchez" />
-      <Intro />
-      <Services />
+      <Intro introArray={introArray} />
+      <Services servicesArray={servicesArray} />
       <SectionReferencesTechnos section="technos" />
       <SectionReferencesTechnos section="references" />
       <JobOffers />
@@ -32,5 +40,19 @@ const Home = () => (
     </main>
   </>
 );
-
 export default Home;
+
+export async function getStaticProps() {
+  const introData = await import('../assets/data/intro.json');
+  const introArray: IntroType[] = introData.intro;
+
+  const servicesData = await import('../assets/data/services.json');
+  const servicesArray: ServicesType[] = servicesData.services;
+
+  return {
+    props: {
+      introArray,
+      servicesArray,
+    },
+  };
+}
