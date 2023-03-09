@@ -9,7 +9,12 @@ import HeaderHero from '@/components/HeaderHero/HeaderHero';
 import ContactForm from '@/components/ContactForm/ContactForm';
 import SectionReferencesTechnos from '@/components/SectionReferencesTechnos/SectionReferencesTechnos';
 
-import { IntroType, ServicesType, AllTitlesType } from '@/types/dataTypes';
+import {
+  IntroType,
+  ServicesType,
+  AllTitlesType,
+  LogosArrayType,
+} from '@/types/dataTypes';
 
 import styles from './Home.module.css';
 
@@ -17,9 +22,15 @@ interface HomeProps {
   introArray: IntroType[];
   servicesArray: ServicesType[];
   allTitles: AllTitlesType;
+  logosArray: LogosArrayType;
 }
 
-const Home: FC<HomeProps> = ({ introArray, servicesArray, allTitles }) => (
+const Home: FC<HomeProps> = ({
+  introArray,
+  servicesArray,
+  allTitles,
+  logosArray,
+}) => (
   <>
     <Head>
       <title>Oostaoo.com - Bienvenue</title>
@@ -33,10 +44,15 @@ const Home: FC<HomeProps> = ({ introArray, servicesArray, allTitles }) => (
       <HeaderHero text="Trouvez le talent que vous cherchez" />
       <Intro introArray={introArray} />
       <Services servicesArray={servicesArray} title={allTitles.services} />
-      <SectionReferencesTechnos section="technos" title={allTitles.technos} />
+      <SectionReferencesTechnos
+        section="technos"
+        title={allTitles.technos}
+        logos={logosArray.technos}
+      />
       <SectionReferencesTechnos
         section="references"
         title={allTitles.references}
+        logos={logosArray.references}
       />
       <JobOffers title={allTitles.emplois} />
       <HeaderHero text="Contactez-nous !" />
@@ -56,11 +72,15 @@ export async function getStaticProps() {
   const titlesData = await import('../assets/data/titles.json');
   const allTitles: AllTitlesType = titlesData.titles;
 
+  const logosData = await import('../assets/data/logos.json');
+  const logosArray: LogosArrayType = logosData.logos;
+
   return {
     props: {
       introArray,
       servicesArray,
       allTitles,
+      logosArray,
     },
   };
 }

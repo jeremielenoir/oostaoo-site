@@ -22,3 +22,8 @@ export type AllTitlesType = {
   references: TitleType;
   emplois: TitleType;
 };
+
+export type LogosArrayType = {
+  technos: string[];
+  references: string[];
+};
