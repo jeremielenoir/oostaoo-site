@@ -1,20 +1,20 @@
 import { FC } from 'react';
 import Head from 'next/head';
 
-import JobOffers from '@/components/JobOffers/JobOffers';
-import Nav from '@/components/nav/Nav';
-import Services from '@/components/Services/Services';
-import Intro from '@/components/Intro/Intro';
-import HeaderHero from '@/components/HeaderHero/HeaderHero';
-import ContactForm from '@/components/ContactForm/ContactForm';
-import SectionReferencesTechnos from '@/components/SectionReferencesTechnos/SectionReferencesTechnos';
+import JobOffers from '../components/JobOffers/JobOffers';
+import Nav from '../components/nav/Nav';
+import Services from '../components/Services/Services';
+import Intro from '../components/Intro/Intro';
+import HeaderHero from '../components/HeaderHero/HeaderHero';
+import ContactForm from '../components/ContactForm/ContactForm';
+import SectionReferencesTechnos from '../components/SectionReferencesTechnos/SectionReferencesTechnos';
 
 import {
   IntroType,
   ServicesType,
   AllTitlesType,
   LogosArrayType,
-} from '@/types/dataTypes';
+} from '../types/dataTypes';
 
 import styles from './Home.module.css';
 
