@@ -10,3 +10,15 @@ export type ServicesType = {
   title: string;
   description: string;
 };
+
+export type TitleType = {
+  title: string;
+  description: string;
+};
+
+export type AllTitlesType = {
+  services: TitleType;
+  technos: TitleType;
+  references: TitleType;
+  emplois: TitleType;
+};

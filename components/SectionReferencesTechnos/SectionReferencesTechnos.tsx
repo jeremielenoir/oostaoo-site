@@ -1,17 +1,22 @@
 import { FC } from 'react';
 
-import { SectionReferencesTechnosProps } from '@/types/types';
-
 import SectionTitle from '../SectionTitle/SectionTitle';
 import LogosWrapper from '../LogoWrapper/LogosWrapper';
 
-import titles from '../../assets/Titles';
 import logoArray from '../../assets/Logos';
 
 import styles from './SectionReferencesTechnos.module.css';
 
+import { TitleType } from '@/types/dataTypes';
+
+interface SectionReferencesTechnosProps {
+  section: 'technos' | 'references';
+  title: TitleType;
+}
+
 const SectionReferencesTechnos: FC<SectionReferencesTechnosProps> = ({
   section,
+  title,
 }) => (
   <section
     data-testid="sectionReferencesTechnos"
@@ -19,13 +24,9 @@ const SectionReferencesTechnos: FC<SectionReferencesTechnosProps> = ({
     id={section}
   >
     <SectionTitle
-      title={
-        section === 'technos' ? titles.technos.title : titles.references.title
-      }
+      title={section === 'technos' ? title.title : title.title}
       description={
-        section === 'technos'
-          ? titles.technos.description
-          : titles.references.description
+        section === 'technos' ? title.description : title.description
       }
     />
     <LogosWrapper

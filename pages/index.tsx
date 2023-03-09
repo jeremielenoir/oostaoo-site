@@ -9,16 +9,17 @@ import HeaderHero from '@/components/HeaderHero/HeaderHero';
 import ContactForm from '@/components/ContactForm/ContactForm';
 import SectionReferencesTechnos from '@/components/SectionReferencesTechnos/SectionReferencesTechnos';
 
-import { IntroType, ServicesType } from '@/types/dataTypes';
+import { IntroType, ServicesType, AllTitlesType } from '@/types/dataTypes';
 
 import styles from './Home.module.css';
 
 interface HomeProps {
   introArray: IntroType[];
   servicesArray: ServicesType[];
+  allTitles: AllTitlesType;
 }
 
-const Home: FC<HomeProps> = ({ introArray, servicesArray }) => (
+const Home: FC<HomeProps> = ({ introArray, servicesArray, allTitles }) => (
   <>
     <Head>
       <title>Oostaoo.com - Bienvenue</title>
@@ -31,10 +32,13 @@ const Home: FC<HomeProps> = ({ introArray, servicesArray }) => (
       <div className={styles.ghostContainer} id="accueil" />
       <HeaderHero text="Trouvez le talent que vous cherchez" />
       <Intro introArray={introArray} />
-      <Services servicesArray={servicesArray} />
-      <SectionReferencesTechnos section="technos" />
-      <SectionReferencesTechnos section="references" />
-      <JobOffers />
+      <Services servicesArray={servicesArray} title={allTitles.services} />
+      <SectionReferencesTechnos section="technos" title={allTitles.technos} />
+      <SectionReferencesTechnos
+        section="references"
+        title={allTitles.references}
+      />
+      <JobOffers title={allTitles.emplois} />
       <HeaderHero text="Contactez-nous !" />
       <ContactForm />
     </main>
@@ -49,10 +53,14 @@ export async function getStaticProps() {
   const servicesData = await import('../assets/data/services.json');
   const servicesArray: ServicesType[] = servicesData.services;
 
+  const titlesData = await import('../assets/data/titles.json');
+  const allTitles: AllTitlesType = titlesData.titles;
+
   return {
     props: {
       introArray,
       servicesArray,
+      allTitles,
     },
   };
 }
