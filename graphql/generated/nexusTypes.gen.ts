@@ -4,7 +4,7 @@
  */
 
 
-import type { Context } from "./../contexts/dbContext"
+import type { Context } from "./../context"
 import type { core } from "nexus"
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
@@ -58,10 +58,6 @@ export interface NexusGenObjects {
     title: string; // String!
     visibility: boolean; // Boolean!
   }
-  LoginUser: { // root type
-    token: string; // String!
-    user: NexusGenRootTypes['User']; // User!
-  }
   Mutation: {};
   Query: {};
   Service: { // root type
@@ -109,10 +105,6 @@ export interface NexusGenFieldTypes {
     title: string; // String!
     visibility: boolean; // Boolean!
   }
-  LoginUser: { // field return type
-    token: string; // String!
-    user: NexusGenRootTypes['User']; // User!
-  }
   Mutation: { // field return type
     createJobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
     createService: NexusGenRootTypes['Service'] | null; // Service
@@ -122,7 +114,8 @@ export interface NexusGenFieldTypes {
     deleteService: NexusGenRootTypes['Service'] | null; // Service
     deleteSkill: NexusGenRootTypes['Skill'] | null; // Skill
     deleteUser: NexusGenRootTypes['User'] | null; // User
-    login: NexusGenRootTypes['LoginUser'] | null; // LoginUser
+    login: NexusGenRootTypes['User'] | null; // User
+    logout: NexusGenRootTypes['User'] | null; // User
     updateJobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
     updateService: NexusGenRootTypes['Service'] | null; // Service
     updateSkill: NexusGenRootTypes['Skill'] | null; // Skill
@@ -131,6 +124,7 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     jobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
     jobOffers: Array<NexusGenRootTypes['JobOffer'] | null> | null; // [JobOffer]
+    me: Array<NexusGenRootTypes['User'] | null> | null; // [User]
     service: NexusGenRootTypes['Service'] | null; // Service
     services: Array<NexusGenRootTypes['Service'] | null> | null; // [Service]
     skill: NexusGenRootTypes['Skill'] | null; // Skill
@@ -175,10 +169,6 @@ export interface NexusGenFieldTypeNames {
     title: 'String'
     visibility: 'Boolean'
   }
-  LoginUser: { // field return type name
-    token: 'String'
-    user: 'User'
-  }
   Mutation: { // field return type name
     createJobOffer: 'JobOffer'
     createService: 'Service'
@@ -188,7 +178,8 @@ export interface NexusGenFieldTypeNames {
     deleteService: 'Service'
     deleteSkill: 'Skill'
     deleteUser: 'User'
-    login: 'LoginUser'
+    login: 'User'
+    logout: 'User'
     updateJobOffer: 'JobOffer'
     updateService: 'Service'
     updateSkill: 'Skill'
@@ -197,6 +188,7 @@ export interface NexusGenFieldTypeNames {
   Query: { // field return type name
     jobOffer: 'JobOffer'
     jobOffers: 'JobOffer'
+    me: 'User'
     service: 'Service'
     services: 'Service'
     skill: 'Skill'

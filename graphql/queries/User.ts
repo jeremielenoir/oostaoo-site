@@ -7,8 +7,31 @@ import {
 export default extendType({
   type: 'Query',
   definition(t) {
+    t.list.field('me', {
+      type: 'User',
+      resolve: async (_, __, { user }) => {
+        if (!user || typeof user === 'string') {
+          throw new GraphQLError('Unauthorized', {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
+        }
+
+        if (user instanceof Error) {
+          throw new GraphQLError('???', {
+            extensions: {
+              code: ApolloServerErrorCode.BAD_REQUEST,
+            },
+          });
+        }
+
+        return user;
+      },
+    });
+
     t.list.field('users', {
-      type: 'User' || null,
+      type: 'User',
       args: {
         sortBy: arg({ type: 'SortUsersBy', default: 'name' }),
         sortOrder: arg({ type: 'SortOrder', default: 'asc' }),

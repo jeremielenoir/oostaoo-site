@@ -1,36 +1,25 @@
 import bcrypt from 'bcrypt';
 import { GraphQLError } from 'graphql';
 import { ApolloServerErrorCode } from '@apollo/server/errors';
-import jwt from 'jsonwebtoken';
 import {
   extendType, nonNull, stringArg, intArg, idArg,
 } from 'nexus';
 
-const saltRounds = 10;
-const { SECRET_TOKEN_KEY } = process.env;
+import { createTokenAndCookie } from '../services/tokenManager';
+import setCookie from '../services/setCookie';
 
-export const LoginUserType = extendType({
-  type: 'LoginUser',
-  definition(t) {
-    t.nonNull.field('user', {
-      type: 'User',
-    });
-    t.nonNull.string('token', {
-      description: "User's connection token",
-    });
-  },
-});
+const saltRounds = 10;
 
 export default extendType({
   type: 'Mutation',
   definition(t) {
     t.field('login', {
-      type: 'LoginUser',
+      type: 'User',
       args: {
         email: nonNull(stringArg()),
         password: nonNull(stringArg()),
       },
-      resolve: async (_, args, { db }) => {
+      resolve: async (_, args, { db, response }) => {
         const foundUser = await db.user.findUnique({ where: { email: args.email } });
 
         const match = foundUser && await bcrypt.compare(args.password, foundUser.password);
@@ -43,9 +32,20 @@ export default extendType({
         }
 
         const { password, ...user } = foundUser;
-        const token = jwt.sign(user, SECRET_TOKEN_KEY!, { expiresIn: '1d' });
+        createTokenAndCookie(user, response);
 
-        return { user, token };
+        return user;
+      },
+    });
+
+    t.field('logout', {
+      type: 'User',
+      resolve: async (_, __, { response, user }) => {
+        setCookie(response, 'auth-token', null, {
+          maxAge: -1,
+        });
+
+        return user;
       },
     });
 
@@ -87,10 +87,10 @@ export default extendType({
         password: stringArg(),
         role: intArg(),
       },
-      resolve: async (_, args, { db, connectedUser }) => {
+      resolve: async (_, args, { db, user }) => {
         const id = parseInt(args.id, 10);
 
-        if (!connectedUser || (connectedUser && connectedUser.id !== id)) {
+        if (!user || !('id' in user)) {
           throw new GraphQLError('Unauthorized', {
             extensions: {
               code: ApolloServerErrorCode.BAD_REQUEST,

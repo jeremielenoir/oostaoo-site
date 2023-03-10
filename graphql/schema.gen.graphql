@@ -42,12 +42,6 @@ type JobOffer {
   visibility: Boolean!
 }
 
-type LoginUser {
-  """User's connection token"""
-  token: String!
-  user: User!
-}
-
 type Mutation {
   createJobOffer(authorId: Int!, content: String!, linkedInLink: String, place: String, sector: String, serviceId: Int!, startDate: DateTime!, title: String!, visibility: Boolean!): JobOffer
   createService(description: String, title: String!, visibility: Boolean!): Service
@@ -57,7 +51,8 @@ type Mutation {
   deleteService(id: ID!): Service
   deleteSkill(id: ID!): Skill
   deleteUser(id: ID!): User
-  login(email: String!, password: String!): LoginUser
+  login(email: String!, password: String!): User
+  logout: User
   updateJobOffer(authorId: Int, content: String, id: ID!, linkedInLink: String, place: String, sector: String, serviceId: Int, startDate: String, title: String, visibility: Boolean): JobOffer
   updateService(description: String, id: ID!, title: String, visibility: Boolean): Service
   updateSkill(description: String, id: ID!, logo: String, title: String, visibility: Boolean): Skill
@@ -67,6 +62,7 @@ type Mutation {
 type Query {
   jobOffer(id: String!): JobOffer
   jobOffers(limit: Int = 20, offset: Int = 0, showPrivate: Boolean = false, sortBy: SortJobOffersBy = startDate, sortOrder: SortOrder = desc): [JobOffer]
+  me: [User]
   service(id: String!): Service
   services(showPrivate: Boolean = false, sortOrder: SortOrder = asc): [Service]
   skill(id: String!): Skill

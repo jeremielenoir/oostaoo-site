@@ -3,11 +3,9 @@ import path from 'path';
 import { DateTimeResolver } from 'graphql-scalars';
 import Queries from './queries';
 import Mutations from './mutations';
-import { LoginUserType } from './mutations/User';
 
 import {
   User,
-  // LoginUser,
   JobOffer,
   Service,
   Skill,
@@ -38,7 +36,6 @@ export default makeSchema({
     ...Queries,
     ...Mutations,
     User,
-    LoginUserType,
     JobOffer,
     Service,
     Skill,
@@ -52,7 +49,7 @@ export default makeSchema({
     typegen: path.join(process.cwd(), 'graphql/generated/nexusTypes.gen.ts'),
   },
   contextType: {
-    module: path.join(process.cwd(), 'graphql/contexts/dbContext.ts'),
+    module: path.join(process.cwd(), 'graphql/context.ts'),
     export: 'Context',
   },
   sourceTypes: {

@@ -1,9 +1,8 @@
 import { ApolloServer } from '@apollo/server';
 import { startServerAndCreateNextHandler } from '@as-integrations/next';
-import type { NextApiRequest } from 'next';
 
 import formatError from '../../graphql/services/formatError';
-import dbContext from '../../graphql/contexts/dbContext';
+import context from '../../graphql/context';
 import schema from '../../graphql/schema';
 
 const server = new ApolloServer({
@@ -12,5 +11,5 @@ const server = new ApolloServer({
 });
 
 export default startServerAndCreateNextHandler(server, {
-  context: async (request: NextApiRequest) => dbContext(request),
+  context: async (request, response) => context(request, response),
 });

@@ -1,20 +1,53 @@
 import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
+import type { User } from '@prisma/client';
 import { GraphQLError } from 'graphql';
 import { ApolloServerErrorCode } from '@apollo/server/errors';
+import type { NextApiResponse } from 'next';
+import setCookie from './setCookie';
 
-export default async (
+const EXPIRATION_IN_SECONDS = 60 * 60 * 24; // 1 day
+const SECRET_TOKEN_KEY = process.env.SECRET_TOKEN_KEY!;
+
+export const createTokenAndCookie = (
+  payload: Omit<User, 'password'>,
+  response: NextApiResponse,
+) => {
+  if (!SECRET_TOKEN_KEY) {
+    throw new GraphQLError('Internal server error', {
+      extensions: {
+        code: ApolloServerErrorCode.INTERNAL_SERVER_ERROR,
+      },
+    });
+  }
+
+  const token = jwt.sign(
+    payload,
+    SECRET_TOKEN_KEY,
+    { expiresIn: EXPIRATION_IN_SECONDS },
+  );
+
+  setCookie(response, 'auth-token', token, {
+    maxAge: EXPIRATION_IN_SECONDS,
+  });
+
+  return response.getHeader('Set-Cookie');
+};
+
+export const verifyTokenAndGetUser = async (
   db: PrismaClient,
-  secretKey: string,
-  authorization: string,
+  token: string,
 ) => {
   try {
-    if (!authorization.includes('Bearer ')) return null;
+    if (!SECRET_TOKEN_KEY) {
+      throw new GraphQLError('Internal server error', {
+        extensions: {
+          code: ApolloServerErrorCode.INTERNAL_SERVER_ERROR,
+        },
+      });
+    }
 
-    const bearerLength = 'Bearer '.length;
-    const token = authorization.slice(bearerLength);
-
-    const decoded = jwt.verify(token, secretKey) as jwt.JwtPayload;
+    const decoded = jwt.verify(token, SECRET_TOKEN_KEY) as jwt.JwtPayload;
 
     if (!decoded || (decoded && !('id' in decoded))) {
       throw new GraphQLError('Invalid token', {
@@ -41,6 +74,8 @@ export default async (
       return error;
     }
 
-    return new Error('Internal server error');
+    console.log(error);
+
+    // return new Error('Internal server error');
   }
 };
