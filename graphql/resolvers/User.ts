@@ -15,6 +15,12 @@ const User = objectType({
     t.nonNull.list.int('role', {
       description: "An array of user's role numbers",
     });
+    t.nonNull.boolean('isConnect', {
+      description: 'Is user connected ?',
+    });
+    t.nonNull.boolean('isAdmin', {
+      description: 'Is user an administrator ?',
+    });
     t.list.field('jobOffers', {
       type: 'JobOffer',
       description: 'Job offers added by the user',

@@ -7,29 +7,6 @@ import {
 export default extendType({
   type: 'Query',
   definition(t) {
-    t.list.field('me', {
-      type: 'User',
-      resolve: async (_, __, { user }) => {
-        if (!user || typeof user === 'string') {
-          throw new GraphQLError('Unauthorized', {
-            extensions: {
-              code: ApolloServerErrorCode.BAD_REQUEST,
-            },
-          });
-        }
-
-        if (user instanceof Error) {
-          throw new GraphQLError('???', {
-            extensions: {
-              code: ApolloServerErrorCode.BAD_REQUEST,
-            },
-          });
-        }
-
-        return user;
-      },
-    });
-
     t.list.field('users', {
       type: 'User',
       args: {
@@ -38,17 +15,35 @@ export default extendType({
         limit: intArg({ default: 20 }),
         offset: intArg({ default: 0 }),
       },
-      resolve: async (_, args, { db }) => db.user.findMany({
-        orderBy: args.sortBy
-          ? { [args.sortBy]: args.sortOrder }
-          : undefined,
-        take: args.limit
-          ? args.limit
-          : undefined,
-        skip: (args.limit && args.offset)
-          ? args.offset * args.limit
-          : undefined,
-      }),
+      resolve: async (_, args, { db, connectedUser }) => {
+        let users = await db.user.findMany({
+          orderBy: args.sortBy
+            ? { [args.sortBy]: args.sortOrder }
+            : undefined,
+          take: args.limit
+            ? args.limit
+            : undefined,
+          skip: (args.limit && args.offset)
+            ? args.offset * args.limit
+            : undefined,
+        });
+
+        users = users.map((user) => {
+          let isConnect = false;
+          if (connectedUser && 'id' in connectedUser) {
+            isConnect = user.id === connectedUser.id;
+          }
+
+          let isAdmin = false;
+          if (user.role[0] === 1) {
+            isAdmin = true;
+          }
+
+          return { ...user, isConnect, isAdmin };
+        });
+
+        return users;
+      },
     });
 
     t.field('user', {
@@ -56,7 +51,7 @@ export default extendType({
       args: {
         id: nonNull(stringArg()),
       },
-      resolve: async (_, args, { db }) => {
+      resolve: async (_, args, { db, connectedUser }) => {
         const id = parseInt(args.id, 10);
         const user = await db.user.findUnique({ where: { id } });
 
@@ -69,7 +64,17 @@ export default extendType({
           });
         }
 
-        return user;
+        let isConnect = false;
+        if (connectedUser && 'id' in connectedUser) {
+          isConnect = user.id === connectedUser.id;
+        }
+
+        let isAdmin = false;
+        if (user.role[0] === 1) {
+          isAdmin = true;
+        }
+
+        return { ...user, isConnect, isAdmin };
       },
     });
   },

@@ -76,6 +76,8 @@ export interface NexusGenObjects {
   User: { // root type
     email: string; // String!
     id: string; // ID!
+    isAdmin: boolean; // Boolean!
+    isConnect: boolean; // Boolean!
     name: string; // String!
     role: Array<number | null>; // [Int]!
   }
@@ -124,7 +126,6 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     jobOffer: NexusGenRootTypes['JobOffer'] | null; // JobOffer
     jobOffers: Array<NexusGenRootTypes['JobOffer'] | null> | null; // [JobOffer]
-    me: Array<NexusGenRootTypes['User'] | null> | null; // [User]
     service: NexusGenRootTypes['Service'] | null; // Service
     services: Array<NexusGenRootTypes['Service'] | null> | null; // [Service]
     skill: NexusGenRootTypes['Skill'] | null; // Skill
@@ -149,6 +150,8 @@ export interface NexusGenFieldTypes {
   User: { // field return type
     email: string; // String!
     id: string; // ID!
+    isAdmin: boolean; // Boolean!
+    isConnect: boolean; // Boolean!
     jobOffers: Array<NexusGenRootTypes['JobOffer'] | null> | null; // [JobOffer]
     name: string; // String!
     role: Array<number | null>; // [Int]!
@@ -188,7 +191,6 @@ export interface NexusGenFieldTypeNames {
   Query: { // field return type name
     jobOffer: 'JobOffer'
     jobOffers: 'JobOffer'
-    me: 'User'
     service: 'Service'
     services: 'Service'
     skill: 'Skill'
@@ -213,6 +215,8 @@ export interface NexusGenFieldTypeNames {
   User: { // field return type name
     email: 'String'
     id: 'ID'
+    isAdmin: 'Boolean'
+    isConnect: 'Boolean'
     jobOffers: 'JobOffer'
     name: 'String'
     role: 'Int'

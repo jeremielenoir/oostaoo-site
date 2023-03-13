@@ -31,7 +31,9 @@ export const createTokenAndCookie = (
     maxAge: EXPIRATION_IN_SECONDS,
   });
 
-  return response.getHeader('Set-Cookie');
+  const cookie = response.getHeader('Set-Cookie');
+
+  return cookie;
 };
 
 export const verifyTokenAndGetUser = async (
@@ -74,8 +76,6 @@ export const verifyTokenAndGetUser = async (
       return error;
     }
 
-    console.log(error);
-
-    // return new Error('Internal server error');
+    return new Error('Internal server error');
   }
 };

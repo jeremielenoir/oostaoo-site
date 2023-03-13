@@ -62,7 +62,6 @@ type Mutation {
 type Query {
   jobOffer(id: String!): JobOffer
   jobOffers(limit: Int = 20, offset: Int = 0, showPrivate: Boolean = false, sortBy: SortJobOffersBy = startDate, sortOrder: SortOrder = desc): [JobOffer]
-  me: [User]
   service(id: String!): Service
   services(showPrivate: Boolean = false, sortOrder: SortOrder = asc): [Service]
   skill(id: String!): Skill
@@ -131,6 +130,12 @@ type User {
 
   """User's unique identifier"""
   id: ID!
+
+  """Is user an administrator ?"""
+  isAdmin: Boolean!
+
+  """Is user connected ?"""
+  isConnect: Boolean!
 
   """Job offers added by the user"""
   jobOffers: [JobOffer]
