@@ -1,10 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import Intro from './Intro';
-import introElements from '../../assets/Intro';
 
-test('Intro component displays intro elements correctly', () => {
-  const { getByText } = render(<Intro />);
+import { getStaticProps } from '../../pages/index';
+
+test('Intro component displays intro elements correctly', async () => {
+  const response = await getStaticProps();
+  const introElements = response.props.introArray;
+  const { getByText } = render(<Intro introArray={introElements} />);
 
   introElements.forEach((element) => {
     const numberElement = getByText(element.number);

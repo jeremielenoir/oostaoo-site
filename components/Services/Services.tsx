@@ -1,20 +1,19 @@
-import { FC } from 'react';
-import { ServiceType } from '@/types/types';
-
 import styles from './Services.module.css';
-import titles from '../../assets/Titles';
-import services from '../../assets/Services';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ServiceContainer from '../ServiceContainer/ServiceContainer';
 
-const Services: FC = () => (
+import { ServicesType, TitleType } from '@/types/dataTypes';
+
+interface ServicesProps {
+  servicesArray: ServicesType[];
+  title: TitleType;
+}
+
+const Services = ({ servicesArray, title }: ServicesProps) => (
   <div className={styles.container} id="services">
-    <SectionTitle
-      title={titles.services.title}
-      description={titles.services.description}
-    />
+    <SectionTitle title={title.title} description={title.description} />
     <div className={styles.allServices}>
-      {services.map((service: ServiceType) => (
+      {servicesArray.map((service: ServicesType) => (
         <ServiceContainer
           key={service.id}
           icon={service.icon}

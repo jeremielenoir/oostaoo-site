@@ -1,7 +1,3 @@
-export type SectionReferencesTechnosProps = {
-  section: 'technos' | 'references';
-};
-
 export type ListButtonNavArray = [
   'accueil',
   'services',
