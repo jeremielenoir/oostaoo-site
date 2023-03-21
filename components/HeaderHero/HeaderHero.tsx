@@ -14,6 +14,10 @@ const HeaderHero: FC<HeroProps> = ({ text }) => (
       className={styles.headerHero}
       src={Background}
       alt="Header background image"
+      width="11532"
+      height="4851"
+      layout="responsive"
+      placeholder="blur"
     />
 
     <div className={styles.heroTextContainer}>

@@ -20,7 +20,7 @@ describe('LogoWrapper component tests', () => {
     logoArray.technos
       .map((logoElement) => screen.getByAltText(`logo ${logoElement}`))
       .forEach(async (imgElement, index) => {
-        await waitFor(() => expect(imgElement).toHaveAttribute('src', `/../public/assets/technos/${logoArray.technos[index]}.png`)); // in next app there is a lazy load on image component
+        await waitFor(() => expect(imgElement).toHaveAttribute('src', `/assets/technos/${logoArray.technos[index]}.png`)); // in next app there is a lazy load on image component
         expect(imgElement).toHaveAttribute('alt', `logo ${logoArray.technos[index]}`);
       });
   });

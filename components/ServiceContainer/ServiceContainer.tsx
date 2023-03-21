@@ -22,32 +22,31 @@ const ServiceContainer: FC<ServiceContainerProps> = ({
   const [isTextHidden, setIsTextHidden] = useState<boolean>(true);
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div
       data-testid="service"
       className={styles.container}
       role="button"
       tabIndex={0}
       onClick={() => setIsTextHidden(!isTextHidden)}
-      onKeyDown={(event) => {
-        if (event.key === 'enter') {
-          setIsTextHidden(!isTextHidden);
-        }
-      }}
     >
       {icon === 'lead' ? (
-        <Assessment />
+        <Assessment data-testid="assessment" />
       ) : icon === 'full' ? (
-        <Handyman />
-      ) : (
-        icon === 'front' && <AssignmentInd />
-      )}
+        <Handyman data-testid="handyman" />
+      ) : icon === 'front' ? (
+        <AssignmentInd data-testid="assignementInd" />
+      ) : null}
 
       <h1 data-testid="serviceTitle">{title}</h1>
       <ExpandCircleDownOutlined
         className={styles.expandIcon}
         style={{ transform: isTextHidden ? 'rotate(0)' : 'rotate(180deg)' }}
       />
-      <p className={`${!isTextHidden ? styles.displayText : ''}`}>
+      <p
+        data-testid="description"
+        className={`${!isTextHidden ? styles.displayText : null}`}
+      >
         {description}
       </p>
     </div>
