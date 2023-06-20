@@ -1,4 +1,7 @@
-import { useEffect, useState, FormEvent } from 'react';
+import {
+  useEffect, useState, FormEvent, useContext,
+} from 'react';
+import { DataContext } from '@/context/context';
 
 import { TextField, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
@@ -10,6 +13,8 @@ import styles from './ContactForm.module.css';
 import { NAME_REGEX, EMAIL_REGEX, MESSAGE_REGEX } from '../../assets/RegExps';
 
 const ContactForm = () => {
+  const { jobApply } = useContext(DataContext);
+
   const [name, setName] = useState('');
   const [validName, setValidName] = useState(false);
   const [nameFocus, setNameFocus] = useState(false);
@@ -30,6 +35,11 @@ const ContactForm = () => {
     setEmail('');
     setMessage('');
   };
+
+  useEffect(() => {
+    const custommessage = jobApply ? `Bonjour, \nJe souhaiterais prendre contact avec vous à propos du poste de ${jobApply.charAt(0).toLowerCase() + jobApply.slice(1)}` : '';
+    setMessage(custommessage);
+  }, [jobApply]);
 
   useEffect(() => {
     const result = NAME_REGEX.test(name);
