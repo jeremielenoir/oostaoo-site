@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
+import { TitleType } from '@/types/dataTypes';
+
 import SectionTitle from '../SectionTitle/SectionTitle';
 import LogosWrapper from '../LogoWrapper/LogosWrapper';
 
 import styles from './SectionReferencesTechnos.module.css';
-
-import { TitleType } from '@/types/dataTypes';
 
 interface SectionReferencesTechnosProps {
   section: 'technos' | 'references';

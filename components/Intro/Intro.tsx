@@ -1,5 +1,5 @@
-import styles from './Intro.module.css';
 import { IntroType } from '@/types/dataTypes';
+import styles from './Intro.module.css';
 
 interface IntroProps {
   introArray: IntroType[];
