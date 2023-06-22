@@ -3,7 +3,7 @@ import type { JobType } from '../types/types';
 const jobs: JobType[] = [
   {
     id: 1,
-    title: 'Développeur iOS',
+    title: 'Développeur FullStack',
     status: 'disponible',
     place: 'Paris',
     sector: 'Finance',
@@ -11,8 +11,8 @@ const jobs: JobType[] = [
     startDate: Date.now(),
     weeklyWorkTime: '39h',
     details:
-      'Morbi gravida, odio ac tempus euismod, lorem felis pellentesque quam, vitae dapibus nulla lectus sit amet urna. Donec sollicitudin, lorem quis pretium tincidunt, turpis enim placerat tellus, ut commodo urna elit a ligula. Nullam id metus non ipsum ornare aliquam. Morbi nec risus vel urna fringilla gravida. Integer a ipsum efficitur, iaculis odio eu, facilisis turpis. Nulla facilisi. Ut imperdiet quam ac libero commodo cursus.',
-    image: 'iphoneIos.jpg',
+      'En tant que développeur FullStack, votre rôle ira au-delà du développement de logiciels. Vous piloterez des projets clients de bout en bout, avec une maîtrise du frontend et du backend, permettant de fournir des solutions complètes et personnalisées qui répondent aux défis spécifiques de nos clients.',
+    image: 'jobFullstack.jpg',
     linkedin: 'https://www.linkedin.com/company/oostaoo-consulting/',
     visibility: true,
   },
@@ -26,8 +26,8 @@ const jobs: JobType[] = [
     startDate: Date.now(),
     weeklyWorkTime: '35h',
     details:
-      'ed rutrum eros est, eu auctor lacus finibus id. Praesent leo lorem, commodo non ex vel, gravida scelerisque dolor. Nunc a enim dignissim, tincidunt magna eget, euismod ligula. Sed tellus lectus, mollis et malesuada ac, vehicula in orci. Proin ex mauris, pharetra quis malesuada in, congue non tellus. Nam et velit vel diam ultrices commodo. Nam accumsan ultricies varius. Mauris venenatis ac sem vitae commodo. Integer tempus ipsum sed sem pharetra, sed vehicula lacus maximus. Fusce ultricies ornare tellus, at feugiat nulla sagittis id. Proin scelerisque quam non lacus auctor scelerisque. Nulla facilisi. Pellentesque ut est purus.',
-    image: 'macfront.jpg',
+      'Développeur Frontend, transformez les concepts en réalités interactives. Grâce à votre maîtrise en HTML, CSS et JavaScript, vous serez amené à créer des interfaces utilisateur attrayantes et efficaces qui répondent aux besoins de nos clients et améliorent leur expérience digitale.',
+    image: 'jobFront.jpg',
     linkedin: 'https://www.linkedin.com/company/oostaoo-consulting/',
     visibility: true,
   },
@@ -41,8 +41,8 @@ const jobs: JobType[] = [
     startDate: Date.now(),
     weeklyWorkTime: '39h',
     details:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non dapibus turpis. Vestibulum scelerisque tristique porttitor. Sed ante urna, commodo sit amet felis eget, vestibulum auctor tortor. Sed tellus purus, vulputate in sapien quis, lobortis hendrerit diam. Vivamus a fermentum justo. Sed malesuada porta magna in suscipit. Aenean nec erat massa. Fusce sodales, erat eu eleifend facilisis, ipsum mi iaculis nibh, ac tempus enim mauris vitae ex. Nam vitae justo sem. Morbi consequat semper dolor, in mollis odio commodo eu. Ut id condimentum libero. In sed odio nisl. In rutrum lorem vel dolor finibus, ac gravida justo viverra. Phasellus at elit elit. In sit amet tempor dolor, nec condimentum risus. Vivamus ut sagittis ex, vitae maximus eros.',
-    image: 'macback.jpg',
+      "Comme développeur Backend, votre expertise en Node.js, Python, Ruby et bases de données SQL/NoSQL sera cruciale. Vous serez en charge de l'optimisation et de la sécurisation des systèmes de nos clients, garantissant ainsi la performance et la fiabilité de leurs applications.",
+    image: 'jobBack.jpg',
     linkedin: 'https://www.linkedin.com/company/oostaoo-consulting/',
     visibility: true,
   },
@@ -56,8 +56,8 @@ const jobs: JobType[] = [
     startDate: Date.now(),
     weeklyWorkTime: '39h',
     details:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non dapibus turpis. Vestibulum scelerisque tristique porttitor. Sed ante urna, commodo sit amet felis eget, vestibulum auctor tortor. Sed tellus purus, vulputate in sapien quis, lobortis hendrerit diam. Vivamus a fermentum justo. Sed malesuada porta magna in suscipit. Aenean nec erat massa. Fusce sodales, erat eu eleifend facilisis, ipsum mi iaculis nibh, ac tempus enim mauris vitae ex. Nam vitae justo sem. Morbi consequat semper dolor, in mollis odio commodo eu. Ut id condimentum libero. In sed odio nisl. In rutrum lorem vel dolor finibus, ac gravida justo viverra. Phasellus at elit elit. In sit amet tempor dolor, nec condimentum risus. Vivamus ut sagittis ex, vitae maximus eros.',
-    image: 'macjava.jpg',
+      'Développeur Java, mettez à profit votre connaissance de Java et des frameworks associés, comme Spring ou Hibernate. Vous serez en charge de concevoir des solutions logicielles robustes, performantes et sur mesure pour nos clients, les aidant à résoudre leurs problèmes les plus complexes.',
+    image: 'jobJava.jpg',
     linkedin: 'https://www.linkedin.com/company/oostaoo-consulting/',
     visibility: true,
   },
