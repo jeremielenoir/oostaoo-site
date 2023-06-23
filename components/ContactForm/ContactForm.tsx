@@ -76,7 +76,7 @@ const ContactForm = () => {
       const req = await sendEmail({
         email,
         subject,
-        message: `Bonjour,<br><br>Je suis ravi de vous transmettre ce message venant du site Oostaoo contact !<br><br>Voici les détails que la personne souhaite partager avec vous :<br><br>---<br><br>- Nom -<br>${name}<br><br>- Adresse e-mail -<br>${email}<br><br>- Message -<br>${message}<br><br>---<br><br>Merci d'avoir pris le temps de lire le message de votre bot favori.<br><br>Cordialement,<br>botContact`,
+        message: `Bonjour,<br><br>Je suis ravi de vous transmettre ce message venant du site Oostaoo contact !<br><br>Voici les détails que la personne souhaite partager avec vous :<br><br>---<br><br>- Nom -<br>${name}<br><br>- Adresse e-mail -<br>${email}<br><br>- Objet du message -<br>${subject}<br><br>- Message -<br>${message}<br><br>---<br><br>Merci d'avoir pris le temps de lire le message de votre bot favori.<br><br>Cordialement,<br>botContact`,
       });
       if (req.status === 250) {
         setSuccess(true);
@@ -182,7 +182,7 @@ const ContactForm = () => {
               />
               {subjectFocus || (subjectFocus && !validSubject) ? (
                 <p className={`${styles.fieldSubjectDescription} ${!validSubject && styles.redText}`}>
-                  max 10 mots
+                  max 75 char.
                 </p>
               ) : null}
             </div>
