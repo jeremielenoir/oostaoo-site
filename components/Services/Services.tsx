@@ -1,8 +1,8 @@
+import { ServicesType, TitleType } from '@/types/dataTypes';
+
 import styles from './Services.module.css';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import ServiceContainer from '../ServiceContainer/ServiceContainer';
-
-import { ServicesType, TitleType } from '@/types/dataTypes';
 
 interface ServicesProps {
   servicesArray: ServicesType[];

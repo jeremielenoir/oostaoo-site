@@ -1,13 +1,18 @@
-import { useEffect, useState, FormEvent } from 'react';
+import {
+  useEffect, useState, FormEvent,
+} from 'react';
 
 import { TextField, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
+import sendEmail from '../../requests/sendEmail';
 
 import styles from './ContactForm.module.css';
-import { NAME_REGEX, EMAIL_REGEX, MESSAGE_REGEX } from '../../assets/RegExps';
+import {
+  NAME_REGEX, EMAIL_REGEX, MESSAGE_REGEX, SUBJECT_REGEX,
+} from '../../assets/RegExps';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -17,6 +22,10 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [validEmail, setValidEmail] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
+
+  const [subject, setSubject] = useState('');
+  const [validSubject, setValidSubject] = useState(false);
+  const [subjectFocus, setSubjectFocus] = useState(false);
 
   const [message, setMessage] = useState('');
   const [validMessage, setValidMessage] = useState(false);
@@ -46,27 +55,38 @@ const ContactForm = () => {
     setValidMessage(result);
   }, [message]);
 
-  const handleSubmit = (e: FormEvent) => {
+  useEffect(() => {
+    const result = SUBJECT_REGEX.test(subject);
+    setValidSubject(result);
+  }, [subject]);
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (
       !NAME_REGEX.test(name) ||
       !EMAIL_REGEX.test(email) ||
-      !MESSAGE_REGEX.test(message)
+      !MESSAGE_REGEX.test(message) ||
+      !SUBJECT_REGEX.test(subject)
     ) {
       setErrMsg('Informations Invalides');
       return;
     }
-    // Here we put our request Logic
-    // const result = await sendMessage(name, email, message);
-    // if (result === 'success') {
-    //   setSuccess(true);
-    //   clearInputs();
-    // } else {
-    //   setErrMsg(result);
-    // }
-    // For now we will set every submi as a success
-    setSuccess(true);
-    clearInputs();
+
+    try {
+      const req = await sendEmail({
+        email,
+        subject,
+        message: `Bonjour,<br><br>Je suis ravi de vous transmettre ce message venant du site Oostaoo contact !<br><br>Voici les détails que la personne souhaite partager avec vous :<br><br>---<br><br>- Nom -<br>${name}<br><br>- Adresse e-mail -<br>${email}<br><br>- Objet du message -<br>${subject}<br><br>- Message -<br>${message}<br><br>---<br><br>Merci d'avoir pris le temps de lire le message de votre bot favori.<br><br>Cordialement,<br>botContact`,
+      });
+      if (req.status === 250) {
+        setSuccess(true);
+        clearInputs();
+      }
+    } catch (error) {
+      console.log(error);
+      setSuccess(false);
+      setErrMsg("Une erreur interne s'est produite. Veuillez réessayer");
+    }
   };
 
   return (
@@ -108,7 +128,6 @@ const ContactForm = () => {
         </div>
       ) : (
         <div className={styles.contactSectionForm}>
-          <p className={errMsg ? styles.errMsg : styles.offscreen}>{errMsg}</p>
           <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.formUpperElement}>
               <div className={styles.formUpperElementName}>
@@ -124,8 +143,10 @@ const ContactForm = () => {
                   variant="outlined"
                   placeholder="Doe John"
                 />
-                {nameFocus ? (
-                  <p className={styles.fieldNameDescription}>max 40 char.</p>
+                {nameFocus || (nameFocus && !validName) ? (
+                  <p className={`${styles.fieldNameDescription} ${!validName && styles.redText}`}>
+                    max 40 char.
+                  </p>
                 ) : null}
               </div>
               <div className={styles.formUpperElementEmail}>
@@ -140,12 +161,30 @@ const ContactForm = () => {
                   label="Email"
                   variant="outlined"
                 />
-                {emailFocus ? (
-                  <p className={styles.fieldEmailDescription}>
+                {emailFocus || (emailFocus && !validEmail) ? (
+                  <p className={`${styles.fieldEmailDescription} ${!validEmail && styles.redText}`}>
                     exemple@mail.fr
                   </p>
                 ) : null}
               </div>
+            </div>
+            <div className={styles.formUpperElementSubject}>
+              <TextField
+                className={styles.formUpperElementSubjectField}
+                id="subject"
+                autoComplete="off"
+                onChange={(e) => setSubject(e.target.value)}
+                onFocus={() => setSubjectFocus(true)}
+                onBlur={() => setSubjectFocus(false)}
+                required
+                label="Objet"
+                variant="outlined"
+              />
+              {subjectFocus || (subjectFocus && !validSubject) ? (
+                <p className={`${styles.fieldSubjectDescription} ${!validSubject && styles.redText}`}>
+                  max 75 char.
+                </p>
+              ) : null}
             </div>
             <div className={styles.formUpperElementMsg}>
               <TextField
@@ -162,13 +201,16 @@ const ContactForm = () => {
                 placeholder="Bonjour, je souhaiterais prendre contact..."
                 value={message}
               />
-              {messageFocus ? (
-                <p className={styles.fieldMsgDescription}>max 250 mots</p>
+              {messageFocus || (messageFocus && !validMessage) ? (
+                <p className={`${styles.fieldMsgDescription} ${!validMessage && styles.redText}`}>
+                  max 500 char.
+                </p>
               ) : null}
             </div>
+            <p className={errMsg ? styles.errMsg : styles.offscreen}>{errMsg}</p>
             <Button
               className={styles.submitButton}
-              disabled={!validName || !validEmail || !validMessage}
+              disabled={!validName || !validEmail || !validMessage || !validSubject}
               type="submit"
               variant="contained"
               endIcon={<SendIcon />}

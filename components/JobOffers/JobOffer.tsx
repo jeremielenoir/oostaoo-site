@@ -2,8 +2,8 @@ import Image from 'next/image';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
 import { JobType } from '@/types/types';
+import Button from '@mui/material/Button';
 
-import logoLinkedIn from '../../assets/img/linkedin.png';
 import styles from './JobOffers.module.css';
 
 const JobOffer = ({ job }: { job: JobType }) => (
@@ -23,18 +23,24 @@ const JobOffer = ({ job }: { job: JobType }) => (
     <div className={styles.offerImageWrapper}>
       <Image
         className={styles.offerImage}
-        src={job.image}
+        src={`/${job.image}`}
         alt="job offer visual"
-        layout="fill"
+        width="1000"
+        height="563"
+        layout="responsive"
       />
     </div>
     <p className={styles.offerDescription}>
-      {job.details.substring(0, 250)}
+      {job.details.substring(0, 240)}
       ...
     </p>
-    <a className={styles.offerLink} href={job.linkedin}>
-      <Image src={logoLinkedIn} alt="LinkedIn link" />
-    </a>
+
+    <Button variant="contained" className={styles.applyButton}>
+      <a href={`mailto:contact@oostaoo.com?subject=Réponse à l'offre de ${job.title}&body=Bonjour, \nJe souhaiterais prendre contact avec vous à propos du poste de ${job.title.charAt(0).toLowerCase() + job.title.slice(1)}`}>
+        Postuler
+      </a>
+    </Button>
+
   </section>
 );
 

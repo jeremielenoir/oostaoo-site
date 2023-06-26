@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
+import { TitleType } from '@/types/dataTypes';
+import { JobType } from '@/types/types';
+
 import JobOffer from './JobOffer';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import jobs from '../../assets/jobData';
-
-import { TitleType } from '@/types/dataTypes';
-import { JobType } from '@/types/types';
 
 import styles from './JobOffers.module.css';
 
