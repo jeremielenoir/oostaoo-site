@@ -31,7 +31,7 @@ const JobOffer = ({ job }: { job: JobType }) => (
       />
     </div>
     <p className={styles.offerDescription}>
-      {job.details.substring(0, 255)}
+      {job.details.substring(0, 240)}
       ...
     </p>
 

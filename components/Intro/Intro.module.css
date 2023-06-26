@@ -30,6 +30,8 @@
 
 .subContainer p {
   line-height: 1.5;
+  text-align: justify;
+  hyphens: auto;
 }
 
 @media screen and (max-width: 900px) {
@@ -52,6 +54,10 @@
 
   .subContainer {
     width: 100%;
+  }
+
+  .subContainer:nth-child(2) {
+    margin-top: 45px;
   }
 
   .subContainer h1 {
