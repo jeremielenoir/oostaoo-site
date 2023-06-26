@@ -28,6 +28,8 @@
   background: white;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  height: 485px;
   min-width: 275px;
   max-width: 275px;
   border-radius: 1%;
@@ -36,7 +38,7 @@
 }
 
 .offerHeader {
-  margin: 1rem;
+  margin: 0 1rem;
   display: flex;
 }
 
@@ -74,20 +76,20 @@
 }
 
 .offerDescription {
-  margin: 1rem;
+  margin: 0 1rem;
   text-align: justify;
   hyphens: auto;
 }
 
-.offerLink {
+/* .offerLink {
   margin: 1rem;
   width: 3rem;
   height: 3rem;
-}
+} */
 
 .applyButton {
-  margin: 1rem;
-  margin-top: 0;
+  /* margin-bottom: 1rem; */
+  align-self: center;
   width: calc(100% - 2rem);
 }
 
