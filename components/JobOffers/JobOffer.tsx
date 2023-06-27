@@ -17,6 +17,7 @@ const JobOffer = ({ job }: { job: JobType }) => (
       </span>
       <div>
         <h3 className={styles.offerTitle}>{job.title}</h3>
+        <h3 className={styles.offerTitle}>{job.title2}</h3>
         <span className={styles.offerAvailability}>{job.status}</span>
       </div>
     </header>

@@ -10,6 +10,7 @@ export type ListButtonNavArray = [
 export type JobType = {
   id: number;
   title: string;
+  title2: string;
   status: string;
   place: string;
   sector: string;

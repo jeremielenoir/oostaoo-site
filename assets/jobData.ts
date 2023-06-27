@@ -3,7 +3,8 @@ import type { JobType } from '../types/types';
 const jobs: JobType[] = [
   {
     id: 1,
-    title: 'Développeur FullStack',
+    title: 'Développeur',
+    title2: 'FullStack',
     status: 'disponible',
     place: 'Paris',
     sector: 'Finance',
@@ -18,7 +19,8 @@ const jobs: JobType[] = [
   },
   {
     id: 2,
-    title: 'Développeur Front',
+    title: 'Développeur',
+    title2: 'Front-end',
     status: 'disponible',
     place: 'Paris',
     sector: 'Immobilier',
@@ -33,7 +35,8 @@ const jobs: JobType[] = [
   },
   {
     id: 3,
-    title: 'Développeur Back',
+    title: 'Développeur',
+    title2: 'Back-end',
     status: 'disponible',
     place: 'Paris',
     sector: 'Santé',
@@ -48,7 +51,8 @@ const jobs: JobType[] = [
   },
   {
     id: 4,
-    title: 'Développeur Java',
+    title: 'Développeur',
+    title2: 'Java',
     status: 'disponible',
     place: 'Paris',
     sector: 'Energie',
