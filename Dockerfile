@@ -27,6 +27,12 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
+ARG GMAIL_EMAIL_ADDRESS
+ENV GMAIL_EMAIL_ADDRESS=${GMAIL_EMAIL_ADDRESS}
+
+ARG GMAIL_APP_PASSWORD
+ENV GMAIL_APP_PASSWORD=${GMAIL_APP_PASSWORD}
+
 RUN yarn build
 
 # If using npm comment out above and use below instead
@@ -44,6 +50,12 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
+
+ARG GMAIL_EMAIL_ADDRESS
+ENV GMAIL_EMAIL_ADDRESS=${GMAIL_EMAIL_ADDRESS}
+
+ARG GMAIL_APP_PASSWORD
+ENV GMAIL_APP_PASSWORD=${GMAIL_APP_PASSWORD}
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
