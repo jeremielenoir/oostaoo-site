@@ -8,7 +8,7 @@ interface EmailData {
 
 const sendEmail = async (data: EmailData) => axios({
   method: 'post',
-  url: '/api/sendContact',
+  url: '/api/contact',
   data,
 });
 
