@@ -20,7 +20,7 @@
     "react-dom": "^16.13.1",
     "react-image-tooltip": "^4.0.2",
     "react-multi-carousel": "^2.5.5",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.1",
     "react-scroll": "^1.7.16",
     "react-slick": "^0.26.1",
     "react-tooltip": "^4.2.21",
