@@ -7,7 +7,7 @@ const logoArray = {
     'git',
     'html5',
     'ios',
-    'javascript',
+    'Javascript',
     'jquery',
     'kibana',
     'nodejs',
