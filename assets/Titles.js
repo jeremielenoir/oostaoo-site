@@ -16,7 +16,7 @@ const titles = {
   emplois: {
     title: "Nos offres d'emploi",
     description:
-      'Ipsum dolor sit amet consectetur, adipisicing elit. Sequi alias iste ducimus tenetur saepe reprehenderit quasi reiciendis ab architecto',
+      "Rejoignez notre équipe dynamique chez Oostaoo Consulting : découvrez ci-dessous nos offres d'emploi actuelles, conçues pour des professionnels passionnés par l'innovation en JavaScript et désireux de façonner l'avenir du numérique.",
   },
 };
 

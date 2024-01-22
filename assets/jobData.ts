@@ -3,7 +3,7 @@ import type { JobType } from '../types/types';
 const jobs: JobType[] = [
   {
     id: 1,
-    title: 'Développeur Lead',
+    title: 'Lead Développeur Nextjs',
     status: 'disponible',
     place: 'Paris',
     sector: 'Finance',
@@ -11,14 +11,14 @@ const jobs: JobType[] = [
     startDate: Date.now(),
     weeklyWorkTime: '39h',
     details:
-      'Morbi gravida, odio ac tempus euismod, lorem felis pellentesque quam, vitae dapibus nulla lectus sit amet urna. Donec sollicitudin, lorem quis pretium tincidunt, turpis enim placerat tellus, ut commodo urna elit a ligula. Nullam id metus non ipsum ornare aliquam. Morbi nec risus vel urna fringilla gravida. Integer a ipsum efficitur, iaculis odio eu, facilisis turpis. Nulla facilisi. Ut imperdiet quam ac libero commodo cursus.',
+      "Oostaoo Consulting recherche un Lead Développeur Next.js passionné pour rejoindre notre équipe en pleine croissance. Vous serez en charge de diriger des projets innovants, en utilisant Next.js pour créer des applications web performantes et évolutives. Avec votre expertise technique et votre capacité à guider une équipe de développeurs talentueux, vous jouerez un rôle clé dans la livraison de solutions de haute qualité à nos clients. Si vous avez une solide expérience en JavaScript et Next.js, ainsi qu'un talent pour le leadership technique, nous vous invitons à postuler pour façonner l'avenir du développement web avec nous.",
     image: 'https://www.w3bai.com/w3css/img_fjords.jpg',
     linkedin: 'https://fr.linkedin.com/',
     visibility: true,
   },
   {
     id: 2,
-    title: 'Développeur Front',
+    title: 'Développeur Front React',
     status: 'disponible',
     place: 'Paris',
     sector: 'Immobilier',
@@ -26,14 +26,14 @@ const jobs: JobType[] = [
     startDate: Date.now(),
     weeklyWorkTime: '35h',
     details:
-      'ed rutrum eros est, eu auctor lacus finibus id. Praesent leo lorem, commodo non ex vel, gravida scelerisque dolor. Nunc a enim dignissim, tincidunt magna eget, euismod ligula. Sed tellus lectus, mollis et malesuada ac, vehicula in orci. Proin ex mauris, pharetra quis malesuada in, congue non tellus. Nam et velit vel diam ultrices commodo. Nam accumsan ultricies varius. Mauris venenatis ac sem vitae commodo. Integer tempus ipsum sed sem pharetra, sed vehicula lacus maximus. Fusce ultricies ornare tellus, at feugiat nulla sagittis id. Proin scelerisque quam non lacus auctor scelerisque. Nulla facilisi. Pellentesque ut est purus.',
+      "Oostaoo Consulting cherche à enrichir son équipe avec un Développeur Front-End React passionné et créatif. Dans ce rôle, vous serez chargé de concevoir et de développer des interfaces utilisateur interactives et modernes, en utilisant React.js. Vous travaillerez en étroite collaboration avec notre équipe de développement pour créer des expériences web fluides et réactives. Nous recherchons quelqu'un avec une solide compréhension de React et un œil pour le design UX/UI, prêt à relever des défis techniques et à apporter des solutions innovantes. Rejoignez-nous pour transformer les concepts en réalités visuelles captivantes et contribuer à des projets à la pointe de la technologie.",
     image: 'https://www.w3bai.com/w3css/img_fjords.jpg',
     linkedin: 'https://fr.linkedin.com/',
     visibility: true,
   },
   {
     id: 3,
-    title: 'Développeur Front',
+    title: 'Développeur Front Vuejs',
     status: 'disponible',
     place: 'Paris',
     sector: 'Immobilier',
@@ -41,7 +41,7 @@ const jobs: JobType[] = [
     startDate: Date.now(),
     weeklyWorkTime: '39h',
     details:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non dapibus turpis. Vestibulum scelerisque tristique porttitor. Sed ante urna, commodo sit amet felis eget, vestibulum auctor tortor. Sed tellus purus, vulputate in sapien quis, lobortis hendrerit diam. Vivamus a fermentum justo. Sed malesuada porta magna in suscipit. Aenean nec erat massa. Fusce sodales, erat eu eleifend facilisis, ipsum mi iaculis nibh, ac tempus enim mauris vitae ex. Nam vitae justo sem. Morbi consequat semper dolor, in mollis odio commodo eu. Ut id condimentum libero. In sed odio nisl. In rutrum lorem vel dolor finibus, ac gravida justo viverra. Phasellus at elit elit. In sit amet tempor dolor, nec condimentum risus. Vivamus ut sagittis ex, vitae maximus eros.',
+      "Rejoignez l'équipe avant-gardiste d'Oostaoo Consulting en tant que Développeur Front-End Vue.js. Nous sommes à la recherche d'un professionnel talentueux et dynamique pour développer des interfaces utilisateur hautement interactives et efficaces avec Vue.js. Vous jouerez un rôle essentiel dans la conception et l'implémentation de solutions front-end innovantes, en collaboration étroite avec notre équipe de développement pour créer des applications web esthétiques et performantes. Les candidats doivent posséder une expérience solide en Vue.js et une passion pour le développement d'UI/UX de qualité. Si vous êtes motivé par les défis techniques et désireux d'apporter une contribution significative dans un environnement collaboratif, nous aimerions vous avoir dans notre équipe.",
     image: 'https://www.w3bai.com/w3css/img_fjords.jpg',
     linkedin: 'https://fr.linkedin.com/',
     visibility: true,
