@@ -6,7 +6,7 @@ const introElements = [
   },
   {
     number: '02',
-    title: 'missions',
+    title: 'mission',
     text: "Notre mission chez Oostaoo Consulting est de transformer les défis technologiques en succès pour nos clients. Experts en JavaScript, nous nous consacrons à fournir des solutions sur mesure, agiles et de haute qualité. Nous visons à établir des partenariats durables, propulsant les entreprises vers le succès numérique grâce à une compréhension approfondie de leurs besoins et objectifs.",
   },
 ];
