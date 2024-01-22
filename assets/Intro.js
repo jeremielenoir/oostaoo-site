@@ -2,12 +2,12 @@ const introElements = [
   {
     number: '01',
     title: 'talents',
-    text: "Dévelopeur expérimenté et polyvalent, acteur responsable majeur des projets qui s'adonne à la coordination et à l'accompagnement de son équipe de dévelopeur à l'aide de ses connaissance technique précises.",
+    text: "Chez Oostaoo Consulting, nos développeurs sont des experts dans leur domaines et notamment l'écosystème javascript, combinant expertise technique et polyvalence pour transformer vos idées en réalité. Plus que de simples codeurs, ils sont les architectes de solutions innovantes, assurant le succès et l'excellence de chaque projet.",
   },
   {
     number: '02',
     title: 'missions',
-    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima blanditiis ea, quia, magnam ducimus architecto provident quo nulla enim, nemo nihil repellendus tenetur nam. Dolores vero nihil unde quidem quod.',
+    text: "Notre mission chez Oostaoo Consulting est de transformer les défis technologiques en succès pour nos clients. Experts en JavaScript, nous nous consacrons à fournir des solutions sur mesure, agiles et de haute qualité. Nous visons à établir des partenariats durables, propulsant les entreprises vers le succès numérique grâce à une compréhension approfondie de leurs besoins et objectifs.",
   },
 ];
 
