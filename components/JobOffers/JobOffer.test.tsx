@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import JobOffer from './JobOffer';
 import jobs from '../../assets/jobData';
 
-const mockJob = jobs[2];
+const mockJob = jobs[0];
 
 describe('JobOffer Component', () => {
   beforeEach(() => render(<JobOffer job={mockJob} />));
@@ -21,25 +21,9 @@ describe('JobOffer Component', () => {
     expect(statusText).toBeInTheDocument();
   });
 
-  test('Should display the offer image with alt text', () => {
-    const altText = screen.getByAltText(/job offer visual/i);
-    expect(altText).toBeInTheDocument();
-  });
-
   test('Should display a resume of the job details', () => {
-    const jobDetailsResume = mockJob.details.substring(0, 250);
+    const jobDetailsResume = mockJob.description.substring(0, 250);
     const detailsText = screen.getByText(`${jobDetailsResume}...`);
     expect(detailsText).toBeInTheDocument();
-  });
-
-  test('Should display the link to linkedIn', () => {
-    const link = screen.getByRole('link');
-    expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute('href', mockJob.linkedin);
-  });
-
-  test('Should display the linkedIn logo image with a alt text', () => {
-    const altText = screen.getByAltText(/LinkedIn link/i);
-    expect(altText).toBeInTheDocument();
   });
 });

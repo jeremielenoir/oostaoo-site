@@ -1,12 +1,21 @@
 import Image from 'next/image';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
-import { JobType } from '@/types/types';
-
-import logoLinkedIn from '../../assets/img/linkedin.png';
+import Button from '@mui/material/Button';
 import styles from './JobOffers.module.css';
+import router from 'next/router';
 
-const JobOffer = ({ job }: { job: JobType }) => (
+interface Job {
+  _id: string;
+  title: string;
+  description: string;
+  contenu: string;
+  image: string;
+  status: string;
+  date: Date;
+}
+
+const JobOffer = ({ job }: { job: Job }) => (
   <section className={styles.offer}>
     <header className={styles.offerHeader}>
       <span className={styles.offerIconWrapper}>
@@ -23,18 +32,23 @@ const JobOffer = ({ job }: { job: JobType }) => (
     <div className={styles.offerImageWrapper}>
       <Image
         className={styles.offerImage}
-        src={job.image}
+        src={`/assets/technos/${job.image}.png`}
         alt="job offer visual"
-        layout="fill"
+        width={300}
+        height={300}
       />
     </div>
     <p className={styles.offerDescription}>
-      {job.details.substring(0, 250)}
+      {job.description.substring(0, 250)}
       ...
     </p>
-    <a className={styles.offerLink} href={job.linkedin}>
-      <Image src={logoLinkedIn} alt="LinkedIn link" />
-    </a>
+    <Button className={styles.offerLink} variant="contained" onClick={() => {
+      router.push({
+        pathname: '/offres/details/[id]',
+        query: { id: job._id },
+      })
+    }
+    }>Postuler à l&apos;offre</Button>
   </section>
 );
 
