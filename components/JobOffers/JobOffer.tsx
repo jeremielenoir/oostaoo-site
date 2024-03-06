@@ -1,9 +1,10 @@
 import Image from 'next/image';
+import router from 'next/router';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
 import Button from '@mui/material/Button';
 import styles from './JobOffers.module.css';
-import router from 'next/router';
+
 
 interface Job {
   _id: string;

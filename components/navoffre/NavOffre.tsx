@@ -6,7 +6,6 @@ import MailRoundedIcon from '@mui/icons-material/MailRounded';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import Button from '@mui/material/Button';
 
-
 import logoOostaoo from '../../assets/logo-oostaoo.png';
 import facebook from '../../assets/img/facebook.png';
 import twitter from '../../assets/img/twitter.png';
@@ -50,4 +49,5 @@ const Nav: FC = () => {
     </header>
   );
 };
+
 export default Nav;

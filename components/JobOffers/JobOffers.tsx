@@ -1,9 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { JobType } from '@/types/types';
 import JobOffer from './JobOffer';
-import SectionTitle from '../SectionTitle/SectionTitle';
-import jobs from '../../assets/jobData';
-import titles from '../../assets/Titles';
 import styles from './JobOffers.module.css';
 
 interface Jobs {
@@ -17,7 +13,7 @@ interface Jobs {
 }
 
 const JobOffers: FC = (props) => {
-const [jobs, setJobs] = useState<Jobs[]>([]);
+  const [jobs, setJobs] = useState<Jobs[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,15 +33,15 @@ const [jobs, setJobs] = useState<Jobs[]>([]);
     fetchData();
   }, []);
   return (
-  <section className={styles.offersSection} id="offres">
-    <div className={styles.offerList}>
-      {jobs.map((jobs: Jobs) => (
-        <>
-        <JobOffer key={jobs._id} job={jobs} />
-        </>
-      ))}
-    </div>
-  </section>
+    <section className={styles.offersSection} id="offres">
+      <div className={styles.offerList}>
+        {jobs.map((jobs: Jobs) => (
+          <>
+            <JobOffer key={jobs._id} job={jobs} />
+          </>
+        ))}
+      </div>
+    </section>
   );
 };
 
