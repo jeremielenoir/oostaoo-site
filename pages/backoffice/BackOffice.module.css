@@ -1,0 +1,123 @@
+/* Styles for the form container */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+}
+
+.editeur {
+  border: 1px solid black;
+  height: auto;
+  width: 50%;
+}
+
+/* Styles for the button */
+.button {
+  width: 20%;
+}
+
+.buttonUpdateFrom {
+  width: 50%;
+}
+
+.titleTableJobs{
+  margin-top: 15px !important;
+  text-align: center;
+}
+
+.addButtonTableJobs{
+  position: absolute;
+  right: 3%;
+}
+.editButtonTableJobs{
+  position: absolute;
+  right: 6%;
+}
+.delButtonTableJobs{
+  position: absolute;
+  right: 9%;
+}
+
+/* Style de base du tableau */
+.listeJobs {
+  margin-top: 80px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-family: 'Roboto', sans-serif;
+  /* Police Material UI */
+  background-color: #fff;
+  /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+  /* Ombre subtile */
+}
+
+/* En-têtes du tableau */
+.tableJobs th {
+  background-color: #f5f5f5;
+  /* Fond légèrement gris */
+  color: #333;
+  /* Texte sombre pour un contraste élevé */
+  font-weight: 500;
+  text-align: center;
+  padding: 14px 6px;
+  /* Espacement généreux */
+  border-bottom: 1px solid #e0e0e0;
+  /* Ligne de séparation subtile */
+}
+
+/* Cellules du tableau */
+.tableJobs td {
+  padding: 14px 6px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  /* Ligne de séparation subtile */
+}
+
+/* Lignes impaires du tableau */
+.tableJobs tr:nth-child(odd) {
+  background-color: #fafafa;
+  /* Fond alternatif pour une meilleure lisibilité */
+}
+
+/* Survol des lignes */
+.tableJobs tr:hover {
+  background-color: #e0f7fa;
+  /* Couleur de survol légère */
+}
+
+/* Pied de page du tableau */
+.tableJobs tfoot td {
+  font-weight: 500;
+  background-color: #e0e0e0;
+  /* Fond distinct pour le pied de page */
+  padding: 12px 24px;
+}
+
+.popupBackofficeJob {
+  display: none; /* Cache la pop-up par défaut */
+  position: fixed; /* Positionnement fixe pour couvrir toute la page */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  z-index: 1; /* S'assure que la pop-up est au-dessus des autres éléments */
+}
+
+.popupBackofficeJobContenu {
+  background-color: #fff;
+  margin: 15% auto; /* Positionnement et centrage */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Largeur de la pop-up */
+  text-align: center; /* Centrer le texte et les boutons à l'intérieur */
+}
