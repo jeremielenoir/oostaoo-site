@@ -9,10 +9,12 @@ const connectDB = async () => {
     return;
   }
   // Connectez-vous à MongoDB
-  await mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  try {
+    await mongoose.connect(MONGODB_URI);
+} catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+}
+
 };
 
 export default connectDB;

@@ -1,7 +1,8 @@
-// models/Post.js
+// models/Job.js
 import mongoose from 'mongoose';
+import FilesModel from './File';
 
-const PostSchema = new mongoose.Schema({
+const JobSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   contenu: { type: String, required: true },
@@ -11,6 +12,6 @@ const PostSchema = new mongoose.Schema({
   files: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Files' }],
 });
 
-const PostModel = mongoose.models.Jobs || mongoose.model('Jobs', PostSchema);
+const JobModel = mongoose.models.Jobs || mongoose.model('Jobs', JobSchema);
 
-export default PostModel;
+export default JobModel;

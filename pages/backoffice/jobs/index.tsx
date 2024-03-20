@@ -4,6 +4,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import { useState, useEffect } from 'react';
+import Cookies from 'js-cookie';
 import router from 'next/router';
 import ConfirmationDialog from '@/components/ConfirmationDialog/ComfirmationDialog';
 import Accordion from '@mui/material/Accordion';
@@ -19,6 +20,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Alert from '@mui/material/Alert';
 import Style from '../BackOffice.module.css';
+import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
 
 interface Files {
   _id: string;
@@ -45,10 +47,37 @@ const indexAllJobs = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [erreur, setErreur] = useState('');
 
+  const handleDownloadFile = async (file : Files) => {
+    const token = Cookies.get('token');
+    try {
+      const response = await fetch(`/api/download?id=${file._id}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+      if (response.ok) {
+        const blob = await response.blob();
+        const fileURL = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = fileURL;
+        link.setAttribute('download', file.title);
+        document.body.appendChild(link);
+        link.click();
+        window.URL.revokeObjectURL(fileURL);
+      }
+    }catch(error) {
+    }
+  };
+
   const handleConfirmDelete = async () => {
+    const token = Cookies.get('token');
     try {
       const response = await fetch(`/api/jobs?id=${jobID}`, {
         method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
       });
       if (response.ok) {
         router.reload();
@@ -73,15 +102,16 @@ const indexAllJobs = () => {
           const data = await response.json();
           setJobs(data);
         } else {
-          setErreur('Failed to fetch posts');
+          setErreur('Failed to fetch Job');
         }
       } catch (error) {
-        setErreur('Error fetching posts:');
+        setErreur('Error fetching Job');
       }
     };
     fetchData();
   }, []);
   return (
+    <ProtectedRoute>
     <div>
       <div>
         <Nav />
@@ -139,21 +169,13 @@ const indexAllJobs = () => {
               >
                 {job.files.map((fichier: Files) => (
                   <ListItemButton
-                    onClick={() => {
-                      router.push(
-                        {
-                          pathname: '/api/download',
-                          query: { id: fichier._id },
-                        }
-                      );
-                    }
-                    }>
+                    onClick={() => handleDownloadFile(fichier)}>
                     <ListItemText primary={fichier.title} />
                     <ListItemIcon>
                       <DownloadIcon />
                     </ListItemIcon>
                   </ListItemButton>
-                ))};
+                ))}
               </List>
             </AccordionDetails>
           </Accordion>
@@ -169,6 +191,7 @@ const indexAllJobs = () => {
       </div>
       {erreur ? <Alert severity="error">{erreur}</Alert> : null}
     </div>
+    </ProtectedRoute>
   );
 };
 export default indexAllJobs;

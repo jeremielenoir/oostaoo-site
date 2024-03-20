@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Editor } from 'react-draft-wysiwyg';
@@ -12,6 +13,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Autocomplete from '@mui/material/Autocomplete';
 import Style from '../../BackOffice.module.css';
+import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
 
 const CreateJobs = () => {
   const router = useRouter();
@@ -39,12 +41,14 @@ const CreateJobs = () => {
   };
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    const token = Cookies.get('token');
     e.preventDefault();
     try {
       const response = await fetch('/api/jobs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
@@ -60,6 +64,7 @@ const CreateJobs = () => {
     }
   };
   return (
+    <ProtectedRoute>
     <div>
       <Nav />
       <form onSubmit={handleSubmit} className={Style.form}>
@@ -140,6 +145,7 @@ const CreateJobs = () => {
         </Button>
       </form>
     </div>
+    </ProtectedRoute>
   );
 };
 

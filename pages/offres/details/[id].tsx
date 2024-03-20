@@ -70,7 +70,7 @@ const Details = () => {
         <Card variant="outlined" sx={{ border: '1px solid black', borderRadius: 3, boxShadow: '10px 10px 0px black' }}>
           <CardContent>
             <Typography sx={{ mb: 1.5 }} color="text.secondary" variant="h5">
-              Status : {job ? (job.status) : (null)}
+              Statut : {job ? (job.status) : (null)}
             </Typography>
             <div style={{ marginLeft: '43%', position: 'inherit', marginBottom: '5%' }}>
               <Image src={`/assets/technos/${job?.image}.png`} height={100} width={150} alt={`${job?.image}.png`}></Image>

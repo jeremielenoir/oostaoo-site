@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Editor } from 'react-draft-wysiwyg';
@@ -14,6 +15,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Nav from '@/components/navBackOffice/NavBackOffice';
 import Alert from '@mui/material/Alert';
 import Style from '../../BackOffice.module.css';
+import ProtectedRoute from '@/components/ProtectedRoute/ProtectedRoute';
 
 const UpdatePost = () => {
   const [formData, setFormData] = useState({
@@ -40,10 +42,10 @@ const UpdatePost = () => {
         const { contentBlocks, entityMap } = contenuFromHtml;
         setEditorState(EditorState.createWithContent(ContentState.createFromBlockArray(contentBlocks, entityMap)));
       } else {
-        setErreur('Failed to fetch posts');
+        setErreur('Failed to fetch Jobs');
       }
     } catch (error) {
-      setErreur('Error fetching posts:');
+      setErreur('Error fetching Jobs:');
     }
   };
   useEffect(() => {
@@ -62,12 +64,14 @@ const UpdatePost = () => {
     setFormData({ ...formData, image: value });
   };
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    const token = Cookies.get('token');
     e.preventDefault();
     try {
       const response = await fetch(`/api/jobs?id=${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
       });
@@ -86,6 +90,7 @@ const UpdatePost = () => {
     }
   };
   return (
+    <ProtectedRoute>
     <div>
       <Nav />
       <form onSubmit={handleSubmit} className={Style.form}>
@@ -186,6 +191,7 @@ const UpdatePost = () => {
         { erreur ? <Alert severity="error">{erreur}</Alert> : null }
       </div>
     </div>
+    </ProtectedRoute>
   );
 };
 

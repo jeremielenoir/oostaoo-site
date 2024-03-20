@@ -1,7 +1,7 @@
 import { Formidable } from 'formidable';
 import fs from 'fs';
 import FileModel from './models/File';
-import PostModel from './models/Post';
+import JobModel from './models/Job';
 import connectDB from './utils/connectDB';
 
 connectDB();
@@ -43,7 +43,7 @@ export default async function handler(req, res) {
               title, contenu, date, contact: dataContact,
             },
           );
-          const Jobs = await PostModel.findById(jobId);
+          const Jobs = await JobModel.findById(jobId);
           Jobs.files.push(newFile._id);
           await Jobs.save();
           return res.status(200).json('upload success', newFile._id);

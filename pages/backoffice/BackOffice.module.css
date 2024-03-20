@@ -34,16 +34,16 @@
 }
 
 .addButtonTableJobs{
-  position: absolute;
-  right: 3%;
+  position: absolute !important;
+  right: 3% !important;
 }
 .editButtonTableJobs{
-  position: absolute;
-  right: 6%;
+  position: absolute !important;
+  right: 6% !important;
 }
 .delButtonTableJobs{
-  position: absolute;
-  right: 9%;
+  position: absolute !important;
+  right: 9% !important;
 }
 
 /* Style de base du tableau */

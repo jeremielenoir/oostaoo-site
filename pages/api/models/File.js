@@ -6,7 +6,7 @@ const FileSchema = new mongoose.Schema({
   contenu: { type: Buffer, required: true },
   fileType: { type: String, default: 'application/pdf' },
   contact: { type: String, required: true },
-  date: { type: Date, required: true },
+  date: { type: Date, required: true }
 });
 
 const FilesModel = mongoose.models.Files || mongoose.model('Files', FileSchema);

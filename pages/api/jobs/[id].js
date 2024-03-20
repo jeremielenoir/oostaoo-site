@@ -1,6 +1,6 @@
 // pages/api/jobs.js
 import connectDB from '../utils/connectDB';
-import PostModel from '../models/Post';
+import PostModel from '../models/Job';
 
 connectDB(); // Connectez-vous à la base de données
 
