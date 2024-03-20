@@ -12,18 +12,13 @@ export type ListButtonNavArray = [
 ];
 
 export type JobType = {
-  id: number;
+  _id: string;
   title: string;
   status: string;
-  place: string;
-  sector: string;
-  publishDate: number;
-  startDate: number;
-  weeklyWorkTime: string;
-  details: string;
+  date: Date;
+  contenu: string;
+  description: string;
   image: string;
-  linkedin: string;
-  visibility: boolean;
 };
 
 export type ServiceType = {

@@ -13,7 +13,8 @@ interface ListButtonNavProps {
     | 'technos'
     | 'references'
     | 'offres'
-    | 'contact';
+    | 'contact'
+    | 'retour';
   btnIndex: number;
   lastElementIndex: number;
 }
