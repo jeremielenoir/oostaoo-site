@@ -3,18 +3,31 @@ import mongoose from 'mongoose';
 
 const MONGODB_URI = process.env.DATABASE_URL;
 
-const connectDB = async () => {
-  if (mongoose.connections[0].readyState) {
-    // Utiliser la connexion existante
-    return;
+let connection = null;
+
+async function connectToDatabase() {
+  if (connection) {
+    return connection;
   }
   // Connectez-vous à MongoDB
   try {
-    await mongoose.connect(MONGODB_URI);
-} catch (error) {
+    connection = await mongoose.connect(MONGODB_URI);
+    return connection;
+  } catch (error) {
     console.error('Error connecting to MongoDB:', error);
-}
+  }
 
 };
 
-export default connectDB;
+async function isDatabaseConnected() {
+  if (!connection) {
+    connection = await connectToDatabase();
+    if (connection) {
+      return true;
+    }
+    return false;
+  }
+  return connection.readyState === 1; // 1 indicates connected
+};
+
+module.exports = { connectToDatabase, isDatabaseConnected };
