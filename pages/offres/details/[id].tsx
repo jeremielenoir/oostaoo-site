@@ -66,16 +66,16 @@ const Details = () => {
         <meta name="twitter:image" content={`/assets/technos/${job?.image}.png`} />
       </Head>
       <Nav />
-      <Box sx={{ maxWidth: 1000, minHeight: 500, textAlign: 'left', marginTop: 10, marginLeft: 'auto', marginRight: 'auto' }}>
-        <Card variant="outlined" sx={{ border: '1px solid black', borderRadius: 3, boxShadow: '10px 10px 0px black' }}>
+      <Box sx={{ maxWidth: 1000, minHeight: 600, textAlign: 'left', marginTop: 10, marginLeft: 'auto', marginRight: 'auto',marginBottom: 10 }}>
+        <Card variant="outlined" sx={{ borderRadius: 3, boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.6);' }}>
           <CardContent>
             <Typography sx={{ mb: 1.5 }} color="text.secondary" variant="h5">
               Statut : {job ? (job.status) : (null)}
             </Typography>
             <div style={{ marginLeft: '43%', position: 'inherit', marginBottom: '5%' }}>
-              <Image src={`/assets/technos/${job?.image}.png`} height={100} width={150} alt={`${job?.image}.png`}></Image>
+              <Image src={`/assets/technos/${job?.image}.png`} height={150} width={150} alt={`${job?.image}.png`}></Image>
             </div>
-            <Typography variant="h4" component="div" sx={{ textAlign: 'center' }}>
+            <Typography variant="h4" component="div" sx={{ textAlign: 'center',mb:6 }}>
               D&eacute;tails de l&apos;Offre d&apos;Emploi
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary" variant="h4">
